@@ -616,7 +616,7 @@ let map=null,frames=[],rlayers=[],fi=0,pastN=0,playing=true,animT=null,windyOn=f
 function initMap(){
   if(map)return;
   if(!window.L){$('radarMsg').textContent='Map library could not load. Check the tablet is online.';return}
-  map=L.map('radar',{dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,zoomSnap:1}).setView([LOC.lat,LOC.lon],8);
+  map=L.map('radar',{dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,zoomSnap:1,minZoom:5,maxZoom:10}).setView([LOC.lat,LOC.lon],8);
   map.attributionControl.setPrefix(false);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'© OpenStreetMap © CARTO'}).addTo(map);
   [25,50,100].forEach(km=>{L.circle([LOC.lat,LOC.lon],{radius:km*1000,color:'#5fd0e6',weight:1,opacity:.45,fill:false,dashArray:'3 6',interactive:false}).addTo(map);
@@ -625,27 +625,43 @@ function initMap(){
   L.marker([LOC.lat,LOC.lon],{interactive:false,icon:L.divIcon({className:'home-lab',html:'HOME',iconSize:[40,12],iconAnchor:[-8,6]})}).addTo(map);
   loadRadar();setInterval(loadRadar,10*60000);
 }
+const rcache={};let rHost='';
+function mkLayer(fr){
+  if(!rcache[fr.path])rcache[fr.path]=L.tileLayer(`${rHost}${fr.path}/256/{z}/{x}/{y}/2/1_1.png`,{opacity:0,zIndex:5,maxNativeZoom:7,maxZoom:10,attribution:'Radar © RainViewer'}).addTo(map);
+  return rcache[fr.path];
+}
 async function loadRadar(){
   if(!map)return;
   try{
     const j=await getJSON('https://api.rainviewer.com/public/weather-maps.json');
-    const past=(j.radar&&j.radar.past)||[],cast=(j.radar&&j.radar.nowcast)||[];
+    const past=(j.radar&&j.radar.past)||[];
     if(!past.length)throw new Error('no frames');
-    rlayers.forEach(l=>map.removeLayer(l));rlayers=[];frames=[...past,...cast];pastN=past.length;
-    frames.forEach(fr=>{const l=L.tileLayer(`${j.host}${fr.path}/256/{z}/{x}/{y}/2/1_1.png`,{opacity:0,zIndex:5,maxNativeZoom:10,maxZoom:12,attribution:'Radar © RainViewer'});l.addTo(map);rlayers.push(l)});
-    $('frames').innerHTML=frames.map((_,k)=>`<button type="button" class="${k>=pastN?'fc':''}" aria-label="Frame ${k+1}"></button>`).join('');
-    [...$('frames').children].forEach((b,k)=>b.addEventListener('click',()=>{setPlaying(false);fi=k;showFrame()}));
-    fi=pastN-1;showFrame();$('radarMsg').hidden=true;schedule();
+    rHost=j.host;
+    const keep={};past.forEach(fr=>keep[fr.path]=1);
+    Object.keys(rcache).forEach(k=>{if(!keep[k]){map.removeLayer(rcache[k]);delete rcache[k]}});
+    frames=past;pastN=past.length;rlayers=frames.map(fr=>rcache[fr.path]);
+    rlayers[pastN-1]=mkLayer(frames[pastN-1]);
+    $('frames').innerHTML=frames.map((_,k)=>`<button type="button" aria-label="Frame ${k+1}"></button>`).join('');
+    [...$('frames').children].forEach((b,k)=>b.addEventListener('click',()=>{if(!rlayers[k])return;setPlaying(false);fi=k;showFrame()}));
+    fi=pastN-1;showFrame();$('radarMsg').hidden=true;
+    // stagger older frames so we stay well under the provider's request limit
+    for(let k=pastN-2;k>=0;k--){
+      if(rlayers[k])continue;
+      await new Promise(r=>setTimeout(r,900));
+      if(frames!==past)return;
+      rlayers[k]=mkLayer(frames[k]);
+    }
+    schedule();
   }catch(e){if(!frames.length){$('radarMsg').hidden=false;$('radarMsg').textContent='Radar is unavailable right now. It retries every 10 minutes.'}}
 }
 function showFrame(){
-  rlayers.forEach((l,k)=>l.setOpacity(k===fi ? 0.78 : 0));
-  [...$('frames').children].forEach((b,k)=>b.classList.toggle('on',k===fi));
+  rlayers.forEach((l,k)=>{if(l)l.setOpacity(k===fi ? 0.8 : 0)});
+  [...$('frames').children].forEach((b,k)=>{b.classList.toggle('on',k===fi);b.style.opacity=rlayers[k]?'':'.35'});
   const t=frames[fi].time,m=Math.round((t-Date.now()/1000)/60);
-  $('rtime').textContent=`${hm(t)} · `+(fi>=pastN?`+${Math.max(m,0)} min forecast`:(m>-6?'latest':`${m} min`));
+  $('rtime').textContent=`${hm(t)} · `+(m>-6?'latest':`${m} min`);
 }
 function schedule(){clearTimeout(animT);if(!playing||!frames.length||page!==1)return;
-  animT=setTimeout(()=>{fi=(fi+1)%frames.length;showFrame();schedule()},fi===frames.length-1?2400:fi===pastN-1?1200:550)}
+  animT=setTimeout(()=>{let n=fi;for(let k=0;k<frames.length;k++){n=(n+1)%frames.length;if(rlayers[n])break}fi=n;showFrame();schedule()},fi===frames.length-1?2400:550)}
 function setPlaying(v){playing=v;$('play').textContent=v?'❚❚':'▶';$('play').setAttribute('aria-label',v?'Pause radar loop':'Play radar loop');schedule()}
 $('play').addEventListener('click',()=>setPlaying(!playing));
 
