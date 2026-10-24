@@ -127,6 +127,11 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .frames button.on{background:var(--cyan)}
 .rleg{display:flex;align-items:center;gap:6px;color:var(--dim);font-size:10px;white-space:nowrap}
 .rleg i{display:block;width:70px;height:6px;border-radius:3px;background:linear-gradient(90deg,#88ddee,#0099cc,#0077aa,#ffee00,#ff8800,#ff0000,#c10000)}
+.labr{display:flex;align-items:center;gap:6px;min-width:0}
+.exp{min-height:26px;padding:0 8px;font-size:10px;color:var(--cyan);border-color:rgba(95,208,230,.45)}
+.maps.solo-radar,.maps.solo-wind{grid-template-columns:1fr}
+.maps.solo-radar #windPanel,.maps.solo-wind #radarPanel{display:none}
+#rdiag b{color:var(--amber);font-weight:400}
 .chips{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
 .chips .chip{min-height:26px;padding:0 8px;font-size:10px}
 #rtime{color:var(--cyan);letter-spacing:.04em;text-transform:none}
@@ -137,7 +142,14 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .leaflet-control-attribution a{color:var(--dim)!important}
 .ring-lab{color:var(--cyan);font-size:9px;opacity:.75;white-space:nowrap;font-family:var(--mono)}
 .home-lab{color:var(--amber);font-size:10px;white-space:nowrap;font-family:var(--mono);font-weight:700}
-@media (max-width:1000px){
+@media (max-height:660px) and (min-width:761px){
+  #temp{font-size:50px}#temp small{font-size:22px}.row3 .panel{min-height:140px}.panel{padding:8px 10px}.cols,.col,.row3{gap:8px}.app{gap:8px}
+  .kv{margin-top:6px;gap:2px 8px}.gauge{max-height:76px}.trio b{font-size:15px}
+  .cols{grid-template-columns:minmax(205px,23%) minmax(0,1fr) minmax(215px,24%)}
+  .wk{grid-template-columns:2.3em 3.7em minmax(16px,1fr) 4.3em 2.7em;gap:4px;padding:2px 0;font-size:11px}
+  .legend{gap:8px;font-size:9px}.lab i{display:none}.lab{letter-spacing:.12em}
+}
+@media (max-width:760px){
   .pager{overflow-y:visible}.page{align-items:flex-start}
   .maps{grid-template-columns:1fr}.mapbox{height:62vh;flex:none}
   body{overflow:auto;height:auto}.app{height:auto}
@@ -235,7 +247,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
         </div>
       </section>
       <section class="panel fixed">
-        <div class="lab">Convection · Radiation <span id="risk"></span></div>
+        <div class="lab">Convection <span id="risk"></span></div>
         <div class="gauges">
           <div><div id="gCape"></div><div class="gl">CAPE J/kg</div></div>
           <div><div id="gUv"></div><div class="gl">UV INDEX</div></div>
@@ -252,19 +264,20 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 
   <div class="page" id="p2">
     <div class="maps">
-      <section class="panel">
-        <div class="lab">Rain radar · Mackay coast <span id="rtime">—</span></div>
+      <section class="panel" id="radarPanel">
+        <div class="lab">Rain radar <span class="labr"><span id="rtime">—</span><button class="chip exp" type="button" data-solo="radar" aria-label="Enlarge radar">ENLARGE</button></span></div>
         <div class="mapbox"><div id="radar"></div><div class="mapmsg" id="radarMsg">Loading radar…</div></div>
         <div class="rbar">
           <button class="chip" id="play" type="button" aria-label="Pause radar loop">❚❚</button>
           <div class="frames" id="frames"></div>
           <span class="rleg">light<i></i>heavy</span>
         </div>
+        <div class="note" id="rdiag">waiting to start</div>
       </section>
-      <section class="panel">
-        <div class="lab">Wind flow · ECMWF <span class="chips" id="wchips"></span></div>
-        <div class="mapbox"><iframe id="windy" title="Live wind map"></iframe></div>
-        <div class="note">Rings on the radar: 25, 50 and 100 km from home. Returns to the console after 3 minutes.</div>
+      <section class="panel" id="windPanel">
+        <div class="lab">Wind flow <span class="labr"><span class="chips" id="wchips"></span><button class="chip exp" type="button" data-solo="wind" aria-label="Enlarge wind map">ENLARGE</button></span></div>
+        <div class="mapbox"><iframe id="windy" title="Live wind map"></iframe><div class="mapmsg" id="windMsg" hidden>Loading wind map…</div></div>
+        <div class="note">Radar rings: 25, 50 and 100 km from home. Tap ENLARGE to give one map the whole screen. Returns to the console after 3 minutes.</div>
       </section>
     </div>
   </div>
@@ -606,7 +619,8 @@ $('meteo').addEventListener('pointermove',e=>{if(e.buttons||e.pointerType==='mou
 const pager=$('pager'),tabs=[...document.querySelectorAll('.tab')];let page=0,idleT;
 const pageW=()=>pager.clientWidth+24;
 function go(i){pager.scrollTo({left:i*pageW(),behavior:'smooth'})}
-tabs.forEach((t,i)=>t.addEventListener('click',()=>go(i)));
+tabs.forEach((t,i)=>t.addEventListener('click',()=>{go(i);if(i===1)showMaps()}));
+if(window.IntersectionObserver)new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)showMaps()}),{root:pager,threshold:0.3}).observe($('p2'));
 function armIdle(){clearTimeout(idleT);if(page===1)idleT=setTimeout(()=>go(0),180000)}
 pager.addEventListener('scroll',()=>{const i=Math.round(pager.scrollLeft/pageW());
   if(i!==page){page=i;tabs.forEach((t,k)=>t.setAttribute('aria-selected',String(k===i)));document.body.classList.toggle('off-console',i!==0);if(i===1)showMaps();else{clearTimeout(animT);if(windyOn){windyOn=false;$('windy').src='about:blank'}if(wx)render()}armIdle()}},{passive:true});
@@ -616,10 +630,11 @@ $('p2').addEventListener('pointerdown',armIdle);
 let map=null,frames=[],rlayers=[],fi=0,pastN=0,playing=true,animT=null,windyOn=false,windyOv='wind';
 function initMap(){
   if(map)return;
-  if(!window.L){$('radarMsg').textContent='Map library could not load. Check the tablet is online.';return}
+  if(!window.L){$('radarMsg').textContent='Map library could not load. Check the tablet is online.';$('rdiag').innerHTML='<b>map library failed to load (cdnjs)</b>';return}
+  diag.map='ok';showDiag();
   map=L.map('radar',{dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,zoomSnap:1,minZoom:5,maxZoom:10}).setView([LOC.lat,LOC.lon],8);
   map.attributionControl.setPrefix(false);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'© OpenStreetMap © CARTO'}).addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'© OpenStreetMap © CARTO'}).on('tileload',()=>{diag.base[0]++;showDiag()}).on('tileerror',()=>{diag.base[1]++;showDiag()}).addTo(map);
   [25,50,100].forEach(km=>{L.circle([LOC.lat,LOC.lon],{radius:km*1000,color:'#5fd0e6',weight:1,opacity:.45,fill:false,dashArray:'3 6',interactive:false}).addTo(map);
     L.marker([LOC.lat+km/111.2,LOC.lon],{interactive:false,icon:L.divIcon({className:'ring-lab',html:km+' km',iconSize:[40,12],iconAnchor:[-4,6]})}).addTo(map)});
   L.circleMarker([LOC.lat,LOC.lon],{radius:5,color:'#f0ae48',weight:2,fillColor:'#f0ae48',fillOpacity:.9,interactive:false}).addTo(map);
@@ -627,8 +642,10 @@ function initMap(){
   loadRadar();setInterval(loadRadar,10*60000);
 }
 const rcache={};let rHost='';
+const diag={map:'…',base:[0,0],tiles:[0,0],idx:'…'};
+function showDiag(){const n=(a)=>a[0]+(a[1]?` / <b>${a[1]} failed</b>`:'');$('rdiag').innerHTML=`map ${diag.map} · base tiles ${n(diag.base)} · radar index ${diag.idx} · radar tiles ${n(diag.tiles)}`}
 function mkLayer(fr){
-  if(!rcache[fr.path])rcache[fr.path]=L.tileLayer(`${rHost}${fr.path}/256/{z}/{x}/{y}/2/1_1.png`,{opacity:0,zIndex:5,maxNativeZoom:7,maxZoom:10,attribution:'Radar © RainViewer'}).addTo(map);
+  if(!rcache[fr.path])rcache[fr.path]=L.tileLayer(`${rHost}${fr.path}/256/{z}/{x}/{y}/2/1_1.png`,{opacity:0,zIndex:5,maxNativeZoom:7,maxZoom:10,attribution:'Radar © RainViewer'}).on('tileload',()=>{diag.tiles[0]++;showDiag()}).on('tileerror',()=>{diag.tiles[1]++;showDiag()}).addTo(map);
   return rcache[fr.path];
 }
 async function loadRadar(){
@@ -637,7 +654,7 @@ async function loadRadar(){
     const j=await getJSON('https://api.rainviewer.com/public/weather-maps.json');
     const past=(j.radar&&j.radar.past)||[];
     if(!past.length)throw new Error('no frames');
-    rHost=j.host;
+    rHost=j.host;diag.idx=past.length+' frames';showDiag();
     const keep={};past.forEach(fr=>keep[fr.path]=1);
     Object.keys(rcache).forEach(k=>{if(!keep[k]){map.removeLayer(rcache[k]);delete rcache[k]}});
     frames=past;pastN=past.length;rlayers=frames.map(fr=>rcache[fr.path]);
@@ -653,7 +670,7 @@ async function loadRadar(){
       rlayers[k]=mkLayer(frames[k]);
     }
     schedule();
-  }catch(e){if(!frames.length){$('radarMsg').hidden=false;$('radarMsg').textContent='Radar is unavailable right now. It retries every 10 minutes.'}}
+  }catch(e){diag.idx=`<b>failed (${e&&e.message||'error'})</b>`;showDiag();if(!frames.length){$('radarMsg').hidden=false;$('radarMsg').textContent='Radar is unavailable right now. It retries every 10 minutes.'}}
 }
 function showFrame(){
   rlayers.forEach((l,k)=>{if(l)l.setOpacity(k===fi ? 0.8 : 0)});
@@ -670,8 +687,17 @@ $('play').addEventListener('click',()=>setPlaying(!playing));
 const WL=[['wind','WIND'],['gust','GUSTS'],['rain','RAIN'],['clouds','CLOUD'],['temp','TEMP'],['pressure','PRESS']];
 const windySrc=ov=>`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=%C2%B0C&metricWind=km%2Fh&zoom=7&overlay=${ov}&product=ecmwf&level=surface&lat=${LOC.lat}&lon=${LOC.lon}&detailLat=${LOC.lat}&detailLon=${LOC.lon}&marker=true&message=true`;
 $('wchips').innerHTML=WL.map(([k,t])=>`<button type="button" class="chip" data-ov="${k}" aria-pressed="${k==='wind'}">${t}</button>`).join('');
-$('wchips').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{windyOv=b.dataset.ov;$('wchips').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$('windy').src=windySrc(windyOv);armIdle()}));
-function showMaps(){initMap();if(map)setTimeout(()=>map.invalidateSize(),60);if(!windyOn){windyOn=true;$('windy').src=windySrc(windyOv)}schedule()}
+let windyT=null;
+function setWindy(){windyOn=true;const m=$('windMsg');m.hidden=false;m.textContent='Loading wind map…';$('windy').src=windySrc(windyOv);
+  clearTimeout(windyT);windyT=setTimeout(()=>{m.innerHTML='The wind map hasn’t loaded.<br>Check the tablet is online, then tap a layer button above to retry.'},25000)}
+$('windy').addEventListener('load',()=>{if(windyOn&&$('windy').src.indexOf('windy.com')>-1){clearTimeout(windyT);$('windMsg').hidden=true}});
+$('wchips').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{windyOv=b.dataset.ov;$('wchips').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));setWindy();armIdle()}));
+function showMaps(){initMap();if(map)setTimeout(()=>map.invalidateSize(),60);if(!windyOn)setWindy();schedule()}
+document.querySelectorAll('.exp').forEach(b=>b.addEventListener('click',()=>{
+  const m=document.querySelector('.maps'),k='solo-'+b.dataset.solo,on=!m.classList.contains(k);
+  m.classList.remove('solo-radar','solo-wind');if(on)m.classList.add(k);
+  document.querySelectorAll('.exp').forEach(x=>{const a=m.classList.contains('solo-'+x.dataset.solo);x.textContent=a?'SPLIT':'ENLARGE';x.setAttribute('aria-label',a?'Show both maps':'Enlarge map')});
+  if(map)setTimeout(()=>map.invalidateSize(),80);armIdle()}));
 
 /* ---------- lifecycle ---------- */
 let rz;const redraw=()=>{clearTimeout(rz);rz=setTimeout(()=>{if(wx){drawCompass();drawBaro();drawMeteo()}if(typeof pager!=='undefined')pager.scrollLeft=page*pageW();if(typeof map!=='undefined'&&map)map.invalidateSize()},80)};
@@ -679,7 +705,7 @@ if(window.ResizeObserver){const ro=new ResizeObserver(redraw);['compassWrap','ba
 async function wake(){try{if(navigator.wakeLock)await navigator.wakeLock.request('screen')}catch(e){}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){wake();loadWx()}});
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>wx&&render());
-wake();loadWx().then(loadExtras);
+wake();loadWx().then(loadExtras);setTimeout(initMap,3000);
 setInterval(loadWx,10*60000);setInterval(loadExtras,30*60000);
 setInterval(()=>{if(wx&&sel==null&&page===0)render()},60000);
 </script>
