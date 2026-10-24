@@ -6,7 +6,7 @@
 <title>Wx Station</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700&family=JetBrains+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
 /* Layout: instrument console. Left = surface + wind + atmosphere, centre = 48h meteogram over sun/marine/soil, right = pressure + convection + 7-day. Single dark look by design. */
@@ -61,7 +61,7 @@ header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1
 /* dials */
 .dial{position:relative;flex:1 1 auto;min-height:150px}
 .dial canvas{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}
-.sweep{position:absolute;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 290deg,rgba(95,208,230,.16) 360deg);animation:spin 7s linear infinite;-webkit-mask:radial-gradient(circle,#000 0 68%,transparent 69%);mask:radial-gradient(circle,#000 0 68%,transparent 69%)}
+.sweep{will-change:transform;position:absolute;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 290deg,rgba(95,208,230,.16) 360deg);animation:spin 7s linear infinite;-webkit-mask:radial-gradient(circle,#000 0 68%,transparent 69%);mask:radial-gradient(circle,#000 0 68%,transparent 69%)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border-top:1px solid var(--line);padding-top:8px;margin-top:6px;text-align:center}
 .trio div{color:var(--dim);font-size:10px;letter-spacing:.08em}
@@ -146,6 +146,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
   .dial{height:280px;flex:none}#meteoWrap{height:340px;flex:none}
 }
 @media (max-width:640px){.row3{grid-template-columns:1fr}}
+.off-console .sweep{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.sweep{animation:none;display:none}}
 </style>
 </head>
@@ -276,7 +277,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 const qs=new URLSearchParams(location.search);
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
 const $=id=>document.getElementById(id);
-const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const CSSC={};const css=v=>CSSC[v]||(CSSC[v]=getComputedStyle(document.documentElement).getPropertyValue(v).trim());
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const f=(v,d=0)=>v==null||isNaN(v)?'—':(+v).toFixed(d);
 const store={get(k){try{return JSON.parse(localStorage.getItem('wxs_'+k))}catch(e){return null}},set(k,v){try{localStorage.setItem('wxs_'+k,JSON.stringify(v))}catch(e){}}};
@@ -412,8 +413,8 @@ function drawCompass(){
     ctx.fillStyle=`rgba(95,208,230,${(.9-k*.12).toFixed(2)})`;ctx.beginPath();ctx.arc(cx+Math.sin(a)*R*.7,cy-Math.cos(a)*R*.7,2.6,0,Math.PI*2);ctx.fill()}
   const a=C.wind_direction_10m*Math.PI/180,sx=Math.sin(a),sy=-Math.cos(a),px=-sy,py=sx;
   const tip=[cx+sx*R*.9,cy+sy*R*.9],base=[cx+sx*R*.64,cy+sy*R*.64];
-  ctx.fillStyle=css('--cyan');ctx.shadowColor=css('--cyan');ctx.shadowBlur=10;
-  ctx.beginPath();ctx.moveTo(...tip);ctx.lineTo(base[0]+px*7,base[1]+py*7);ctx.lineTo(base[0]-px*7,base[1]-py*7);ctx.closePath();ctx.fill();ctx.shadowBlur=0;
+  ctx.fillStyle=css('--cyan');
+  ctx.beginPath();ctx.moveTo(...tip);ctx.lineTo(base[0]+px*7,base[1]+py*7);ctx.lineTo(base[0]-px*7,base[1]-py*7);ctx.closePath();ctx.fill();
   ctx.fillStyle=css('--ink');ctx.font=DISP(Math.max(24,R*.32),700);ctx.fillText(Math.round(C.wind_speed_10m),cx,cy-R*.06);
   ctx.font=MONO(10);ctx.fillStyle=css('--dim');ctx.fillText('KM/H · '+Math.round(C.wind_speed_10m/1.852)+' KT',cx,cy+R*.2);
   $('wdir').textContent=`${comp(C.wind_direction_10m)} ${pad(Math.round(C.wind_direction_10m),3)}°`;
@@ -436,7 +437,7 @@ function drawBaro(){
   ctx.fillStyle=css('--amber');ctx.fillText('HIGH',cx+Math.sin(ang(1030))*R*.6,cy-Math.cos(ang(1030))*R*.6);
   const needle=(p,col,wd,len)=>{const a=ang(p);ctx.strokeStyle=col;ctx.lineWidth=wd;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(cx-Math.sin(a)*R*.1,cy+Math.cos(a)*R*.1);ctx.lineTo(cx+Math.sin(a)*R*len,cy-Math.cos(a)*R*len);ctx.stroke()};
   const p3=H.pressure_msl[ni-3];if(p3!=null)needle(p3,css('--faint'),2,.72);
-  ctx.shadowColor=css('--cyan');ctx.shadowBlur=8;needle(C.pressure_msl,css('--cyan'),2.5,.8);ctx.shadowBlur=0;
+  needle(C.pressure_msl,css('--cyan'),2.5,.8);
   ctx.fillStyle=css('--panel');ctx.strokeStyle=css('--cyan');ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fill();ctx.stroke();
   ctx.fillStyle=css('--ink');ctx.font=DISP(Math.max(18,R*.22),700);ctx.fillText(f(C.pressure_msl,1),cx,cy+R*.42);
   ctx.font=MONO(9);ctx.fillStyle=css('--dim');ctx.fillText('hPa MSL',cx,cy+R*.62);
@@ -521,10 +522,10 @@ function renderSoil(){
   let rain24=0;for(let i=ni+1;i<=ni+24&&i<H.precipitation.length;i++)rain24+=H.precipitation[i]||0;
   let past24=0;for(let i=ni-23;i<=ni;i++)past24+=H.precipitation[i]||0;
   $('soil').innerHTML=`<dt>Soil temp</dt><dd>${f(st,1)}°C</dd>
-   <dt>Soil moisture</dt><dd>${sm==null?'—':(sm*100).toFixed(0)+'%'} vol</dd>
-   <dt>Rain −24h/+24h</dt><dd>${past24.toFixed(1)} / ${rain24.toFixed(1)} mm</dd>
-   <dt>Air quality</dt><dd style="color:${aqc}">${f(aqi)}</dd>
-   <dt>PM2.5 / PM10</dt><dd>${a?f(a.pm2_5,1)+' / '+f(a.pm10,0):'—'}</dd>`;
+   <dt>Moisture</dt><dd>${sm==null?'—':(sm*100).toFixed(0)+'%'} vol</dd>
+   <dt>Rain ±24h</dt><dd>${past24.toFixed(1)} / ${rain24.toFixed(1)} mm</dd>
+   <dt>US AQI</dt><dd style="color:${aqc}">${f(aqi)}</dd>
+   <dt>PM2.5/10</dt><dd>${a?f(a.pm2_5,1)+' / '+f(a.pm10,0):'—'}</dd>`;
 }
 
 /* ---------- meteogram ---------- */
@@ -562,7 +563,7 @@ function drawMeteo(){
   ctx.beginPath();for(let i=i0;i<i0+N;i++){const y=ty(H.temperature_2m[i]);i===i0?ctx.moveTo(x(i),y):ctx.lineTo(x(i),y)}
   for(let i=i0+N-1;i>=i0;i--)ctx.lineTo(x(i),ty(H.dew_point_2m[i]));ctx.closePath();ctx.fillStyle='rgba(240,174,72,.07)';ctx.fill();
   const line=(arr,col,wd)=>{ctx.beginPath();for(let i=i0;i<i0+N;i++){const y=ty(arr[i]);i===i0?ctx.moveTo(x(i),y):ctx.lineTo(x(i),y)}ctx.strokeStyle=col;ctx.lineWidth=wd;ctx.lineJoin='round';ctx.stroke()};
-  line(H.dew_point_2m,cyan,1.5);ctx.shadowColor=amber;ctx.shadowBlur=6;line(H.temperature_2m,amber,2.2);ctx.shadowBlur=0;
+  line(H.dew_point_2m,cyan,1.5);line(H.temperature_2m,'rgba(240,174,72,.25)',6);line(H.temperature_2m,amber,2.2);
   // day separators + hour axis
   ctx.font=MONO(9);
   for(let i=i0;i<i0+N;i++){const d=L(T[i]),hh=d.getUTCHours();
@@ -608,7 +609,7 @@ function go(i){pager.scrollTo({left:i*pageW(),behavior:'smooth'})}
 tabs.forEach((t,i)=>t.addEventListener('click',()=>go(i)));
 function armIdle(){clearTimeout(idleT);if(page===1)idleT=setTimeout(()=>go(0),180000)}
 pager.addEventListener('scroll',()=>{const i=Math.round(pager.scrollLeft/pageW());
-  if(i!==page){page=i;tabs.forEach((t,k)=>t.setAttribute('aria-selected',String(k===i)));if(i===1)showMaps();else clearTimeout(animT);armIdle()}},{passive:true});
+  if(i!==page){page=i;tabs.forEach((t,k)=>t.setAttribute('aria-selected',String(k===i)));document.body.classList.toggle('off-console',i!==0);if(i===1)showMaps();else{clearTimeout(animT);if(windyOn){windyOn=false;$('windy').src='about:blank'}if(wx)render()}armIdle()}},{passive:true});
 $('p2').addEventListener('pointerdown',armIdle);
 
 /* ---------- radar (RainViewer) ---------- */
@@ -680,7 +681,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden){wake();lo
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>wx&&render());
 wake();loadWx().then(loadExtras);
 setInterval(loadWx,10*60000);setInterval(loadExtras,30*60000);
-setInterval(()=>{if(wx&&sel==null)render()},60000);
+setInterval(()=>{if(wx&&sel==null&&page===0)render()},60000);
 </script>
 </body>
 </html>
