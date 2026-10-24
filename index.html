@@ -127,6 +127,12 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .frames button.on{background:var(--cyan)}
 .rleg{display:flex;align-items:center;gap:6px;color:var(--dim);font-size:10px;white-space:nowrap}
 .rleg i{display:block;width:70px;height:6px;border-radius:3px;background:linear-gradient(90deg,#88ddee,#0099cc,#0077aa,#ffee00,#ff8800,#ff0000,#c10000)}
+.rb .rleg i{background:linear-gradient(90deg,#b9e5f5,#5cb8e8,#2a7ad8,#1d3fbf,#f2d230,#f08c22,#d8261c,#a8128b)}
+.nc{display:grid;grid-template-columns:minmax(0,11em) minmax(0,1fr);gap:10px;align-items:center;margin-top:8px}
+.nc b{display:block;color:var(--ink);font-weight:700;font-size:12px}
+.nc span{color:var(--dim);font-size:10px;letter-spacing:.06em}
+#ncChart{width:100%;height:44px;display:block}
+.wet{color:var(--violet)!important}
 .labr{display:flex;align-items:center;gap:6px;min-width:0}
 .exp{min-height:26px;padding:0 8px;font-size:10px;color:var(--cyan);border-color:rgba(95,208,230,.45)}
 .maps.solo-radar,.maps.solo-wind{grid-template-columns:1fr}
@@ -183,7 +189,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
           <dt>Apparent</dt><dd id="feels">—</dd>
           <dt>Today max / min</dt><dd id="hilo">—</dd>
           <dt>Δ vs 24 h ago</dt><dd id="d24">—</dd>
-          <dt>Rain last hour</dt><dd id="rain1">—</dd>
+          <dt id="rain1L">Rain last hour</dt><dd id="rain1">—</dd>
         </dl>
       </section>
       <section class="panel grow">
@@ -267,6 +273,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
       <section class="panel" id="radarPanel">
         <div class="lab">Rain radar <span class="labr"><span id="rtime">—</span><button class="chip exp" type="button" data-solo="radar" aria-label="Enlarge radar">ENLARGE</button></span></div>
         <div class="mapbox"><div id="radar"></div><div class="mapmsg" id="radarMsg">Loading radar…</div></div>
+        <div class="nc" id="ncWrap" hidden><div><span>RAIN AT HOME · 4 H</span><b id="ncTxt">—</b></div><canvas id="ncChart"></canvas></div>
         <div class="rbar">
           <button class="chip" id="play" type="button" aria-label="Pause radar loop">❚❚</button>
           <div class="frames" id="frames"></div>
@@ -288,6 +295,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 <script>
 /* ---------- config ---------- */
 const qs=new URLSearchParams(location.search);
+const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
 const $=id=>document.getElementById(id);
 const CSSC={};const css=v=>CSSC[v]||(CSSC[v]=getComputedStyle(document.documentElement).getPropertyValue(v).trim());
@@ -396,7 +404,7 @@ function renderSurface(){
   $('hilo').textContent=`${f(D.temperature_2m_max[di],1)}° / ${f(D.temperature_2m_min[di],1)}°`;
   const y=H.temperature_2m[ni-24];
   if(y!=null){const dd=C.temperature_2m-y;$('d24').textContent=(dd>=0?'+':'')+dd.toFixed(1)+'°';$('d24').className=dd>0.3?'up':dd<-0.3?'dn':''}
-  $('rain1').textContent=f(C.precipitation,1)+' mm';
+  if(!RK)$('rain1').textContent=f(C.precipitation,1)+' mm';
 }
 function renderMetar(){
   const C=wx.current,H=wx.hourly,u=new Date();
@@ -647,13 +655,14 @@ function initMap(){
     diag.map='<b>error: '+(e&&e.message||e)+'</b>';showDiag();return;
   }
   map=m;diag.map='ok';showDiag();
-  loadRadar();setInterval(loadRadar,10*60000);
+  if(RK){$('radarPanel').classList.add('rb');maybeRainbow()}else startRV();
   // safety net: if no tiles have been requested after 8 s, the map probably measured itself while hidden
   setTimeout(function(){if(diag.base[0]+diag.base[1]===0){map.invalidateSize();map.setView([LOC.lat,LOC.lon],8)}},8000);
 }
+let rvStarted=false;function startRV(){if(rvStarted)return;rvStarted=true;loadRadar();setInterval(loadRadar,10*60000)}
 const rcache={};let rHost='';
 const diag={map:'…',base:[0,0],tiles:[0,0],idx:'…'};
-function showDiag(){const n=(a)=>a[0]+(a[1]?` / <b>${a[1]} failed</b>`:'');const r=$('radar').getBoundingClientRect();$('rdiag').innerHTML=`map ${diag.map} · base ${n(diag.base)} · index ${diag.idx} · radar ${n(diag.tiles)} · ${Math.round(r.width)}×${Math.round(r.height)} · Chrome ${UA||'?'}${diag.err?' · <b>'+diag.err+'</b>':''}`}
+function showDiag(){if(RK&&!rvStarted)return showRbDiag();const n=(a)=>a[0]+(a[1]?` / <b>${a[1]} failed</b>`:'');const r=$('radar').getBoundingClientRect();$('rdiag').innerHTML=`map ${diag.map} · base ${n(diag.base)} · index ${diag.idx} · radar ${n(diag.tiles)} · ${Math.round(r.width)}×${Math.round(r.height)} · Chrome ${UA||'?'}${diag.err?' · <b>'+diag.err+'</b>':''}`}
 window.addEventListener('error',function(e){diag.err=(e.message||'error')+(e.lineno?' @'+e.lineno:'');try{showDiag()}catch(_){}});
 function mkLayer(fr){
   if(!rcache[fr.path])rcache[fr.path]=L.tileLayer(`${rHost}${fr.path}/256/{z}/{x}/{y}/2/1_1.png`,{opacity:0,zIndex:5,maxNativeZoom:7,maxZoom:10,attribution:'Radar © RainViewer'}).on('tileload',()=>{diag.tiles[0]++;showDiag()}).on('tileerror',()=>{diag.tiles[1]++;showDiag()}).addTo(map);
@@ -685,12 +694,97 @@ async function loadRadar(){
 }
 function showFrame(){
   rlayers.forEach((l,k)=>{if(l)l.setOpacity(k===fi ? 0.8 : 0)});
-  [...$('frames').children].forEach((b,k)=>{b.classList.toggle('on',k===fi);b.style.opacity=rlayers[k]?'':'.35'});
+  [...$('frames').children].forEach((b,k)=>{b.classList.toggle('on',k===fi);b.classList.toggle('fc',k>=pastN);b.style.opacity=rlayers[k]?'':'.35'});
   const t=frames[fi].time,m=Math.round((t-Date.now()/1000)/60);
-  $('rtime').textContent=`${hm(t)} · `+(m>-6?'latest':`${m} min`);
+  $('rtime').textContent=`${hm(t)} · `+(fi>=pastN?`+${Math.max(m,0)} min forecast`:(fi===pastN-1?'latest':`${m} min`));
 }
 function schedule(){clearTimeout(animT);if(!playing||!frames.length||page!==1)return;
-  animT=setTimeout(()=>{let n=fi;for(let k=0;k<frames.length;k++){n=(n+1)%frames.length;if(rlayers[n])break}fi=n;showFrame();schedule()},fi===frames.length-1?2400:550)}
+  animT=setTimeout(()=>{let n=fi;for(let k=0;k<frames.length;k++){n=(n+1)%frames.length;if(rlayers[n])break}fi=n;showFrame();schedule()},fi===frames.length-1?2400:fi===pastN-1?1400:600)}
+/* ---------- Rainbow.ai radar + rain at home (only when the link carries &rk=KEY) ---------- */
+const RB_CAP=25000,RB_COLOR=2;let rbLayers=[],rbLoadedAt=0,rbSnap=0,rbBusy=false,rbStat={ok:0,bad:0};
+const rbKey=()=>{const d=new Date();return 'rbt_'+d.getUTCFullYear()+'_'+(d.getUTCMonth()+1)};
+const rbUsed=()=>+(store.get(rbKey())||0);
+let rbPend=0,rbFlushT=null;
+function rbCount(n){rbPend+=n;if(!rbFlushT)rbFlushT=setTimeout(()=>{store.set(rbKey(),rbUsed()+rbPend);rbPend=0;rbFlushT=null;showRbDiag()},2000)}
+function tileXY(z){const n=Math.pow(2,z),x=Math.floor((LOC.lon+180)/360*n),la=LOC.lat*Math.PI/180,y=Math.floor((1-Math.log(Math.tan(la)+1/Math.cos(la))/Math.PI)/2*n);return[x,y]}
+function rbTile(ts,off,z,x,y){return`https://api.rainbow.ai/tiles/v1/precip/${ts}/${off}/${z}/${x}/${y}?token=${RK}&color=${RB_COLOR}`}
+function probe(ts){return new Promise(res=>{const[x,y]=tileXY(7),im=new Image();im.onload=()=>res(true);im.onerror=()=>res(false);rbCount(1);im.src=rbTile(ts,0,7,x,y)})}
+async function rbSnapshot(){
+  try{const j=await getJSON('https://api.rainbow.ai/tiles/v1/snapshot?token='+RK);if(j&&j.snapshot)return j.snapshot}catch(e){}
+  const base=Math.floor(Date.now()/600000)*600;   // fallback if the browser blocks the snapshot call
+  for(let k=1;k<=4;k++){if(await probe(base-k*600))return base-k*600}
+  throw new Error('no snapshot');
+}
+function showRbDiag(){
+  if(!RK||rvStarted)return;
+  const u=rbUsed()+rbPend;
+  $('rdiag').innerHTML=`Rainbow radar · ${rbSnap?'scan '+hm(rbSnap):'starting'} · tiles ${rbStat.ok}${rbStat.bad?` / <b>${rbStat.bad} failed</b>`:''} · this month ${u.toLocaleString()} / ${RB_CAP.toLocaleString()} free · Chrome ${UA||'?'}${diag.err?' · <b>'+diag.err+'</b>':''}`;
+}
+async function maybeRainbow(){
+  if(!map||rbBusy)return;
+  if(rbUsed()>=RB_CAP){$('radarPanel').classList.remove('rb');startRV();diag.idx='<b>Rainbow paused: monthly cap reached</b>';showDiag();return}
+  if(page!==1)return;                                        // only spend tiles while the maps are on screen
+  if(rbLayers.length&&Date.now()-rbLoadedAt<10*60000){schedule();return}
+  rbBusy=true;
+  try{
+    const snap=await rbSnapshot();
+    if(snap===rbSnap&&rbLayers.length){rbLoadedAt=Date.now();rbBusy=false;schedule();return}
+    rbSnap=snap;
+    rbLayers.forEach(l=>map.removeLayer(l));rbLayers=[];
+    const fr=[];for(let k=6;k>=1;k--)fr.push({ts:snap-k*600,off:0});fr.push({ts:snap,off:0});
+    [1200,2400,3600,4800,6000,7200].forEach(o=>fr.push({ts:snap,off:o}));
+    frames=fr.map(f=>({time:f.ts+f.off,f}));pastN=7;rlayers=new Array(frames.length);
+    const mk=k=>{const f=frames[k].f;const l=L.tileLayer(rbTile(f.ts,f.off,'{z}','{x}','{y}'),{opacity:0,zIndex:5,maxNativeZoom:9,maxZoom:10,keepBuffer:0,attribution:'Radar © Rainbow.ai'})
+      .on('tileloadstart',()=>rbCount(1)).on('tileload',()=>{rbStat.ok++;showRbDiag()}).on('tileerror',()=>{rbStat.bad++;showRbDiag()}).addTo(map);rbLayers.push(l);return l};
+    $('frames').innerHTML=frames.map((_,k)=>`<button type="button" aria-label="Frame ${k+1}"></button>`).join('');
+    [...$('frames').children].forEach((b,k)=>b.addEventListener('click',()=>{if(!rlayers[k])return;setPlaying(false);fi=k;showFrame()}));
+    rlayers[pastN-1]=mk(pastN-1);fi=pastN-1;showFrame();$('radarMsg').hidden=true;showRbDiag();
+    const order=[];for(let k=pastN-2;k>=0;k--)order.push(k);for(let k=pastN;k<frames.length;k++)order.push(k);
+    for(const k of order){await new Promise(r=>setTimeout(r,500));if(rbSnap!==snap)break;rlayers[k]=mk(k)}
+    rbLoadedAt=Date.now();schedule();
+  }catch(e){
+    $('radarPanel').classList.remove('rb');startRV();diag.idx=`<b>Rainbow unavailable (${e&&e.message||'error'}) · using backup radar</b>`;showDiag();
+  }
+  rbBusy=false;
+}
+/* rain at home: minute-by-minute for 4 h */
+let NC=null;
+const fmtMin=s=>s<5400?Math.max(1,Math.round(s/60))+' min':(s/3600).toFixed(1)+' h';
+const rainWord=r=>r<1?'Light rain':r<4?'Rain':r<10?'Heavy rain':'Very heavy rain';
+function ncSummary(){
+  if(!NC||!NC.forecast)return null;
+  const now=Date.now()/1000,f=NC.forecast.filter(x=>x.timestampEnd>now),wet=x=>x.precipRate>=0.1;
+  if(!f.length)return null;
+  if(wet(f[0])){const stop=f.findIndex(x=>!wet(x));const pk=Math.max.apply(null,f.slice(0,stop<0?f.length:stop).map(x=>x.precipRate));
+    return{wet:true,txt:stop<0?`${rainWord(pk)} for 4 h+`:`${rainWord(pk)} · easing in ${fmtMin(f[stop].timestampBegin-now)}`,short:stop<0?'Raining now':`Raining · stops ${fmtMin(f[stop].timestampBegin-now)}`}}
+  const st=f.findIndex(wet);if(st<0)return{wet:false,txt:'Dry for the next 4 h',short:'Dry next 4 h'};
+  const seg=f.slice(st),en=seg.findIndex(x=>!wet(x)),pk=Math.max.apply(null,seg.slice(0,en<0?seg.length:en).map(x=>x.precipRate));
+  return{wet:true,txt:`${rainWord(pk)} in ${fmtMin(f[st].timestampBegin-now)} · peak ${pk.toFixed(1)} mm/h`,short:`${rainWord(pk)} in ${fmtMin(f[st].timestampBegin-now)}`};
+}
+function renderNowcast(){
+  const sm=ncSummary();
+  if(!sm){if(RK){$('rain1L').textContent='Rain 4 h';$('rain1').textContent='—'}return}
+  $('rain1L').textContent='Rain 4 h';$('rain1').textContent=sm.short;$('rain1').classList.toggle('wet',sm.wet);
+  $('ncWrap').hidden=false;$('ncTxt').textContent=sm.txt;$('ncTxt').classList.toggle('wet',sm.wet);
+  drawNc();
+}
+function drawNc(){
+  const c=$('ncChart');if(!NC||$('ncWrap').hidden||!c.getBoundingClientRect().width)return;
+  const{w,h,ctx}=fit(c),now=Date.now()/1000,f=NC.forecast.filter(x=>x.timestampEnd>now);if(!f.length)return;
+  const t0=f[0].timestampBegin,span=4*3600,x=t=>(t-t0)/span*w,mx=Math.max(2,Math.max.apply(null,f.map(v=>v.precipRate))),y=v=>h-12-(v/mx)*(h-16);
+  ctx.strokeStyle=css('--grid');ctx.beginPath();ctx.moveTo(0,h-12);ctx.lineTo(w,h-12);ctx.stroke();
+  ctx.font=MONO(8);ctx.fillStyle=css('--dim');ctx.textBaseline='bottom';
+  for(let k=0;k<=4;k++){const xx=Math.min(w-14,Math.max(0,x(t0+k*3600)));ctx.textAlign=k===0?'left':k===4?'right':'center';ctx.fillText(k===0?'now':'+'+k+'h',k===4?w:xx,h)}
+  ctx.beginPath();ctx.moveTo(0,h-12);f.forEach(v=>ctx.lineTo(x(v.timestampBegin),y(v.precipRate)));ctx.lineTo(x(f[f.length-1].timestampEnd),h-12);ctx.closePath();
+  ctx.fillStyle='rgba(157,140,255,.45)';ctx.fill();ctx.strokeStyle=css('--violet');ctx.lineWidth=1.2;ctx.stroke();
+  ctx.textAlign='right';ctx.textBaseline='top';ctx.fillStyle=css('--violet');ctx.fillText(mx.toFixed(mx<10?1:0)+' mm/h',w,0);
+}
+async function loadNowcast(){
+  if(!RK)return;
+  try{NC=await getJSON(`https://api.rainbow.ai/nowcast/v1/precip/${LOC.lon}/${LOC.lat}?token=${RK}`);store.set('nc',NC)}
+  catch(e){if(!NC){const c=store.get('nc');if(c&&c.forecast&&c.forecast.length&&c.forecast[c.forecast.length-1].timestampEnd>Date.now()/1000)NC=c}}
+  renderNowcast();
+}
 function setPlaying(v){playing=v;$('play').textContent=v?'❚❚':'▶';$('play').setAttribute('aria-label',v?'Pause radar loop':'Play radar loop');schedule()}
 $('play').addEventListener('click',()=>setPlaying(!playing));
 
@@ -703,7 +797,7 @@ function setWindy(){windyOn=true;const m=$('windMsg');m.hidden=false;m.textConte
   clearTimeout(windyT);windyT=setTimeout(()=>{m.innerHTML='The wind map hasn’t loaded.<br>Check the tablet is online, then tap a layer button above to retry.'},25000)}
 $('windy').addEventListener('load',()=>{if(windyOn&&$('windy').src.indexOf('windy.com')>-1){clearTimeout(windyT);$('windMsg').hidden=true}});
 $('wchips').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{windyOv=b.dataset.ov;$('wchips').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));setWindy();armIdle()}));
-function showMaps(){initMap();if(map)setTimeout(()=>map.invalidateSize(),60);if(!windyOn)setWindy();schedule()}
+function showMaps(){initMap();if(map)setTimeout(()=>map.invalidateSize(),60);if(!windyOn)setWindy();if(RK)setTimeout(()=>{maybeRainbow();drawNc()},120);schedule()}
 document.querySelectorAll('.exp').forEach(b=>b.addEventListener('click',()=>{
   const m=document.querySelector('.maps'),k='solo-'+b.dataset.solo,on=!m.classList.contains(k);
   m.classList.remove('solo-radar','solo-wind');if(on)m.classList.add(k);
@@ -711,12 +805,13 @@ document.querySelectorAll('.exp').forEach(b=>b.addEventListener('click',()=>{
   if(map)setTimeout(()=>map.invalidateSize(),80);armIdle()}));
 
 /* ---------- lifecycle ---------- */
-let rz;const redraw=()=>{clearTimeout(rz);rz=setTimeout(()=>{if(wx){drawCompass();drawBaro();drawMeteo()}if(typeof pager!=='undefined')pager.scrollLeft=page*pageW();if(typeof map!=='undefined'&&map)map.invalidateSize()},80)};
-if(window.ResizeObserver){const ro=new ResizeObserver(redraw);['compassWrap','baroWrap','meteoWrap'].forEach(id=>ro.observe($(id)))}else addEventListener('resize',redraw);
+let rz;const redraw=()=>{clearTimeout(rz);rz=setTimeout(()=>{if(wx){drawCompass();drawBaro();drawMeteo()}if(typeof drawNc==='function')drawNc();if(typeof pager!=='undefined')pager.scrollLeft=page*pageW();if(typeof map!=='undefined'&&map)map.invalidateSize()},80)};
+if(window.ResizeObserver){const ro=new ResizeObserver(redraw);['compassWrap','baroWrap','meteoWrap','ncWrap'].forEach(id=>ro.observe($(id)))}else addEventListener('resize',redraw);
 async function wake(){try{if(navigator.wakeLock)await navigator.wakeLock.request('screen')}catch(e){}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){wake();loadWx()}});
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>wx&&render());
 wake();loadWx().then(loadExtras);setTimeout(initMap,3000);
+if(RK){loadNowcast();setInterval(loadNowcast,20*60000);setInterval(()=>{if(page===1)maybeRainbow();renderNowcast()},60000)}
 setInterval(loadWx,10*60000);setInterval(loadExtras,30*60000);
 setInterval(()=>{if(wx&&sel==null&&page===0)render()},60000);
 </script>
