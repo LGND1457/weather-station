@@ -142,6 +142,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .chips .chip{min-height:26px;padding:0 8px;font-size:10px}
 #rtime{color:var(--cyan);letter-spacing:.04em;text-transform:none}
 .leaflet-container{background:#070c13;font-family:var(--mono)}
+.osm-dark .leaflet-tile-pane .leaflet-layer:first-child{filter:invert(1) hue-rotate(185deg) brightness(.85) contrast(.9) saturate(.4)}
 .leaflet-bar a,.leaflet-bar a:hover{background:var(--panel);color:var(--ink);border-bottom-color:var(--line)}
 .leaflet-bar{border:1px solid var(--line)!important;box-shadow:none!important}
 .leaflet-control-attribution{background:rgba(7,12,19,.75)!important;color:var(--faint)!important;font-size:9px}
@@ -645,7 +646,14 @@ function initMap(){
     m=L.map('radar',{dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,zoomSnap:1,minZoom:5,maxZoom:10});
     m.setView([LOC.lat,LOC.lon],8);
     m.attributionControl.setPrefix(false);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'© OpenStreetMap © CARTO'}).on('tileload',function(){diag.base[0]++;showDiag()}).on('tileerror',function(){diag.base[1]++;showDiag()}).addTo(m);
+    const esri=s=>`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_${s}/MapServer/tile/{z}/{y}/{x}`;
+    let baseOk=0,baseBad=0,swapped=false;
+    const base=L.tileLayer(esri('Base'),{maxZoom:12,maxNativeZoom:16,attribution:'© Esri, HERE, Garmin, © OpenStreetMap contributors'});
+    const ref=L.tileLayer(esri('Reference'),{maxZoom:12,maxNativeZoom:16,zIndex:7,opacity:.75});
+    base.on('tileload',function(){baseOk++;diag.base[0]++;showDiag()}).on('tileerror',function(){baseBad++;diag.base[1]++;showDiag();
+      if(!swapped&&baseBad>=4&&baseOk===0){swapped=true;m.removeLayer(base);m.removeLayer(ref);$('radar').classList.add('osm-dark');
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap'}).on('tileload',function(){diag.base[0]++;showDiag()}).addTo(m)}}).addTo(m);
+    ref.addTo(m);
     [25,50,100].forEach(function(km){L.circle([LOC.lat,LOC.lon],{radius:km*1000,color:'#5fd0e6',weight:1,opacity:.45,fill:false,dashArray:'3 6',interactive:false}).addTo(m);
       L.marker([LOC.lat+km/111.2,LOC.lon],{interactive:false,icon:L.divIcon({className:'ring-lab',html:km+' km',iconSize:[40,12],iconAnchor:[-4,6]})}).addTo(m)});
     L.circleMarker([LOC.lat,LOC.lon],{radius:5,color:'#f0ae48',weight:2,fillColor:'#f0ae48',fillOpacity:.9,interactive:false}).addTo(m);
