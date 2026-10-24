@@ -22,6 +22,7 @@
 [hidden]{display:none!important}
 #night{position:fixed;top:0;left:0;right:0;bottom:0;background:#000;opacity:0;pointer-events:none;transition:opacity 3s;z-index:9999}
 #night.on{opacity:var(--dimlvl,.85);pointer-events:auto}
+#night.sleep{opacity:1;pointer-events:auto;transition:opacity 1.5s}
 html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:12px;overflow:hidden;
   padding:max(10px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
@@ -822,16 +823,21 @@ document.querySelectorAll('.exp').forEach(b=>b.addEventListener('click',()=>{
 /* ---------- night dimming: &dim=21-6 (default), &dim=off, &dimlvl=0.85 ---------- */
 const DIM=(qs.get('dim')||'21-6').toLowerCase(),DIMLVL=Math.min(.97,Math.max(.3,parseFloat(qs.get('dimlvl'))||.85));
 document.documentElement.style.setProperty('--dimlvl',DIMLVL);
-let wakeUntil=0;
+let wakeUntil=0,lastTouch=Date.now();
+const IDLE=qs.get('idle')==='off'?0:(parseFloat(qs.get('idle'))||5);   // minutes without a touch before the screen goes black
+const asleep=()=>$('night').classList.contains('sleep');
 function nightCheck(){
-  const n=$('night');if(DIM==='off'){n.classList.remove('on');return}
+  const n=$('night');
+  n.classList.toggle('sleep',!!IDLE&&Date.now()-lastTouch>IDLE*60000);
+  if(DIM==='off'){n.classList.remove('on');return}
   const m=DIM.match(/^(\d{1,2})-(\d{1,2})$/);if(!m)return;
   const a=+m[1],b=+m[2],h=LT(Date.now()/1000).getUTCHours();
   let dark=a>b?(h>=a||h<b):(h>=a&&h<b);if(Date.now()<wakeUntil)dark=false;
   n.classList.toggle('on',dark);
 }
-$('night').addEventListener('pointerdown',e=>{e.preventDefault();wakeUntil=Date.now()+120000;nightCheck()});
-setInterval(nightCheck,20000);setTimeout(nightCheck,500);
+$('night').addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();lastTouch=Date.now();wakeUntil=Date.now()+120000;nightCheck();if(wx)render()});
+document.addEventListener('pointerdown',()=>{lastTouch=Date.now()},true);
+setInterval(nightCheck,15000);setTimeout(nightCheck,500);
 
 /* ---------- lifecycle ---------- */
 let rz;const redraw=()=>{clearTimeout(rz);rz=setTimeout(()=>{if(wx){drawCompass();drawBaro();drawMeteo()}if(typeof drawNc==='function')drawNc();if(typeof pager!=='undefined')pager.scrollLeft=page*pageW();if(typeof map!=='undefined'&&map)map.invalidateSize()},80)};
@@ -842,7 +848,7 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>wx&&render
 wake();loadWx().then(loadExtras);setTimeout(initMap,3000);
 if(RK){loadNowcast();setInterval(loadNowcast,20*60000);setInterval(()=>{if(page===1)maybeRainbow();renderNowcast()},60000)}
 setInterval(loadWx,10*60000);setInterval(loadExtras,30*60000);
-setInterval(()=>{if(wx&&sel==null&&page===0)render()},60000);
+setInterval(()=>{if(wx&&sel==null&&page===0&&!asleep())render()},60000);
 </script>
 </body>
 </html>
