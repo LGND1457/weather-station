@@ -301,13 +301,13 @@ $('stnName').textContent=LOC.name;
 $('coords').textContent=`${Math.abs(LOC.lat).toFixed(4)}°${LOC.lat<0?'S':'N'} ${Math.abs(LOC.lon).toFixed(4)}°${LOC.lon<0?'W':'E'}`;
 
 /* ---------- time helpers (always station-local, whatever the device clock zone) ---------- */
-const L=t=>new Date((t+OFF)*1000);
+const LT=t=>new Date((t+OFF)*1000);
 const pad=(n,w=2)=>String(n).padStart(w,'0');
-const hm=t=>{const d=L(t);let h=d.getUTCHours();const ap=h<12?'am':'pm';h=h%12||12;return `${h}:${pad(d.getUTCMinutes())}${ap}`};
-const hr=t=>{let h=L(t).getUTCHours();const ap=h<12?'a':'p';return (h%12||12)+ap};
+const hm=t=>{const d=LT(t);let h=d.getUTCHours();const ap=h<12?'am':'pm';h=h%12||12;return `${h}:${pad(d.getUTCMinutes())}${ap}`};
+const hr=t=>{let h=LT(t).getUTCHours();const ap=h<12?'a':'p';return (h%12||12)+ap};
 const DAYS=['SUN','MON','TUE','WED','THU','FRI','SAT'];
 function tickClock(){
-  const now=Date.now()/1000,d=L(now),u=new Date();
+  const now=Date.now()/1000,d=LT(now),u=new Date();
   $('lt').textContent=`${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}`;
   const age=fetchedAt?Math.round((Date.now()-fetchedAt)/60000):null;
   const led=$('led');
@@ -493,7 +493,7 @@ function renderWeek(){
   for(let i=di;i<end;i++){lo=Math.min(lo,D.temperature_2m_min[i]);hi=Math.max(hi,D.temperature_2m_max[i])}
   let s='';for(let i=di;i<end;i++){
     const mn=D.temperature_2m_min[i],mx=D.temperature_2m_max[i],l=(mn-lo)/(hi-lo||1)*100,wd=(mx-mn)/(hi-lo||1)*100;
-    s+=`<div class="wk${i===di?' today':''}" title="${wcode(D.weather_code[i])[0]} · gusts ${f(D.wind_gusts_10m_max[i])} km/h ${comp(D.wind_direction_10m_dominant[i])}"><span>${i===di?'NOW':DAYS[L(D.time[i]).getUTCDay()]}</span><span class="c">${wcode(D.weather_code[i])[1]}</span><div class="rb"><b style="left:${l}%;width:${Math.max(wd,4)}%"></b></div><span class="t">${f(mx)}° <em>${f(mn)}°</em></span><span class="p">${f(D.precipitation_probability_max[i])}%</span></div>`}
+    s+=`<div class="wk${i===di?' today':''}" title="${wcode(D.weather_code[i])[0]} · gusts ${f(D.wind_gusts_10m_max[i])} km/h ${comp(D.wind_direction_10m_dominant[i])}"><span>${i===di?'NOW':DAYS[LT(D.time[i]).getUTCDay()]}</span><span class="c">${wcode(D.weather_code[i])[1]}</span><div class="rb"><b style="left:${l}%;width:${Math.max(wd,4)}%"></b></div><span class="t">${f(mx)}° <em>${f(mn)}°</em></span><span class="p">${f(D.precipitation_probability_max[i])}%</span></div>`}
   $('week').innerHTML=s;
 }
 
@@ -579,7 +579,7 @@ function drawMeteo(){
   line(H.dew_point_2m,cyan,1.5);line(H.temperature_2m,'rgba(240,174,72,.25)',6);line(H.temperature_2m,amber,2.2);
   // day separators + hour axis
   ctx.font=MONO(9);
-  for(let i=i0;i<i0+N;i++){const d=L(T[i]),hh=d.getUTCHours();
+  for(let i=i0;i<i0+N;i++){const d=LT(T[i]),hh=d.getUTCHours();
     if(hh===0){ctx.strokeStyle=faint;ctx.setLineDash([2,3]);ctx.beginPath();ctx.moveTo(x(i),stripTop);ctx.lineTo(x(i),h-axisH);ctx.stroke();ctx.setLineDash([]);
       ctx.fillStyle=ink;ctx.textAlign='left';ctx.textBaseline='top';ctx.fillText(DAYS[d.getUTCDay()]+' '+d.getUTCDate(),x(i)+4,mainTop-12)}
     if(hh%6===0){ctx.fillStyle=dim;ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(hr(T[i]),x(i),h)}}
@@ -605,7 +605,7 @@ function drawMeteo(){
   const si=sel!=null?sel:ni;
   if(sel!=null){ctx.strokeStyle=cyan;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x(si),stripTop);ctx.lineTo(x(si),h-axisH);ctx.stroke();
     [[H.temperature_2m,amber],[H.dew_point_2m,cyan]].forEach(([a,col])=>{ctx.fillStyle=css('--panel');ctx.strokeStyle=col;ctx.lineWidth=2;ctx.beginPath();ctx.arc(x(si),ty(a[si]),4,0,Math.PI*2);ctx.fill();ctx.stroke()})}
-  const d=L(T[si]);
+  const d=LT(T[si]);
   $('readout').className=sel!=null?'sel':'';
   $('readout').textContent=`${DAYS[d.getUTCDay()]} ${hr(T[si])} · ${f(H.temperature_2m[si],1)}° · TD ${f(H.dew_point_2m[si],1)}° · RH ${f(H.relative_humidity_2m[si])}% · ${f(H.precipitation_probability[si])}% ${f(H.precipitation[si],1)}mm · ${comp(H.wind_direction_10m[si])} ${f(H.wind_speed_10m[si])} G${f(H.wind_gusts_10m[si])} · ${f(H.pressure_msl[si],1)} hPa · CAPE ${f(H.cape[si])}`;
   c._map={padL,step};
@@ -628,22 +628,33 @@ $('p2').addEventListener('pointerdown',armIdle);
 
 /* ---------- radar (RainViewer) ---------- */
 let map=null,frames=[],rlayers=[],fi=0,pastN=0,playing=true,animT=null,windyOn=false,windyOv='wind';
+const UA=(navigator.userAgent.match(/Chrome\/(\d+)/)||[])[1];
 function initMap(){
   if(map)return;
-  if(!window.L){$('radarMsg').textContent='Map library could not load. Check the tablet is online.';$('rdiag').innerHTML='<b>map library failed to load (cdnjs)</b>';return}
-  diag.map='ok';showDiag();
-  map=L.map('radar',{dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,zoomSnap:1,minZoom:5,maxZoom:10}).setView([LOC.lat,LOC.lon],8);
-  map.attributionControl.setPrefix(false);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'© OpenStreetMap © CARTO'}).on('tileload',()=>{diag.base[0]++;showDiag()}).on('tileerror',()=>{diag.base[1]++;showDiag()}).addTo(map);
-  [25,50,100].forEach(km=>{L.circle([LOC.lat,LOC.lon],{radius:km*1000,color:'#5fd0e6',weight:1,opacity:.45,fill:false,dashArray:'3 6',interactive:false}).addTo(map);
-    L.marker([LOC.lat+km/111.2,LOC.lon],{interactive:false,icon:L.divIcon({className:'ring-lab',html:km+' km',iconSize:[40,12],iconAnchor:[-4,6]})}).addTo(map)});
-  L.circleMarker([LOC.lat,LOC.lon],{radius:5,color:'#f0ae48',weight:2,fillColor:'#f0ae48',fillOpacity:.9,interactive:false}).addTo(map);
-  L.marker([LOC.lat,LOC.lon],{interactive:false,icon:L.divIcon({className:'home-lab',html:'HOME',iconSize:[40,12],iconAnchor:[-8,6]})}).addTo(map);
+  if(!window.L){$('radarMsg').textContent='Map library could not load. Check the tablet is online.';$('rdiag').innerHTML='<b>map library failed to load (cdnjs)</b> · browser '+(UA?'Chrome '+UA:'unknown');return}
+  let m=null;
+  try{
+    m=L.map('radar',{dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,zoomSnap:1,minZoom:5,maxZoom:10});
+    m.setView([LOC.lat,LOC.lon],8);
+    m.attributionControl.setPrefix(false);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'© OpenStreetMap © CARTO'}).on('tileload',function(){diag.base[0]++;showDiag()}).on('tileerror',function(){diag.base[1]++;showDiag()}).addTo(m);
+    [25,50,100].forEach(function(km){L.circle([LOC.lat,LOC.lon],{radius:km*1000,color:'#5fd0e6',weight:1,opacity:.45,fill:false,dashArray:'3 6',interactive:false}).addTo(m);
+      L.marker([LOC.lat+km/111.2,LOC.lon],{interactive:false,icon:L.divIcon({className:'ring-lab',html:km+' km',iconSize:[40,12],iconAnchor:[-4,6]})}).addTo(m)});
+    L.circleMarker([LOC.lat,LOC.lon],{radius:5,color:'#f0ae48',weight:2,fillColor:'#f0ae48',fillOpacity:.9,interactive:false}).addTo(m);
+    L.marker([LOC.lat,LOC.lon],{interactive:false,icon:L.divIcon({className:'home-lab',html:'HOME',iconSize:[40,12],iconAnchor:[-8,6]})}).addTo(m);
+  }catch(e){
+    try{if(m)m.remove()}catch(_){}
+    diag.map='<b>error: '+(e&&e.message||e)+'</b>';showDiag();return;
+  }
+  map=m;diag.map='ok';showDiag();
   loadRadar();setInterval(loadRadar,10*60000);
+  // safety net: if no tiles have been requested after 8 s, the map probably measured itself while hidden
+  setTimeout(function(){if(diag.base[0]+diag.base[1]===0){map.invalidateSize();map.setView([LOC.lat,LOC.lon],8)}},8000);
 }
 const rcache={};let rHost='';
 const diag={map:'…',base:[0,0],tiles:[0,0],idx:'…'};
-function showDiag(){const n=(a)=>a[0]+(a[1]?` / <b>${a[1]} failed</b>`:'');$('rdiag').innerHTML=`map ${diag.map} · base tiles ${n(diag.base)} · radar index ${diag.idx} · radar tiles ${n(diag.tiles)}`}
+function showDiag(){const n=(a)=>a[0]+(a[1]?` / <b>${a[1]} failed</b>`:'');const r=$('radar').getBoundingClientRect();$('rdiag').innerHTML=`map ${diag.map} · base ${n(diag.base)} · index ${diag.idx} · radar ${n(diag.tiles)} · ${Math.round(r.width)}×${Math.round(r.height)} · Chrome ${UA||'?'}${diag.err?' · <b>'+diag.err+'</b>':''}`}
+window.addEventListener('error',function(e){diag.err=(e.message||'error')+(e.lineno?' @'+e.lineno:'');try{showDiag()}catch(_){}});
 function mkLayer(fr){
   if(!rcache[fr.path])rcache[fr.path]=L.tileLayer(`${rHost}${fr.path}/256/{z}/{x}/{y}/2/1_1.png`,{opacity:0,zIndex:5,maxNativeZoom:7,maxZoom:10,attribution:'Radar © RainViewer'}).on('tileload',()=>{diag.tiles[0]++;showDiag()}).on('tileerror',()=>{diag.tiles[1]++;showDiag()}).addTo(map);
   return rcache[fr.path];
