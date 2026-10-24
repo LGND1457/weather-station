@@ -62,7 +62,9 @@ header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1
 .kv dd{margin:0;text-align:right;color:var(--ink)}
 .kv dd.up{color:var(--amber)} .kv dd.dn{color:var(--cyan)}
 /* dials */
-.dial{position:relative;flex:1 1 0;min-height:110px}
+.dial{position:relative;flex:1 1 0;min-height:0}
+.panel.grow{overflow:hidden}
+#weekPanel{display:none}
 .trio{flex:none}
 .dial canvas{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}
 .sweep{will-change:transform;position:absolute;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 290deg,rgba(95,208,230,.16) 360deg);animation:spin 7s linear infinite;-webkit-mask:radial-gradient(circle,#000 0 68%,transparent 69%);mask:radial-gradient(circle,#000 0 68%,transparent 69%)}
@@ -407,7 +409,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 <script>
 /* ---------- config ---------- */
 const qs=new URLSearchParams(location.search);
-const BUILD='24 Oct 20:45';
+const BUILD='21:20';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -435,7 +437,7 @@ function tickClock(){
   const age=fetchedAt?Math.round((Date.now()-fetchedAt)/60000):null;
   const led=$('led');
   if(!fetchedAt){led.className='led bad'}else led.className='led'+(age>45?' bad':age>20?' warn':'');
-  $('age').textContent=`${pad(u.getUTCHours())}:${pad(u.getUTCMinutes())}Z · `+(fetchedAt?(age<1?'data just now':`data ${age} min old`):'no data')+' · build '+BUILD;
+  $('age').textContent=`${pad(u.getUTCHours())}:${pad(u.getUTCMinutes())}Z · `+(fetchedAt?(age<1?'data now':`data ${age}m`):'no data')+' · v'+BUILD+' · '+innerWidth+'×'+innerHeight;
 }
 setInterval(tickClock,1000);tickClock();
 
