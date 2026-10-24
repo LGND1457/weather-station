@@ -127,6 +127,17 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .hbig{font-family:var(--display);font-size:clamp(19px,2.5vw,26px);font-weight:600;line-height:1.15}
 #hRainChart{width:100%;height:56px;display:block;margin-top:auto;min-height:40px}
 .tile{padding:8px 10px}
+.hgfx{width:100%;height:66px;display:block;margin-top:auto;min-height:40px}
+.hpop{width:100%;height:30px;display:block;margin-top:10px}
+.tg{position:absolute;top:6px;right:8px;width:30px;height:30px;pointer-events:none}
+.meter{display:flex;gap:2px;height:4px;margin-top:7px;color:var(--cyan)}
+.meter i{flex:1;background:var(--grid);border-radius:1px}.meter i.on{background:currentColor}
+.tile.good .meter{color:var(--green)}.tile.alert .meter{color:var(--amber)}.tile.danger .meter{color:var(--red)}
+.rmeter{position:relative;height:4px;margin-top:7px;background:var(--grid);border-radius:2px}
+.rmeter b{position:absolute;left:0;top:0;bottom:0;background:var(--violet);border-radius:2px}
+.rmeter u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);opacity:.7}
+.hd .rb{position:relative;height:4px;margin:5px auto 3px;width:80%;background:var(--grid);border-radius:2px}
+.hd .rb b{position:absolute;top:0;bottom:0;border-radius:2px;background:linear-gradient(90deg,var(--cyan),var(--amber))}
 .tile b{font-family:var(--display);font-size:clamp(15px,1.9vw,20px);font-weight:600;display:block;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tile span{color:var(--dim);font-size:11px;display:block;margin-top:4px;line-height:1.3}
 .tile.good b{color:var(--green)}.tile.alert b{color:var(--amber)}.tile.danger b{color:var(--red)}
@@ -189,7 +200,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .home-lab{color:var(--amber);font-size:10px;white-space:nowrap;font-family:var(--mono);font-weight:700}
 @media (max-height:660px) and (min-width:761px){
   #temp{font-size:50px}#temp small{font-size:22px}.row3 .panel{min-height:140px}.panel{padding:8px 10px}.cols,.col,.row3{gap:8px}.app{gap:8px}
-  .kv{margin-top:6px;gap:2px 8px}.gauge{max-height:64px}#hRainChart{height:44px}.hd .t{font-size:17px}#warn{padding:5px 10px;font-size:12px}.col .dial{min-height:80px}.trio b{font-size:15px}.trio{padding-top:5px;margin-top:4px}.trio b{font-size:14px;white-space:nowrap}.dial{min-height:110px}#layers,.xs{display:none}
+  .kv{margin-top:6px;gap:2px 8px}.gauge{max-height:64px}#hRainChart{height:44px}.hd .t{font-size:17px}#warn{padding:5px 10px;font-size:12px}.hgfx{height:52px}.hpop{height:24px;margin-top:6px}.col .dial{min-height:80px}.trio b{font-size:15px}.trio{padding-top:5px;margin-top:4px}.trio b{font-size:14px;white-space:nowrap}.dial{min-height:110px}#layers,.xs{display:none}
   .cols{grid-template-columns:minmax(205px,23%) minmax(0,1fr) minmax(215px,24%)}
   .wk{grid-template-columns:2.3em 3.7em minmax(16px,1fr) 4.3em 2.7em;gap:4px;padding:2px 0;font-size:11px}
   .legend{gap:8px;font-size:9px}.lab i{display:none}.lab{letter-spacing:.12em}
@@ -228,16 +239,19 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
         <div id="hClock">--:--</div>
         <div class="hsub" id="hSun">—</div>
         <div class="hsub" id="hWarnState">Checking BOM warnings…</div>
+        <canvas id="hDay" class="hgfx" aria-label="Sun elevation today"></canvas>
       </section>
       <section class="panel">
         <div class="lab">Now <i id="hCode"></i></div>
         <div id="hTemp">--°</div>
         <div class="hcond" id="hCond">—</div>
         <div class="hsub" id="hFeels">—</div>
+        <canvas id="hTempG" class="hgfx" aria-label="Temperature next 24 hours"></canvas>
       </section>
       <section class="panel">
         <div class="lab">Rain <i id="hRainSrc"></i></div>
         <div class="hbig" id="hRain">—</div>
+        <canvas id="hPop" class="hpop" aria-label="Rain chance next 24 hours"></canvas>
         <canvas id="hRainChart"></canvas>
         <div class="hsub" id="hRainSub">—</div>
       </section>
@@ -1134,10 +1148,63 @@ function renderHome(){
   // rainfall
   if(RAIN_T){const r=RAIN_T,diff=r.mAvg!=null?r.month-r.mAvg:null;
     setTile('tR',`${Math.round(r.month)} mm ${r.mName}`,`${r.mAvg!=null?'avg '+Math.round(r.mAvg)+' so far · ':''}week ${Math.round(r.week)} mm${r.ytdOk?` · year ${Math.round(r.ytd).toLocaleString()}${r.yAvg!=null?' (avg '+Math.round(r.yAvg).toLocaleString()+')':''}`:''}`,diff==null?'':diff>=0?'good':'')}
+  homeGfx(now,hs,fe,mxC);
   // 5-day
-  let s='';for(let i=di;i<Math.min(D.time.length,di+5);i++){const d=LT(D.time[i]);s+=`<div class="hd${i===di?' now':''}"><div class="d">${i===di?'TODAY':DAYS[d.getUTCDay()]}</div><div class="c">${wcode(D.weather_code[i])[0]}</div><div class="t">${Math.round(D.temperature_2m_max[i])}°<em>${Math.round(D.temperature_2m_min[i])}°</em></div><div class="p">${f(D.precipitation_probability_max[i])}% rain</div></div>`}
+  let lo5=99,hi5=-99;for(let i=di;i<Math.min(D.time.length,di+5);i++){lo5=Math.min(lo5,D.temperature_2m_min[i]);hi5=Math.max(hi5,D.temperature_2m_max[i])}
+  let s='';for(let i=di;i<Math.min(D.time.length,di+5);i++){const d=LT(D.time[i]),l=(D.temperature_2m_min[i]-lo5)/(hi5-lo5||1)*100,wd=(D.temperature_2m_max[i]-D.temperature_2m_min[i])/(hi5-lo5||1)*100;
+    s+=`<div class="hd${i===di?' now':''}"><div class="d">${i===di?'TODAY':DAYS[d.getUTCDay()]}</div><div class="c">${wcode(D.weather_code[i])[0]}</div><div class="t">${Math.round(D.temperature_2m_max[i])}°<em>${Math.round(D.temperature_2m_min[i])}°</em></div><div class="rb"><b style="left:${l}%;width:${Math.max(wd,5)}%"></b></div><div class="p">${f(D.precipitation_probability_max[i])}% rain</div></div>`}
   $('hDays').innerHTML=s;
   }catch(e){diag.err='home: '+(e&&e.message);}
+}
+
+/* ---------- HOME instrument graphics ---------- */
+function tg(id,svg){const t=$(id);if(!t)return;let g=t.querySelector('.tg');if(!g){g=document.createElement('div');g.className='tg';t.appendChild(g)}g.innerHTML=svg}
+function meter(id,n,on){const t=$(id);if(!t)return;let m=t.querySelector('.meter');if(!m){m=document.createElement('div');m.className='meter';t.appendChild(m)}m.innerHTML=Array.from({length:n},(_,k)=>`<i class="${k<on?'on':''}"></i>`).join('')}
+function solarAlt(ts){const rd=Math.PI/180,d=LT(ts),N=Math.round((Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())-Date.UTC(d.getUTCFullYear(),0,0))/86400000),
+  dec=23.44*Math.sin(2*Math.PI*(284+N)/365)*rd,i=wx.daily.time.findIndex((t,k)=>ts>=t&&ts<t+86400),noon=i>=0?(wx.daily.sunrise[i]+wx.daily.sunset[i])/2:ts,H=(ts-noon)/3600*15*rd,phi=LOC.lat*rd;
+  return Math.asin(Math.sin(phi)*Math.sin(dec)+Math.cos(phi)*Math.cos(dec)*Math.cos(H))/rd}
+function homeGfx(now,hs,fe,mxC){
+  const H=wx.hourly,D=wx.daily,C=wx.current;
+  // --- sun elevation through today
+  let c=$('hDay');if(c.getBoundingClientRect().width){const{w,h,ctx}=fit(c),t0=D.time[di],t1=t0+86400,x=t=>(t-t0)/86400*w,base=h-16,amp=base-10,y=a=>base-Math.max(-8,a)/90*amp;
+    ctx.fillStyle='rgba(120,150,190,.07)';ctx.fillRect(0,0,x(D.sunrise[di]),base);ctx.fillRect(x(D.sunset[di]),0,w-x(D.sunset[di]),base);
+    ctx.strokeStyle=css('--line');ctx.beginPath();ctx.moveTo(0,base);ctx.lineTo(w,base);ctx.stroke();
+    ctx.font=MONO(8);ctx.fillStyle=css('--faint');ctx.textBaseline='bottom';
+    for(let k=0;k<=8;k++){const xx=k*w/8;ctx.fillStyle=css('--faint');ctx.fillRect(xx,base,1,3);if(k%2===0&&k<8){ctx.textAlign=k?'center':'left';ctx.fillText(hr(t0+k*10800),k?xx:0,h)}}
+    ctx.beginPath();for(let t=t0;t<=t1;t+=900){const a=solarAlt(t),xx=x(t),yy=y(a);t===t0?ctx.moveTo(xx,yy):ctx.lineTo(xx,yy)}ctx.strokeStyle='rgba(240,174,72,.55)';ctx.lineWidth=1.3;ctx.stroke();
+    const an=solarAlt(now),xn=x(now),yn=y(an);ctx.strokeStyle=css('--faint');ctx.setLineDash([2,3]);ctx.beginPath();ctx.moveTo(xn,0);ctx.lineTo(xn,base);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=an>0?css('--amber'):css('--dim');ctx.beginPath();ctx.arc(xn,yn,an>0?4:3,0,Math.PI*2);ctx.fill();
+    ctx.textBaseline='top';ctx.textAlign='right';ctx.fillStyle=css('--dim');ctx.fillText(`SUN ${an>=0?'+':''}${an.toFixed(0)}°`,w,0)}
+  // --- temperature next 24 h
+  c=$('hTempG');if(c.getBoundingClientRect().width){const{w,h,ctx}=fit(c),n=Math.min(25,H.time.length-ni),T=H.temperature_2m.slice(ni,ni+n),A=H.apparent_temperature?null:null;
+    const mn=Math.min.apply(null,T)-1,mx=Math.max.apply(null,T)+1,top=12,bot=h-12,x=k=>k/(n-1)*w,y=v=>bot-(v-mn)/(mx-mn)*(bot-top);
+    ctx.strokeStyle=css('--grid');for(let k=0;k<=2;k++){const yy=top+k*(bot-top)/2;ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(w,yy);ctx.stroke()}
+    for(let k=0;k<n;k++)if(H.is_day[ni+k]===0){ctx.fillStyle=css('--night');ctx.fillRect(x(k)-w/(n-1)/2,top,w/(n-1)+.5,bot-top)}
+    const g=ctx.createLinearGradient(0,top,0,bot);g.addColorStop(0,'rgba(240,174,72,.28)');g.addColorStop(1,'rgba(240,174,72,0)');
+    ctx.beginPath();ctx.moveTo(0,bot);T.forEach((v,k)=>ctx.lineTo(x(k),y(v)));ctx.lineTo(w,bot);ctx.closePath();ctx.fillStyle=g;ctx.fill();
+    ctx.beginPath();T.forEach((v,k)=>k?ctx.lineTo(x(k),y(v)):ctx.moveTo(x(k),y(v)));ctx.strokeStyle=css('--amber');ctx.lineWidth=1.6;ctx.stroke();
+    let im=0,iM=0;T.forEach((v,k)=>{if(v<T[im])im=k;if(v>T[iM])iM=k});
+    ctx.font=MONO(8);ctx.textAlign='center';
+    [[iM,'bottom',-4],[im,'top',4]].forEach(([k,bl,dy])=>{ctx.fillStyle=css('--ink');ctx.beginPath();ctx.arc(x(k),y(T[k]),2.5,0,Math.PI*2);ctx.fill();ctx.textBaseline=bl;ctx.fillStyle=css('--dim');ctx.fillText(`${Math.round(T[k])}° ${hr(H.time[ni+k])}`,Math.min(w-22,Math.max(22,x(k))),y(T[k])+dy)});
+    ctx.fillStyle=css('--amber');ctx.beginPath();ctx.arc(0+2,y(T[0]),3.5,0,Math.PI*2);ctx.fill();
+    ctx.textAlign='right';ctx.textBaseline='top';ctx.fillStyle=css('--faint');ctx.fillText('NEXT 24 H',w,0)}
+  // --- rain chance next 24 h (only when the minute-by-minute chart owns the lower half)
+  c=$('hPop');const sm=RK?ncSummary():null;c.hidden=!sm;
+  if(sm&&c.getBoundingClientRect().width){const{w,h,ctx}=fit(c),n=Math.min(24,H.time.length-ni),bw=w/n;ctx.font=MONO(7);
+    for(let k=0;k<n;k++){const pr=(H.precipitation_probability[ni+k]||0)/100,bh=Math.max(1,pr*(h-10));ctx.fillStyle=`rgba(157,140,255,${(.15+.7*pr).toFixed(2)})`;ctx.fillRect(k*bw+1,h-9-bh,bw-2,bh)}
+    ctx.fillStyle=css('--faint');ctx.textBaseline='bottom';ctx.textAlign='left';ctx.fillText('CHANCE · NEXT 24 H',0,h);ctx.textAlign='right';ctx.fillText(hr(H.time[ni+n-1]),w,h)}
+  // --- tile glyphs
+  const dir=C.wind_direction_10m;
+  tg('tW',`<svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="none" stroke="var(--line)"/><circle cx="15" cy="15" r="8" fill="none" stroke="var(--grid)"/><text x="15" y="6.5" text-anchor="middle" font-size="5" fill="var(--amber)" font-family="JetBrains Mono,monospace">N</text><g transform="rotate(${(dir+180)%360} 15 15)"><path d="M15 6 L19 16 L15 13.5 L11 16Z" fill="var(--cyan)"/><line x1="15" y1="14" x2="15" y2="23" stroke="var(--cyan)" stroke-width="1.4"/></g></svg>`);
+  if(TX.length){const i=tideSeg(now);if(i>=0){const a=TX[i],b=TX[i+1],fr=(now-a.t)/(b.t-a.t),ph=(a.hi?0:Math.PI)+fr*Math.PI,px=3+(ph/(2*Math.PI))*24,py=15-9*Math.cos(ph);
+    let d='';for(let k=0;k<=24;k++){const pp=k/24*2*Math.PI;d+=(k?'L':'M')+(3+k).toFixed(1)+' '+(15-9*Math.cos(pp)).toFixed(1)}
+    tg('tT',`<svg viewBox="0 0 30 30"><line x1="2" y1="15" x2="28" y2="15" stroke="var(--grid)"/><path d="${d}" fill="none" stroke="var(--cyan)" stroke-width="1.3" opacity=".8"/><circle cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="2.6" fill="var(--amber)"/></svg>`)}}
+  tg('tS',`<svg viewBox="0 0 30 30"><path d="M8 17h13a5 5 0 0 0 0-10 7 7 0 0 0-13 2 4 4 0 0 0 0 8z" fill="none" stroke="var(--dim)" stroke-width="1.2"/><path d="M16 17l-3 5h4l-2.5 5" fill="none" stroke="${mxC>=1000?'var(--amber)':'var(--faint)'}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`);
+  meter('tS',6,Math.min(6,Math.ceil((mxC||0)/500)));
+  const pg=hs['Pigs & poultry'],sh=hs['Sheep'];meter('tL',4,Math.max(pg.mx,sh.mx)+1);
+  meter('tF',5,fe.v<12?1:fe.v<25?2:fe.v<50?3:fe.v<75?4:5);
+  if(RAIN_T&&RAIN_T.mFull){const t=$('tR');let m=t.querySelector('.rmeter');if(!m){m=document.createElement('div');m.className='rmeter';t.appendChild(m)}
+    const scale=Math.max(RAIN_T.mFull,RAIN_T.month)*1.05;m.innerHTML=`<b style="width:${(RAIN_T.month/scale*100).toFixed(1)}%"></b><u style="left:${(RAIN_T.mAvg/scale*100).toFixed(1)}%" title="average to date"></u>`}
 }
 
 /* ---------- night dimming: &dim=21-6 (default), &dim=off, &dimlvl=0.85 ---------- */
