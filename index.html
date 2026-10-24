@@ -62,7 +62,8 @@ header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1
 .kv dd{margin:0;text-align:right;color:var(--ink)}
 .kv dd.up{color:var(--amber)} .kv dd.dn{color:var(--cyan)}
 /* dials */
-.dial{position:relative;flex:1 1 auto;min-height:150px}
+.dial{position:relative;flex:1 1 0;min-height:110px}
+.trio{flex:none}
 .dial canvas{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}
 .sweep{will-change:transform;position:absolute;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 290deg,rgba(95,208,230,.16) 360deg);animation:spin 7s linear infinite;-webkit-mask:radial-gradient(circle,#000 0 68%,transparent 69%);mask:radial-gradient(circle,#000 0 68%,transparent 69%)}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -116,6 +117,17 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .pager::-webkit-scrollbar{display:none}
 .page{flex:0 0 100%;min-width:0;min-height:0;scroll-snap-align:start;scroll-snap-stop:always;display:flex}
 .page>*{flex:1;min-width:0}
+.tides{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,30%);gap:10px;min-height:0}
+#tideWrap{position:relative;flex:1;min-height:200px}
+#tideChart{position:absolute;top:0;left:0;width:100%;height:100%}
+#tideBig{font-family:var(--display);font-size:44px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+#tideBig small{font-size:18px;color:var(--dim);font-weight:400}
+#tideDir{color:var(--cyan);letter-spacing:.08em}
+.tl{display:grid;grid-template-columns:3.2em 1fr auto auto;gap:8px;padding:6px 0;border-bottom:1px solid var(--grid);font-variant-numeric:tabular-nums;align-items:baseline}
+.tl .k{font-size:10px;letter-spacing:.12em}
+.tl.hi .k{color:var(--cyan)}.tl.lo .k{color:var(--violet)}
+.tl .ht{text-align:right;min-width:4.2em}
+.tl.next{background:rgba(95,208,230,.06)}
 .maps{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:10px;min-height:0}
 .mapbox{position:relative;flex:1;min-height:200px;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--bg)}
 #radar,#windy{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;background:var(--bg)}
@@ -154,7 +166,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .home-lab{color:var(--amber);font-size:10px;white-space:nowrap;font-family:var(--mono);font-weight:700}
 @media (max-height:660px) and (min-width:761px){
   #temp{font-size:50px}#temp small{font-size:22px}.row3 .panel{min-height:140px}.panel{padding:8px 10px}.cols,.col,.row3{gap:8px}.app{gap:8px}
-  .kv{margin-top:6px;gap:2px 8px}.gauge{max-height:76px}.trio b{font-size:15px}
+  .kv{margin-top:6px;gap:2px 8px}.gauge{max-height:64px}.trio b{font-size:15px}.trio{padding-top:5px;margin-top:4px}.trio b{font-size:14px;white-space:nowrap}.dial{min-height:110px}#layers,.xs{display:none}
   .cols{grid-template-columns:minmax(205px,23%) minmax(0,1fr) minmax(215px,24%)}
   .wk{grid-template-columns:2.3em 3.7em minmax(16px,1fr) 4.3em 2.7em;gap:4px;padding:2px 0;font-size:11px}
   .legend{gap:8px;font-size:9px}.lab i{display:none}.lab{letter-spacing:.12em}
@@ -162,6 +174,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 @media (max-width:760px){
   .pager{overflow-y:visible}.page{align-items:flex-start}
   .maps{grid-template-columns:1fr}.mapbox{height:62vh;flex:none}
+  .tides{grid-template-columns:1fr}#tideWrap{height:300px;flex:none}
   body{overflow:auto;height:auto}.app{height:auto}
   header{grid-template-columns:1fr auto}#metar{grid-column:1/-1;grid-row:2}
   .cols{grid-template-columns:1fr}.col{min-height:auto}
@@ -178,7 +191,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
   <header>
     <div class="stn"><b id="stnName">MACKAY</b><span id="coords"></span></div>
     <div id="metar">Acquiring model data…</div>
-    <nav class="tabs" aria-label="Screens"><button class="tab" type="button" aria-selected="true">CONSOLE</button><button class="tab" type="button" aria-selected="false">MAPS</button></nav>
+    <nav class="tabs" aria-label="Screens"><button class="tab" type="button" aria-selected="true">CONSOLE</button><button class="tab" type="button" aria-selected="false">MAPS</button><button class="tab" type="button" aria-selected="false">TIDES</button></nav>
     <div class="clock"><div id="lt">--:--:--</div><div id="ut"><span class="led warn" id="led"></span><span id="age">connecting</span></div></div>
   </header>
 
@@ -291,6 +304,27 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
         <div class="mapbox"><iframe id="windy" title="Live wind map"></iframe><div class="mapmsg" id="windMsg" hidden>Loading wind map…</div></div>
         <div class="note">Radar rings: 25, 50 and 100 km from home. Tap ENLARGE to give one map the whole screen. Returns to the console after 3 minutes.</div>
       </section>
+    </div>
+  </div>
+
+  <div class="page" id="p3">
+    <div class="tides">
+      <section class="panel">
+        <div class="lab">Tide curve · 3 days <i>model height vs mean sea level · shaded = night</i></div>
+        <div id="tideWrap"><canvas id="tideChart"></canvas></div>
+      </section>
+      <div class="col">
+        <section class="panel fixed">
+          <div class="lab">Tide now <span id="tideDir"></span></div>
+          <div id="tideBig">—</div>
+          <dl class="kv" id="tideNow"><dt>Loading tides…</dt><dd></dd></dl>
+        </section>
+        <section class="panel grow">
+          <div class="lab">Next tides</div>
+          <div id="tideList"></div>
+          <div class="note">Times from Open-Meteo's tide model for this spot. Heights are relative to mean sea level, so they won't match the chart-datum heights in the Hay Point tide table. Not for navigation.</div>
+        </section>
+      </div>
     </div>
   </div>
   </div>
@@ -498,8 +532,8 @@ function renderConv(){
   const vis=H.visibility[ni];
   $('conv').innerHTML=`<dt>Lifted index</dt><dd>${li==null?'—':(li>0?'+':'')+li.toFixed(1)}</dd>
    <dt>24 h peak CAPE</dt><dd>${f(mx)} @ ${hr(H.time[mi])}</dd>
-   <dt>Freezing level</dt><dd>${f(H.freezing_level_height[ni])} m</dd>
-   <dt>Visibility</dt><dd>${vis==null?'—':(vis/1000).toFixed(vis<10000?1:0)} km</dd>`;
+   <dt class="xs">Freezing level</dt><dd class="xs">${f(H.freezing_level_height[ni])} m</dd>
+   <dt class="xs">Visibility</dt><dd class="xs">${vis==null?'—':(vis/1000).toFixed(vis<10000?1:0)} km</dd>`;
 }
 
 function renderWeek(){
@@ -516,6 +550,7 @@ function moonSvg(p,south){
   const d=p<.5?`M${cx} ${cy-r}A${r} ${r} 0 0 1 ${cx} ${cy+r}A${rx} ${r} 0 0 ${cres?0:1} ${cx} ${cy-r}Z`:`M${cx} ${cy-r}A${r} ${r} 0 0 0 ${cx} ${cy+r}A${rx} ${r} 0 0 ${cres?1:0} ${cx} ${cy-r}Z`;
   return`<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" fill="var(--grid)" stroke="var(--line)"/><g ${south?'transform="translate(52 0) scale(-1 1)"':''}><path d="${d}" fill="var(--ink)" opacity=".9"/></g></svg>`;
 }
+const SYN=29.530588853;const moonAge=()=>(((Date.now()-947182440000)/86400000)%SYN+SYN)%SYN;
 function renderSun(){
   const D=wx.daily,now=Date.now()/1000,rise=D.sunrise[di],set=D.sunset[di];
   const fr=clamp((now-rise)/(set-rise),0,1),up=now>rise&&now<set;
@@ -527,7 +562,7 @@ function renderSun(){
    <text x="185" y="94" text-anchor="middle" font-size="9" fill="var(--dim)" font-family="JetBrains Mono,monospace">${hm(set)}</text></svg>`;
   const dl=D.daylight_duration[di],prev=D.daylight_duration[di-1];
   $('dayLen').textContent=`day ${Math.floor(dl/3600)}h ${pad(Math.round(dl%3600/60))}m`+(prev!=null?` · ${dl-prev>=0?'+':'−'}${Math.floor(Math.abs(dl-prev)/60)}m ${pad(Math.round(Math.abs(dl-prev)%60))}s`:'');
-  const syn=29.530588853,age=(((Date.now()-947182440000)/86400000)%syn+syn)%syn,p=age/syn,ill=(1-Math.cos(2*Math.PI*p))/2;
+  const syn=SYN,age=moonAge(),p=age/syn,ill=(1-Math.cos(2*Math.PI*p))/2;
   const name=p<.034?'New':p<.216?'Waxing crescent':p<.284?'First quarter':p<.466?'Waxing gibbous':p<.534?'Full':p<.716?'Waning gibbous':p<.784?'Last quarter':p<.966?'Waning crescent':'New';
   $('moon').innerHTML=moonSvg(p,LOC.lat<0)+`<b>${name}</b>${Math.round(ill*100)}% · ${age.toFixed(1)} d`;
   const left=up?set-now:(now<rise?rise-now:D.sunrise[di+1]-now);
@@ -633,11 +668,12 @@ $('meteo').addEventListener('pointermove',e=>{if(e.buttons||e.pointerType==='mou
 const pager=$('pager'),tabs=[...document.querySelectorAll('.tab')];let page=0,idleT;
 const pageW=()=>pager.clientWidth+24;
 function go(i){pager.scrollTo({left:i*pageW(),behavior:'smooth'})}
-tabs.forEach((t,i)=>t.addEventListener('click',()=>{go(i);if(i===1)showMaps()}));
+tabs.forEach((t,i)=>t.addEventListener('click',()=>{go(i);if(i===1)showMaps();if(i===2)setTimeout(renderTides,60)}));
 if(window.IntersectionObserver)new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)showMaps()}),{root:pager,threshold:0.3}).observe($('p2'));
-function armIdle(){clearTimeout(idleT);if(page===1)idleT=setTimeout(()=>go(0),180000)}
+function armIdle(){clearTimeout(idleT);if(page!==0)idleT=setTimeout(()=>go(0),180000)}
 pager.addEventListener('scroll',()=>{const i=Math.round(pager.scrollLeft/pageW());
-  if(i!==page){page=i;tabs.forEach((t,k)=>t.setAttribute('aria-selected',String(k===i)));document.body.classList.toggle('off-console',i!==0);if(i===1)showMaps();else{clearTimeout(animT);if(windyOn){windyOn=false;$('windy').src='about:blank'}if(wx)render()}armIdle()}},{passive:true});
+  if(i!==page){page=i;tabs.forEach((t,k)=>t.setAttribute('aria-selected',String(k===i)));document.body.classList.toggle('off-console',i!==0);if(i===1)showMaps();else{clearTimeout(animT);if(windyOn){windyOn=false;$('windy').src='about:blank'}if(wx)render();if(i===2)setTimeout(renderTides,60)}armIdle()}},{passive:true});
+$('p3').addEventListener('pointerdown',armIdle);
 $('p2').addEventListener('pointerdown',armIdle);
 
 /* ---------- radar (RainViewer) ---------- */
@@ -820,6 +856,76 @@ document.querySelectorAll('.exp').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.exp').forEach(x=>{const a=m.classList.contains('solo-'+x.dataset.solo);x.textContent=a?'SPLIT':'ENLARGE';x.setAttribute('aria-label',a?'Show both maps':'Enlarge map')});
   if(map)setTimeout(()=>map.invalidateSize(),80);armIdle()}));
 
+/* ---------- tides (Open-Meteo sea level model) ---------- */
+let TD=null,TX=[];
+async function loadTides(){
+  try{TD=await getJSON(`https://marine-api.open-meteo.com/v1/marine?latitude=${LOC.lat}&longitude=${(LOC.lon+0.06).toFixed(4)}&timezone=auto&timeformat=unixtime&past_days=1&forecast_days=4&hourly=sea_level_height_msl`);store.set('tides',TD)}
+  catch(e){if(!TD)TD=store.get('tides')}
+  if(TD&&TD.hourly&&TD.hourly.sea_level_height_msl&&TD.hourly.sea_level_height_msl.some(v=>v!=null)){tideExtremes();renderTides()}
+  else $('tideNow').innerHTML='<dt>No tide data for this spot right now</dt><dd></dd>';
+}
+function tideExtremes(){
+  const t=TD.hourly.time,h=TD.hourly.sea_level_height_msl;TX=[];
+  for(let i=1;i<h.length-1;i++){const a=h[i-1],b=h[i],c=h[i+1];if(a==null||b==null||c==null)continue;
+    if((b>a&&b>=c)||(b<a&&b<=c)){const d=a-2*b+c,o=d?Math.max(-.5,Math.min(.5,.5*(a-c)/d)):0;
+      const e={t:t[i]+o*3600,h:b-.25*(a-c)*o,hi:b>a};const last=TX[TX.length-1];
+      if(last&&last.hi===e.hi){if(e.hi?e.h>last.h:e.h<last.h)TX[TX.length-1]=e}else TX.push(e)}}
+}
+function tideSeg(ts){for(let i=0;i<TX.length-1;i++)if(TX[i].t<=ts&&TX[i+1].t>ts)return i;return -1}
+function tideAt(ts){const i=tideSeg(ts);if(i<0)return null;const a=TX[i],b=TX[i+1],f=(ts-a.t)/(b.t-a.t);return a.h+(b.h-a.h)*(1-Math.cos(Math.PI*f))/2}
+function tideRate(ts){const i=tideSeg(ts);if(i<0)return 0;const a=TX[i],b=TX[i+1],f=(ts-a.t)/(b.t-a.t);return (b.h-a.h)*Math.PI/2*Math.sin(Math.PI*f)/(b.t-a.t)*3600}
+const sgn=v=>(v>=0?'+':'−')+Math.abs(v).toFixed(2);
+const dur=s=>{s=Math.max(0,s);const h=Math.floor(s/3600),m=Math.round(s%3600/60);return h?`${h}h ${pad(m)}m`:`${m} min`};
+function renderTides(){
+  if(!TX.length)return;
+  const now=Date.now()/1000,hnow=tideAt(now),nx=TX.filter(e=>e.t>now);if(hnow==null||!nx.length)return;
+  const rate=tideRate(now),rising=nx[0].hi;
+  $('tideBig').innerHTML=`${sgn(hnow)}<small> m</small>`;
+  $('tideDir').textContent=rising?'▲ RISING':'▼ FALLING';$('tideDir').style.color=rising?'var(--cyan)':'var(--violet)';
+  const day=nx.filter(e=>e.t<now+86400),rng=day.length?Math.max.apply(null,day.map(e=>e.h))-Math.min.apply(null,day.map(e=>e.h)):0;
+  const age=moonAge(),half=SYN/2,q=age%half,toSpring=half-q,toNeap=((half/2-q)+half)%half,dS=Math.min(q,toSpring);
+  const phase=dS<=2.5?'Spring tides':Math.abs(q-half/2)<=2.5?'Neap tides':toSpring<toNeap?`Building to springs (${Math.round(toSpring)} d)`:`Easing to neaps (${Math.round(toNeap)} d)`;
+  $('tideNow').innerHTML=`<dt>${rising?'High':'Low'} tide in</dt><dd>${dur(nx[0].t-now)}</dd>
+    <dt>Rate</dt><dd>${(Math.abs(rate)*100).toFixed(0)} cm/h</dd>
+    <dt>Range next 24 h</dt><dd>${rng.toFixed(2)} m</dd>
+    <dt>Cycle</dt><dd>${phase}</dd>`;
+  $('tideList').innerHTML=nx.slice(0,7).map((e,k)=>{const d=LT(e.t);return`<div class="tl ${e.hi?'hi':'lo'}${k===0?' next':''}"><span class="k">${e.hi?'HIGH':'LOW'}</span><span>${DAYS[d.getUTCDay()]} ${hm(e.t)}</span><span style="color:var(--dim)">${k===0?'next':dur(e.t-now)}</span><span class="ht">${sgn(e.h)} m</span></div>`}).join('');
+  drawTides();
+}
+function drawTides(){
+  const c=$('tideChart');if(!TX.length||!c.getBoundingClientRect().width)return;
+  const{w,h,ctx}=fit(c),now=Date.now()/1000,t0=now-6*3600,t1=now+66*3600;
+  const padL=40,padR=12,top=18,bot=h-20,pw=w-padL-padR,x=t=>padL+(t-t0)/(t1-t0)*pw;
+  const vis=TX.filter(e=>e.t>t0-43200&&e.t<t1+43200);if(vis.length<2)return;
+  let lo=Math.min.apply(null,vis.map(e=>e.h)),hi=Math.max.apply(null,vis.map(e=>e.h));lo=Math.floor(lo-.4);hi=Math.ceil(hi+.4);
+  const y=v=>bot-(v-lo)/(hi-lo)*(bot-top);
+  // night shading from the weather data's sunrise/sunset
+  if(wx&&wx.daily){ctx.fillStyle=css('--night');const D=wx.daily;
+    for(let i=0;i<D.time.length-1;i++){const a=Math.max(t0,D.sunset[i]),b=Math.min(t1,D.sunrise[i+1]);if(b>a)ctx.fillRect(x(a),top,x(b)-x(a),bot-top)}
+    if(D.sunrise[0]>t0)ctx.fillRect(x(t0),top,x(Math.min(t1,D.sunrise[0]))-x(t0),bot-top)}
+  ctx.font=MONO(9);ctx.textBaseline='middle';
+  for(let v=lo;v<=hi;v++){ctx.strokeStyle=v===0?css('--faint'):css('--grid');ctx.beginPath();ctx.moveTo(padL,y(v));ctx.lineTo(w-padR,y(v));ctx.stroke();ctx.fillStyle=css('--dim');ctx.textAlign='right';ctx.fillText((v>0?'+':v<0?'−':'')+Math.abs(v)+' m',padL-6,y(v))}
+  // day boundaries
+  ctx.textBaseline='top';
+  for(let t=Math.ceil((t0+OFF)/86400)*86400-OFF;t<t1;t+=86400){ctx.strokeStyle=css('--faint');ctx.setLineDash([2,3]);ctx.beginPath();ctx.moveTo(x(t),top);ctx.lineTo(x(t),bot);ctx.stroke();ctx.setLineDash([]);
+    const d=LT(t);ctx.fillStyle=css('--ink');ctx.textAlign='left';ctx.fillText(DAYS[d.getUTCDay()]+' '+d.getUTCDate(),x(t)+4,2)}
+  for(let t=Math.ceil((t0+OFF)/21600)*21600-OFF;t<t1;t+=21600){ctx.fillStyle=css('--dim');ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(hr(t),x(t),h)}
+  // curve
+  const pts=[];for(let t=t0;t<=t1;t+=600){const v=tideAt(t);if(v!=null)pts.push([x(t),y(v)])}
+  if(pts.length<2)return;
+  const g=ctx.createLinearGradient(0,top,0,bot);g.addColorStop(0,'rgba(95,208,230,.35)');g.addColorStop(1,'rgba(95,208,230,.03)');
+  ctx.beginPath();ctx.moveTo(pts[0][0],bot);pts.forEach(p=>ctx.lineTo(p[0],p[1]));ctx.lineTo(pts[pts.length-1][0],bot);ctx.closePath();ctx.fillStyle=g;ctx.fill();
+  ctx.beginPath();pts.forEach((p,k)=>k?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.strokeStyle=css('--cyan');ctx.lineWidth=2;ctx.stroke();
+  // high / low labels
+  ctx.font=MONO(9);
+  TX.forEach(e=>{if(e.t<t0||e.t>t1)return;const px=x(e.t),py=y(e.h);ctx.fillStyle=e.hi?css('--cyan'):css('--violet');ctx.beginPath();ctx.arc(px,py,3,0,Math.PI*2);ctx.fill();
+    ctx.textAlign='center';ctx.textBaseline=e.hi?'bottom':'top';ctx.fillStyle=css('--ink');ctx.fillText(hm(e.t).replace(':00',''),px,e.hi?py-14:py+6);ctx.fillStyle=css('--dim');ctx.fillText(sgn(e.h),px,e.hi?py-4:py+16)});
+  // now
+  const hn=tideAt(now);ctx.strokeStyle=css('--amber');ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(x(now),top);ctx.lineTo(x(now),bot);ctx.stroke();ctx.setLineDash([]);
+  if(hn!=null){ctx.fillStyle=css('--amber');ctx.beginPath();ctx.arc(x(now),y(hn),4.5,0,Math.PI*2);ctx.fill()}
+  ctx.font=MONO(8);ctx.textAlign='center';ctx.textBaseline='top';ctx.fillStyle=css('--amber');ctx.fillText('NOW',x(now),top+2);
+}
+
 /* ---------- night dimming: &dim=21-6 (default), &dim=off, &dimlvl=0.85 ---------- */
 const DIM=(qs.get('dim')||'21-6').toLowerCase(),DIMLVL=Math.min(.97,Math.max(.3,parseFloat(qs.get('dimlvl'))||.85));
 document.documentElement.style.setProperty('--dimlvl',DIMLVL);
@@ -840,12 +946,12 @@ document.addEventListener('pointerdown',()=>{lastTouch=Date.now()},true);
 setInterval(nightCheck,15000);setTimeout(nightCheck,500);
 
 /* ---------- lifecycle ---------- */
-let rz;const redraw=()=>{clearTimeout(rz);rz=setTimeout(()=>{if(wx){drawCompass();drawBaro();drawMeteo()}if(typeof drawNc==='function')drawNc();if(typeof pager!=='undefined')pager.scrollLeft=page*pageW();if(typeof map!=='undefined'&&map)map.invalidateSize()},80)};
-if(window.ResizeObserver){const ro=new ResizeObserver(redraw);['compassWrap','baroWrap','meteoWrap','ncWrap'].forEach(id=>ro.observe($(id)))}else addEventListener('resize',redraw);
+let rz;const redraw=()=>{clearTimeout(rz);rz=setTimeout(()=>{if(wx){drawCompass();drawBaro();drawMeteo()}if(typeof drawNc==='function')drawNc();if(typeof drawTides==='function')drawTides();if(typeof pager!=='undefined')pager.scrollLeft=page*pageW();if(typeof map!=='undefined'&&map)map.invalidateSize()},80)};
+if(window.ResizeObserver){const ro=new ResizeObserver(redraw);['compassWrap','baroWrap','meteoWrap','ncWrap','tideWrap'].forEach(id=>ro.observe($(id)))}else addEventListener('resize',redraw);
 async function wake(){try{if(navigator.wakeLock)await navigator.wakeLock.request('screen')}catch(e){}}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){wake();loadWx()}});
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>wx&&render());
-wake();loadWx().then(loadExtras);setTimeout(initMap,3000);
+wake();loadWx().then(()=>{loadExtras();loadTides()});setTimeout(initMap,3000);setInterval(loadTides,3*3600000);setInterval(()=>{if(page===2)renderTides()},60000);
 if(RK){loadNowcast();setInterval(loadNowcast,20*60000);setInterval(()=>{if(page===1)maybeRainbow();renderNowcast()},60000)}
 setInterval(loadWx,10*60000);setInterval(loadExtras,30*60000);
 setInterval(()=>{if(wx&&sel==null&&page===0&&!asleep())render()},60000);
