@@ -297,6 +297,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 /* ---------- config ---------- */
 const qs=new URLSearchParams(location.search);
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
+const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
 const $=id=>document.getElementById(id);
 const CSSC={};const css=v=>CSSC[v]||(CSSC[v]=getComputedStyle(document.documentElement).getPropertyValue(v).trim());
@@ -648,10 +649,13 @@ function initMap(){
     m.attributionControl.setPrefix(false);
     const esri=s=>`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_${s}/MapServer/tile/{z}/{y}/{x}`;
     let baseOk=0,baseBad=0,swapped=false;
-    const base=L.tileLayer(esri('Base'),{maxZoom:12,maxNativeZoom:16,attribution:'© Esri, HERE, Garmin, © OpenStreetMap contributors'});
-    const ref=L.tileLayer(esri('Reference'),{maxZoom:12,maxNativeZoom:16,zIndex:7,opacity:.75});
+    const base=CK?L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png?key='+CK,{maxZoom:12,attribution:'© OpenStreetMap © CARTO'})
+                 :L.tileLayer(esri('Base'),{maxZoom:12,maxNativeZoom:16,attribution:'© Esri, HERE, Garmin, © OpenStreetMap contributors'});
+    const ref=CK?L.layerGroup():L.tileLayer(esri('Reference'),{maxZoom:12,maxNativeZoom:16,zIndex:7,opacity:.75});
     base.on('tileload',function(){baseOk++;diag.base[0]++;showDiag()}).on('tileerror',function(){baseBad++;diag.base[1]++;showDiag();
-      if(!swapped&&baseBad>=4&&baseOk===0){swapped=true;m.removeLayer(base);m.removeLayer(ref);$('radar').classList.add('osm-dark');
+      if(!swapped&&baseBad>=4&&baseOk===0){swapped=true;m.removeLayer(base);m.removeLayer(ref);
+        if(CK){L.tileLayer(esri('Base'),{maxZoom:12,maxNativeZoom:16,attribution:'© Esri, HERE, Garmin, © OpenStreetMap contributors'}).addTo(m);return}
+        $('radar').classList.add('osm-dark');
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap'}).on('tileload',function(){diag.base[0]++;showDiag()}).addTo(m)}}).addTo(m);
     ref.addTo(m);
     [25,50,100].forEach(function(km){L.circle([LOC.lat,LOC.lon],{radius:km*1000,color:'#5fd0e6',weight:1,opacity:.45,fill:false,dashArray:'3 6',interactive:false}).addTo(m);
