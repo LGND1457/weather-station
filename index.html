@@ -407,6 +407,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 <script>
 /* ---------- config ---------- */
 const qs=new URLSearchParams(location.search);
+const BUILD='24 Oct 20:45';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -434,7 +435,7 @@ function tickClock(){
   const age=fetchedAt?Math.round((Date.now()-fetchedAt)/60000):null;
   const led=$('led');
   if(!fetchedAt){led.className='led bad'}else led.className='led'+(age>45?' bad':age>20?' warn':'');
-  $('age').textContent=`${pad(u.getUTCHours())}:${pad(u.getUTCMinutes())}Z · `+(fetchedAt?(age<1?'data just now':`data ${age} min old`):'no data');
+  $('age').textContent=`${pad(u.getUTCHours())}:${pad(u.getUTCMinutes())}Z · `+(fetchedAt?(age<1?'data just now':`data ${age} min old`):'no data')+' · build '+BUILD;
 }
 setInterval(tickClock,1000);tickClock();
 
