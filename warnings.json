@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1792908647,
+ "fetched": 1792928467,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "25/15:05 EST Marine Wind Warning Summary for Queensland",
+   "title": "25/21:00 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Sun, 25 Oct 2026 05:05:30 GMT"
+   "date": "Sun, 25 Oct 2026 11:00:11 GMT"
   },
   {
    "title": "25/11:43 EST Minor Flood Warning for the Burrum River and Flood Warning for the Isis and Elliott Rivers",
@@ -14,14 +14,9 @@
    "date": "Sun, 25 Oct 2026 01:43:03 GMT"
   },
   {
-   "title": "25/11:46 EST Major Flood Warning for the Mary River",
+   "title": "25/17:33 EST Major Flood Warning for the Mary River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
-   "date": "Sun, 25 Oct 2026 01:46:43 GMT"
-  },
-  {
-   "title": "24/13:28 EST Final Flood Warning for the Maroochy and Mooloolah Rivers",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/noosa-and-maroochy-river.shtml",
-   "date": "Sat, 24 Oct 2026 03:28:36 GMT"
+   "date": "Sun, 25 Oct 2026 07:33:47 GMT"
   },
   {
    "title": "25/13:18 EST Minor Flood Warning for the Upper Condamine River",
@@ -59,9 +54,14 @@
    "date": "Sun, 25 Oct 2026 01:23:00 GMT"
   },
   {
-   "title": "25/14:50 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of North West and Central West Forecast Districts.",
+   "title": "25/21:24 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sun, 25 Oct 2026 04:50:46 GMT"
+   "date": "Sun, 25 Oct 2026 11:24:04 GMT"
+  },
+  {
+   "title": "25/21:28 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Southern Downs and Toowoomba Council Areas.",
+   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
+   "date": "Sun, 25 Oct 2026 11:28:28 GMT"
   }
  ]
 }
