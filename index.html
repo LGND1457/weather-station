@@ -308,8 +308,19 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
   .dial{height:220px}
   #meteoWrap{height:300px}
   /* MAPS / TIDES */
-  .maps{grid-template-columns:repeat(2,minmax(0,1fr))}.mapbox{height:66vh}
-  .tides{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}#tideWrap{height:72vh}
+  .maps{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.mapbox{height:66vh}
+  .maps .lab{flex-wrap:nowrap;white-space:nowrap;min-height:28px}
+  .maps .labr{flex:1;min-width:0;justify-content:flex-end}
+  .maps .labr .chips{flex-wrap:nowrap;overflow-x:auto;min-width:0;scrollbar-width:none;justify-content:flex-start;margin-left:auto}
+  .maps .labr .chips::-webkit-scrollbar{display:none}
+  .maps .labr .chip{flex:none}
+  /* TIDES: graph stays put, the cards on the right scroll on their own */
+  #p3{overflow:hidden;align-items:stretch;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+  #p3>.tides{min-height:0;height:100%;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+  .tides>.panel{min-height:0}
+  #tideWrap{height:auto;flex:1;min-height:0}
+  .tides>.col{overflow-y:auto;min-height:0;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+  .tides>.col>.panel{flex:none}
 }
 
 .off-console .sweep{animation-play-state:paused}
@@ -511,7 +522,7 @@ const qs=(()=>{const u=new URLSearchParams(location.search);let saved=null;try{s
   if(saved&&saved.lat){const m=new URLSearchParams();Object.keys(saved).forEach(k=>m.set(k,saved[k]));return m}
   return u})();
 const CONFIGURED=!!(qs.get('lat')&&qs.get('lon'));
-const BUILD='17:00';
+const BUILD='17:10';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
