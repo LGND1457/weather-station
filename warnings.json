@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1792962187,
+ "fetched": 1792969905,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "25/11:43 EST Minor Flood Warning for the Burrum River and Flood Warning for the Isis and Elliott Rivers",
+   "title": "26/08:32 EST Final Flood Warning for the Burrum River and the Isis and Elliott Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/burrum-cherwell-river.shtml",
-   "date": "Sun, 25 Oct 2026 01:43:03 GMT"
+   "date": "Sun, 25 Oct 2026 22:32:50 GMT"
   },
   {
    "title": "26/04:56 EST Moderate Flood Warning for the Mary River",
@@ -14,9 +14,14 @@
    "date": "Sun, 25 Oct 2026 18:56:50 GMT"
   },
   {
-   "title": "26/04:22 EST Initial Moderate Flood Warning for the Bremer River and Warrill Creek",
+   "title": "26/07:35 EST Moderate Flood Warning for the Bremer River and Warrill Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Sun, 25 Oct 2026 18:22:43 GMT"
+   "date": "Sun, 25 Oct 2026 21:35:41 GMT"
+  },
+  {
+   "title": "26/07:01 EST Initial Flood Warning for the Teviot Brook",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
+   "date": "Sun, 25 Oct 2026 21:01:52 GMT"
   },
   {
    "title": "26/04:01 EST Minor Flood Warning for the Upper Condamine River",
@@ -57,11 +62,6 @@
    "title": "26/06:09 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
    "date": "Sun, 25 Oct 2026 20:09:01 GMT"
-  },
-  {
-   "title": "26/06:10 EST \n                Cancellation of Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                Ipswich, Logan, Scenic Rim, Gold Coast, Redland City and Brisbane City Council Areas.",
-   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Sun, 25 Oct 2026 20:10:19 GMT"
   }
  ]
 }
