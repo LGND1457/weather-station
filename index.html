@@ -211,16 +211,66 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
   #temp{font-size:40px}#temp small{font-size:18px}.gauge{max-height:52px}.kv{gap:1px 8px}
 }
 @media (max-width:760px){
-  .pager{overflow-y:visible}.page{align-items:flex-start}
-  .maps{grid-template-columns:1fr}.mapbox{height:62vh;flex:none}
-  .tides{grid-template-columns:1fr}#tideWrap{height:300px;flex:none}
-  .home{grid-template-columns:1fr}.htiles{grid-template-columns:repeat(2,minmax(0,1fr))}
-  body{overflow:auto;height:auto}.app{height:auto}
-  header{grid-template-columns:1fr auto}#metar{grid-column:1/-1;grid-row:2}
-  .cols{grid-template-columns:1fr}.col{min-height:auto}
-  .dial{height:280px;flex:none}#meteoWrap{height:340px;flex:none}
+  /* ---- phone layout: compact header, bottom tab bar, each screen scrolls on its own ---- */
+  body{padding:max(8px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 0 max(12px,env(safe-area-inset-left));font-size:13px}
+  .app{gap:8px}
+  header{grid-template-columns:minmax(0,1fr) auto;gap:10px}
+  .stn b{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .stn span,#metar{display:none}
+  #lt{font-size:20px}#ut{font-size:10px}#age{display:none}
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:50;border:0;border-top:1px solid var(--line);border-radius:0;background:rgba(9,15,23,.96);
+    padding:0 max(8px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(8px,env(safe-area-inset-left));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .tab{flex:1;min-height:52px;font-size:11px;letter-spacing:.12em;padding:0}
+  .tab[aria-selected="true"]{background:none;box-shadow:inset 0 2px 0 var(--cyan)}
+  #warn{align-items:flex-start;padding:7px 10px}#warn a{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.3}
+  .page{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;align-items:flex-start;padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+  .page>*{min-height:min-content}
+  .panel{padding:12px 14px}
+  .lab{font-size:10px}
+
+  /* HOME */
+  .home{grid-template-columns:1fr;grid-template-rows:none;gap:8px}
+  .home>section:nth-child(2){order:1}.home>section:nth-child(3){order:2}.home>section:first-child{order:4}
+  #hClock{display:none}
+  .home>section:first-child .lab{margin-bottom:2px}
+  #hTemp{font-size:84px}
+  .hcond{font-size:19px}
+  .hgfx{height:64px;margin-top:12px}
+  #hRainChart{height:56px;margin-top:10px}
+  .htiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;order:3}
+  .tides .lab i{display:none}
+  .tile b{font-size:17px}.tile span{font-size:11px}
+  .hweek{order:5}
+  .hdays{grid-template-columns:1fr;gap:0;text-align:left}
+  .hd{display:grid;grid-template-columns:4.2em minmax(0,1fr) 4.6em 5.2em;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--grid)}
+  .hd:last-child{border-bottom:0}
+  .hd .c{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hd .t{font-size:16px;text-align:right}.hd .t em{font-size:13px}
+  .hd .rb{display:none}.hd .p{text-align:right}
+
+  /* CONSOLE: one column, most useful first */
+  .cols{display:flex;flex-direction:column;gap:8px}
+  .col,.row3{display:contents}
+  .cols>.col:nth-child(1)>:nth-child(1){order:1}   /* surface */
+  .cols>.col:nth-child(2)>:nth-child(1){order:2}   /* meteogram */
+  .cols>.col:nth-child(1)>:nth-child(2){order:3}   /* wind */
+  .cols>.col:nth-child(3)>:nth-child(1){order:4}   /* pressure */
+  .cols>.col:nth-child(3)>:nth-child(2){order:5}   /* convection */
+  .cols>.col:nth-child(1)>:nth-child(3){order:6}   /* atmosphere */
+  .row3>:nth-child(1){order:7}.row3>:nth-child(2){order:8}.row3>:nth-child(3){order:9}
+  .panel.grow{overflow:visible;flex:none}
+  .dial{flex:none;height:min(62vw,250px);min-height:0}
+  #meteoWrap{flex:none;height:380px}
+  .row3 .panel{min-height:0}
+  .sunwrap svg{max-width:230px}
+  #temp{font-size:58px}
+
+  /* MAPS / TIDES */
+  .maps{grid-template-columns:1fr;gap:8px}.mapbox{height:52vh;flex:none}
+  .maps .lab{flex-wrap:wrap;white-space:normal;row-gap:6px}
+  .tides{grid-template-columns:1fr;gap:8px}#tideWrap{height:300px;flex:none}
+  .tides>.col{display:flex;flex-direction:column;gap:8px}
 }
-@media (max-width:640px){.row3{grid-template-columns:1fr}}
+
 .off-console .sweep{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.sweep{animation:none;display:none}}
 </style>
@@ -385,7 +435,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
   <div class="page" id="p3">
     <div class="tides">
       <section class="panel">
-        <div class="lab">Tide curve · 3 days <i>shaded = night · amber = solunar fishing periods</i></div>
+        <div class="lab">Tide curve <span id="tideSpan" style="letter-spacing:inherit">3 days</span> <i>shaded = night · amber = solunar fishing periods</i></div>
         <div id="tideWrap"><canvas id="tideChart"></canvas></div>
       </section>
       <div class="col">
@@ -409,7 +459,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 <script>
 /* ---------- config ---------- */
 const qs=new URLSearchParams(location.search);
-const BUILD='21:20';
+const BUILD='16:10';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -437,7 +487,7 @@ function tickClock(){
   const age=fetchedAt?Math.round((Date.now()-fetchedAt)/60000):null;
   const led=$('led');
   if(!fetchedAt){led.className='led bad'}else led.className='led'+(age>45?' bad':age>20?' warn':'');
-  $('age').textContent=`${pad(u.getUTCHours())}:${pad(u.getUTCMinutes())}Z · `+(fetchedAt?(age<1?'data now':`data ${age}m`):'no data')+' · v'+BUILD+' · '+innerWidth+'×'+innerHeight;
+  $('age').textContent=`${pad(u.getUTCHours())}:${pad(u.getUTCMinutes())}Z · `+(fetchedAt?(age<1?'data now':`data ${age}m`):'no data')+' · v'+BUILD;
 }
 setInterval(tickClock,1000);tickClock();
 
@@ -973,7 +1023,8 @@ function renderTides(){
 }
 function drawTides(){
   const c=$('tideChart');if(!TX.length||!c.getBoundingClientRect().width)return;
-  const{w,h,ctx}=fit(c),now=Date.now()/1000,t0=now-6*3600,t1=now+66*3600;
+  const{w,h,ctx}=fit(c),now=Date.now()/1000,narrow=w<520,t0=now-(narrow?3:6)*3600,t1=now+(narrow?30:66)*3600;
+  const tl=$('tideSpan');if(tl)tl.textContent=narrow?'next 30 h':'3 days';
   const padL=40,padR=12,top=18,bot=h-20,pw=w-padL-padR,x=t=>padL+(t-t0)/(t1-t0)*pw;
   const vis=TX.filter(e=>e.t>t0-43200&&e.t<t1+43200);if(vis.length<2)return;
   let lo=Math.min.apply(null,vis.map(e=>e.h)),hi=Math.max.apply(null,vis.map(e=>e.h));lo=Math.floor(lo-.4);hi=Math.ceil(hi+.4);
@@ -1002,7 +1053,7 @@ function drawTides(){
   // solunar fishing periods: major = moon overhead/underfoot ±1 h, minor = moonrise/set ±30 min
   solunar(t0-3600,t1+3600).forEach(ev=>{const half=ev.type==='major'?3600:1800,a=x(Math.max(t0,ev.t-half)),b=x(Math.min(t1,ev.t+half));if(b<=a)return;
     ctx.fillStyle=ev.type==='major'?'rgba(240,174,72,.13)':'rgba(240,174,72,.07)';ctx.fillRect(a,top,b-a,bot-top);
-    ctx.fillStyle=css('--amber');ctx.globalAlpha=ev.type==='major'?.9:.6;ctx.font=MONO(8);ctx.textAlign='center';ctx.textBaseline='top';ctx.fillText(ev.type==='major'?'MAJOR':'minor',(a+b)/2,top+12);ctx.globalAlpha=1});
+    if(narrow)return;ctx.fillStyle=css('--amber');ctx.globalAlpha=ev.type==='major'?.9:.6;ctx.font=MONO(8);ctx.textAlign='center';ctx.textBaseline='top';ctx.fillText(ev.type==='major'?'MAJOR':'minor',(a+b)/2,top+12);ctx.globalAlpha=1});
   // now
   const hn=tideAt(now);ctx.strokeStyle=css('--amber');ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(x(now),top);ctx.lineTo(x(now),bot);ctx.stroke();ctx.setLineDash([]);
   if(hn!=null){ctx.fillStyle=css('--amber');ctx.beginPath();ctx.arc(x(now),y(hn),4.5,0,Math.PI*2);ctx.fill()}
