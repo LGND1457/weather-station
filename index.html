@@ -162,6 +162,12 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 #warn b{color:var(--red);letter-spacing:.14em;font-size:11px;flex:none}#warn.amber b{color:var(--amber)}
 #warn a{color:var(--ink);text-decoration:none;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #warn .wsrc{color:var(--dim);font-size:10px;flex:none}
+.setup{grid-column:1/-1;border-color:var(--amber)}
+.home.needsetup{grid-template-rows:auto minmax(0,1fr) auto auto}
+.setup p{margin:0 0 10px;color:var(--ink);font-size:12px;line-height:1.45;max-width:70ch}
+.setrow{display:flex;gap:8px}
+.setrow input{flex:1;min-width:0;font:inherit;font-size:13px;padding:10px;border-radius:4px;border:1px solid var(--line);background:var(--bg);color:var(--ink);-webkit-user-select:text;user-select:text}
+.setrow .chip{min-height:40px;color:var(--amber);border-color:var(--amber)}
 .tides{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,30%);gap:10px;min-height:0}
 #tideWrap{position:relative;flex:1;min-height:200px}
 #tideChart{position:absolute;top:0;left:0;width:100%;height:100%}
@@ -239,7 +245,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 
   /* HOME */
   .home{grid-template-columns:1fr;grid-template-rows:none;gap:8px}
-  .home>section:nth-child(2){order:1}.home>section:nth-child(3){order:2}.home>section:first-child{order:4}
+  .home>#setup{order:0}.home>section:nth-child(3){order:1}.home>section:nth-child(4){order:2}.home>section:nth-child(2){order:4}
   #hClock{display:none}
   .home>section:first-child .lab{margin-bottom:2px}
   #hTemp{font-size:84px}
@@ -298,6 +304,12 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
   <div class="pager" id="pager">
   <div class="page" id="p0">
     <div class="home">
+      <section class="panel setup" id="setup" hidden>
+        <div class="lab">Set up this screen <i>showing Mackay until you do</i></div>
+        <p>Paste your Wx Station link (the long one with your location and keys) and tap Save. It's remembered on this device, so the home-screen icon opens to your spot from then on.</p>
+        <form id="setupForm" class="setrow" autocomplete="off"><input id="setupLink" type="url" inputmode="url" placeholder="https://lgnd1457.github.io/weather-station/?lat=…" aria-label="Your Wx Station link"><button class="chip" type="submit">SAVE</button></form>
+        <div class="hsub" id="setupMsg"></div>
+      </section>
       <section class="panel">
         <div class="lab"><span id="hPlace">Home</span> <i id="hDate"></i></div>
         <div id="hClock">--:--</div>
@@ -467,8 +479,13 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 /* ---------- config ---------- */
-const qs=new URLSearchParams(location.search);
-const BUILD='16:20';
+const KEYS=['lat','lon','name','rk','ck','dim','dimlvl','idle'];
+const qs=(()=>{const u=new URLSearchParams(location.search);let saved=null;try{saved=JSON.parse(localStorage.getItem('wxs_link')||'null')}catch(e){}
+  if(u.get('lat')&&u.get('lon')){const o={};KEYS.forEach(k=>{if(u.get(k)!=null)o[k]=u.get(k)});try{localStorage.setItem('wxs_link',JSON.stringify(o))}catch(e){}return u}
+  if(saved&&saved.lat){const m=new URLSearchParams();Object.keys(saved).forEach(k=>m.set(k,saved[k]));return m}
+  return u})();
+const CONFIGURED=!!(qs.get('lat')&&qs.get('lon'));
+const BUILD='16:40';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -1147,22 +1164,24 @@ const WKW=['central coast','whitsunday','mackay','sarina','plane creek','pioneer
 let WARN={ok:null,items:[]},wIdx=0;const wSeen={};
 async function loadWarnings(){
   let xml=null;
+  try{const j=await getJSON('warnings.json?t='+Math.floor(Date.now()/120000));
+    if(j&&j.ok&&j.items&&Date.now()/1000-j.fetched<3*3600){WARN={ok:true,at:j.fetched,items:j.items.filter(it=>{const t=it.title.toLowerCase();return WKW.some(k=>t.indexOf(k)>-1)&&t.indexOf('cancellation')<0})};wFresh();renderWarn();return}}catch(e){}
   for(const u of ['https://api.allorigins.win/raw?url='+encodeURIComponent(WFEED),'https://corsproxy.io/?url='+encodeURIComponent(WFEED)]){
     try{const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),15000);const r=await fetch(u,{signal:ac.signal});clearTimeout(tm);if(!r.ok)continue;const tx=await r.text();if(tx.indexOf('<channel')>-1){xml=tx;break}}catch(e){}
   }
   if(!xml){WARN={ok:false,items:[]};renderWarn();return}
   const doc=new DOMParser().parseFromString(xml,'text/xml'),tx=(el,s)=>{const n=el.querySelector(s);return n?n.textContent.trim():''};
   const items=[...doc.querySelectorAll('item')].map(i=>({title:tx(i,'title'),link:tx(i,'link')}));
-  WARN={ok:true,items:items.filter(it=>{const t=it.title.toLowerCase();return WKW.some(k=>t.indexOf(k)>-1)&&t.indexOf('cancellation')<0})};
-  let fresh=false;WARN.items.forEach(it=>{if(!wSeen[it.title]){wSeen[it.title]=1;fresh=true}});
-  if(fresh&&WARN.items.length){lastTouch=Date.now();wakeUntil=Date.now()+300000;nightCheck()}   // wake the screen for a new warning
-  renderWarn();
+  WARN={ok:true,at:Date.now()/1000,items:items.filter(it=>{const t=it.title.toLowerCase();return WKW.some(k=>t.indexOf(k)>-1)&&t.indexOf('cancellation')<0})};
+  wFresh();renderWarn();
 }
+function wFresh(){let fresh=false;WARN.items.forEach(it=>{if(!wSeen[it.title]){wSeen[it.title]=1;fresh=true}});
+  if(fresh&&WARN.items.length){lastTouch=Date.now();wakeUntil=Date.now()+300000;nightCheck()}}   // wake the screen for a new warning
 function renderWarn(){
   const b=$('warn'),st=$('hWarnState');
   if(WARN.ok===false){b.hidden=true;st.innerHTML='<span style="color:var(--amber)">BOM warnings feed unavailable · check bom.gov.au</span>';return}
   if(WARN.ok===null)return;
-  if(!WARN.items.length){b.hidden=true;st.textContent='No BOM warnings for your area';return}
+  if(!WARN.items.length){b.hidden=true;st.textContent='No BOM warnings for your area'+(WARN.at?' · checked '+hm(WARN.at):'');return}
   const n=WARN.items.length,it=WARN.items[wIdx%n],red=/cyclone warning|severe thunderstorm|severe weather|major flood|fire weather|tsunami/i.test(it.title);
   b.className=red?'':'amber';
   b.innerHTML=`<b>${red?'WARNING':'ADVICE'}</b><a target="_blank" rel="noopener"></a><span class="wsrc">BOM${n>1?' · '+(wIdx%n+1)+'/'+n:''}</span>`;
@@ -1222,6 +1241,17 @@ function renderHome(){
   $('hDays').innerHTML=s;
   }catch(e){diag.err='home: '+(e&&e.message);}
 }
+
+/* ---------- first-run setup (no location in the link and none remembered) ---------- */
+if(!CONFIGURED){$('setup').hidden=false;document.querySelector('.home').classList.add('needsetup')}
+$('setupForm').addEventListener('submit',e=>{e.preventDefault();
+  let raw=$('setupLink').value.trim(),u;try{u=new URL(raw)}catch(_){u=null}
+  const p=u?u.searchParams:new URLSearchParams(raw.replace(/^[^?]*\?/,''));
+  if(!(parseFloat(p.get('lat'))&&parseFloat(p.get('lon')))){$('setupMsg').innerHTML='<span style="color:var(--amber)">That link has no location in it. It should contain lat= and lon=.</span>';return}
+  const o={};KEYS.forEach(k=>{if(p.get(k)!=null)o[k]=p.get(k)});
+  try{localStorage.setItem('wxs_link',JSON.stringify(o));$('setupMsg').textContent='Saved. Loading your spot…';setTimeout(()=>location.reload(),400)}
+  catch(_){$('setupMsg').innerHTML='<span style="color:var(--amber)">This device blocked saving. Open the full link directly instead.</span>'}
+});
 
 /* ---------- HOME instrument graphics ---------- */
 function tg(id,svg){const t=$(id);if(!t)return;let g=t.querySelector('.tg');if(!g){g=document.createElement('div');g.className='tg';t.appendChild(g)}g.innerHTML=svg}
