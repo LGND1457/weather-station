@@ -1,1 +1,67 @@
-{"ok":false,"fetched":0,"items":[]}
+{
+ "ok": true,
+ "fetched": 1792908647,
+ "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
+ "items": [
+  {
+   "title": "25/15:05 EST Marine Wind Warning Summary for Queensland",
+   "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
+   "date": "Sun, 25 Oct 2026 05:05:30 GMT"
+  },
+  {
+   "title": "25/11:43 EST Minor Flood Warning for the Burrum River and Flood Warning for the Isis and Elliott Rivers",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/burrum-cherwell-river.shtml",
+   "date": "Sun, 25 Oct 2026 01:43:03 GMT"
+  },
+  {
+   "title": "25/11:46 EST Major Flood Warning for the Mary River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
+   "date": "Sun, 25 Oct 2026 01:46:43 GMT"
+  },
+  {
+   "title": "24/13:28 EST Final Flood Warning for the Maroochy and Mooloolah Rivers",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/noosa-and-maroochy-river.shtml",
+   "date": "Sat, 24 Oct 2026 03:28:36 GMT"
+  },
+  {
+   "title": "25/13:18 EST Minor Flood Warning for the Upper Condamine River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
+   "date": "Sun, 25 Oct 2026 03:18:41 GMT"
+  },
+  {
+   "title": "25/13:10 EST Moderate Flood Warning for the Weir River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/border-rivers.shtml",
+   "date": "Sun, 25 Oct 2026 03:10:43 GMT"
+  },
+  {
+   "title": "25/09:53 EST Minor Flood Warning for the Moonie River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/moonie-river.shtml",
+   "date": "Sat, 24 Oct 2026 23:53:42 GMT"
+  },
+  {
+   "title": "25/10:37 EST Minor Flood Warning for Wallam Creek and Flood Warning for Mungallala Creek",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/wallam-mungallala-creeks.shtml",
+   "date": "Sun, 25 Oct 2026 00:37:44 GMT"
+  },
+  {
+   "title": "25/15:01 EST Minor Flood Warning for the Warrego River (QLD)",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
+   "date": "Sun, 25 Oct 2026 05:01:41 GMT"
+  },
+  {
+   "title": "25/12:38 EST Minor Flood Warning for the Bulloo River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
+   "date": "Sun, 25 Oct 2026 02:38:50 GMT"
+  },
+  {
+   "title": "25/11:23 EST Minor Flood Warning for the Barcoo River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
+   "date": "Sun, 25 Oct 2026 01:23:00 GMT"
+  },
+  {
+   "title": "25/14:50 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of North West and Central West Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Sun, 25 Oct 2026 04:50:46 GMT"
+  }
+ ]
+}
