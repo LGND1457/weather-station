@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1792940640,
+ "fetched": 1792952539,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -19,9 +19,9 @@
    "date": "Sun, 25 Oct 2026 12:57:58 GMT"
   },
   {
-   "title": "25/13:18 EST Minor Flood Warning for the Upper Condamine River",
+   "title": "26/04:01 EST Minor Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Sun, 25 Oct 2026 03:18:41 GMT"
+   "date": "Sun, 25 Oct 2026 18:01:58 GMT"
   },
   {
    "title": "25/13:10 EST Moderate Flood Warning for the Weir River",
@@ -54,14 +54,14 @@
    "date": "Sun, 25 Oct 2026 01:23:00 GMT"
   },
   {
-   "title": "25/23:20 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
+   "title": "26/03:49 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sun, 25 Oct 2026 13:20:15 GMT"
+   "date": "Sun, 25 Oct 2026 17:49:03 GMT"
   },
   {
-   "title": "25/23:59 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Southern Downs, Toowoomba and Lockyer Valley Council Areas.",
+   "title": "26/03:50 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Ipswich, Logan, Scenic Rim, Southern Downs, Lockyer Valley and Toowoomba Council Areas.",
    "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Sun, 25 Oct 2026 13:59:51 GMT"
+   "date": "Sun, 25 Oct 2026 17:50:10 GMT"
   }
  ]
 }
