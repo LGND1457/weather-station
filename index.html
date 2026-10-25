@@ -485,7 +485,7 @@ const qs=(()=>{const u=new URLSearchParams(location.search);let saved=null;try{s
   if(saved&&saved.lat){const m=new URLSearchParams();Object.keys(saved).forEach(k=>m.set(k,saved[k]));return m}
   return u})();
 const CONFIGURED=!!(qs.get('lat')&&qs.get('lon'));
-const BUILD='16:40';
+const BUILD='16:50';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -1185,7 +1185,7 @@ function renderWarn(){
   const n=WARN.items.length,it=WARN.items[wIdx%n],red=/cyclone warning|severe thunderstorm|severe weather|major flood|fire weather|tsunami/i.test(it.title);
   b.className=red?'':'amber';
   b.innerHTML=`<b>${red?'WARNING':'ADVICE'}</b><a target="_blank" rel="noopener"></a><span class="wsrc">BOM${n>1?' · '+(wIdx%n+1)+'/'+n:''}</span>`;
-  const a=b.querySelector('a');a.textContent=it.title;a.href=/^https?:\/\/(www\.)?bom\.gov\.au\//.test(it.link)?it.link:'http://www.bom.gov.au/qld/warnings/';
+  const a=b.querySelector('a');a.textContent=it.title.replace(/^\d{1,2}\/\d{1,2}:\d{2}\s+[A-Z]{3,4}\s+/,'');a.href=/^https?:\/\/(www\.)?bom\.gov\.au\//.test(it.link)?it.link:'http://www.bom.gov.au/qld/warnings/';
   const was=b.hidden;b.hidden=false;if(was&&wx)setTimeout(render,50);
   st.innerHTML=`<span style="color:${red?'var(--red)':'var(--amber)'}">${n} BOM warning${n>1?'s':''} for your area</span>`;
 }
