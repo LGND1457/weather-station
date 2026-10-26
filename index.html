@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-title" content="Wx Station">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700&family=JetBrains+Mono:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
 /* Layout: instrument console. Left = surface + wind + atmosphere, centre = 48h meteogram over sun/marine/soil, right = pressure + convection + 7-day. Single dark look by design. */
@@ -36,13 +36,13 @@
 html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:12px;overflow:hidden;
   padding:max(10px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
-  background-image:radial-gradient(ellipse at 50% -20%,rgba(95,208,230,.07),transparent 60%);
+  background-image:radial-gradient(ellipse at 50% -20%,color-mix(in srgb,var(--cyan) 7%,transparent),transparent 60%);
   -webkit-user-select:none;user-select:none}
 .app{height:100%;display:flex;flex-direction:column;gap:10px}
 header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:0 2px}
 .stn b{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.08em;display:block;line-height:1}
 .stn span{color:var(--dim);font-size:11px;letter-spacing:.04em}
-#metar{font-size:12px;color:var(--cyan);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid var(--line);border-radius:6px;padding:7px 10px;background:rgba(95,208,230,.04);min-width:0}
+#metar{font-size:12px;color:var(--cyan);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid var(--line);border-radius:6px;padding:7px 10px;background:color-mix(in srgb,var(--cyan) 4%,transparent);min-width:0}
 #metar em{font-style:normal;color:var(--faint);margin-left:10px}
 .clock{text-align:right;line-height:1.15}
 #lt{font-family:var(--display);font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.04em}
@@ -77,7 +77,7 @@ header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1
 #weekPanel{display:none}
 .trio{flex:none}
 .dial canvas{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}
-.sweep{will-change:transform;position:absolute;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 290deg,rgba(95,208,230,.16) 360deg);animation:spin 7s linear infinite;-webkit-mask:radial-gradient(circle,#000 0 68%,transparent 69%);mask:radial-gradient(circle,#000 0 68%,transparent 69%)}
+.sweep{will-change:transform;position:absolute;border-radius:50%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 290deg,color-mix(in srgb,var(--cyan) 16%,transparent) 360deg);animation:spin 7s linear infinite;-webkit-mask:radial-gradient(circle,#000 0 68%,transparent 69%);mask:radial-gradient(circle,#000 0 68%,transparent 69%)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border-top:1px solid var(--line);padding-top:8px;margin-top:6px;text-align:center}
 .trio div{color:var(--dim);font-size:10px;letter-spacing:.08em}
@@ -124,7 +124,7 @@ header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1
 header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .tabs{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
 .tab{font:inherit;font-size:11px;letter-spacing:.14em;background:none;color:var(--dim);border:0;padding:0 14px;min-height:36px;cursor:pointer}
-.tab[aria-selected="true"]{background:rgba(95,208,230,.12);color:var(--cyan)}
+.tab[aria-selected="true"]{background:color-mix(in srgb,var(--cyan) 12%,transparent);color:var(--cyan)}
 .pager{flex:1;min-height:0;display:flex;gap:24px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .pager::-webkit-scrollbar{display:none}
 .page{flex:0 0 100%;min-width:0;min-height:0;scroll-snap-align:start;scroll-snap-stop:always;display:flex}
@@ -158,8 +158,8 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .hd .c{color:var(--amber);font-size:11px;margin:2px 0;letter-spacing:.06em}
 .hd .t{font-family:var(--display);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}.hd .t em{font-style:normal;color:var(--dim);font-size:15px;margin-left:4px}
 .hd .p{color:var(--violet);font-size:11px}
-#warn{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--red);background:rgba(255,111,111,.12);border-radius:4px;font-size:13px;min-width:0}
-#warn.amber{border-color:var(--amber);background:rgba(240,174,72,.1)}
+#warn{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--red);background:color-mix(in srgb,var(--red) 12%,transparent);border-radius:4px;font-size:13px;min-width:0}
+#warn.amber{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 10%,transparent)}
 #warn b{color:var(--red);letter-spacing:.14em;font-size:11px;flex:none}#warn.amber b{color:var(--amber)}
 #warn a{color:var(--ink);text-decoration:none;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #warn .wsrc{color:var(--dim);font-size:10px;flex:none}
@@ -179,18 +179,18 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .tl .k{font-size:10px;letter-spacing:.12em}
 .tl.hi .k{color:var(--cyan)}.tl.lo .k{color:var(--violet)}
 .tl .ht{text-align:right;min-width:4.2em}
-.tl.next{background:rgba(95,208,230,.06)}
+.tl.next{background:color-mix(in srgb,var(--cyan) 6%,transparent)}
 .maps{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:10px;min-height:0}
 .mapbox{position:relative;flex:1;min-height:200px;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--bg)}
 #radar,#windy{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;background:var(--bg)}
 .mapmsg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:500;color:var(--dim);background:var(--panel);border:1px solid var(--line);padding:8px 12px;border-radius:4px;text-align:center}
 .rbar{display:flex;align-items:center;gap:10px;margin-top:8px}
 .chip{font:inherit;font-size:11px;letter-spacing:.08em;background:none;color:var(--dim);border:1px solid var(--line);border-radius:4px;padding:0 10px;min-height:32px;cursor:pointer}
-.chip[aria-pressed="true"]{color:var(--cyan);border-color:var(--cyan);background:rgba(95,208,230,.08)}
+.chip[aria-pressed="true"]{color:var(--cyan);border-color:var(--cyan);background:color-mix(in srgb,var(--cyan) 8%,transparent)}
 #play{min-width:44px;color:var(--cyan)}
 .frames{flex:1;display:flex;gap:2px;height:22px;align-items:stretch}
 .frames button{flex:1;border:0;padding:0;background:var(--grid);cursor:pointer;border-radius:1px}
-.frames button.fc{background:rgba(157,140,255,.25)}
+.frames button.fc{background:color-mix(in srgb,var(--violet) 25%,transparent)}
 .frames button.on{background:var(--cyan)}
 .rleg{display:flex;align-items:center;gap:6px;color:var(--dim);font-size:10px;white-space:nowrap}
 .rleg i{display:block;width:70px;height:6px;border-radius:3px;background:linear-gradient(90deg,#88ddee,#0099cc,#0077aa,#ffee00,#ff8800,#ff0000,#c10000)}
@@ -201,7 +201,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 #ncChart{width:100%;height:44px;display:block}
 .wet{color:var(--violet)!important}
 .labr{display:flex;align-items:center;gap:6px;min-width:0}
-.exp{min-height:26px;padding:0 8px;font-size:10px;color:var(--cyan);border-color:rgba(95,208,230,.45)}
+.exp{min-height:26px;padding:0 8px;font-size:10px;color:var(--cyan);border-color:color-mix(in srgb,var(--cyan) 45%,transparent)}
 .maps.solo-radar,.maps.solo-wind{grid-template-columns:1fr}
 .maps.solo-radar #windPanel,.maps.solo-wind #radarPanel{display:none}
 #rdiag b{color:var(--amber);font-weight:400}
@@ -291,7 +291,7 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
   header{grid-template-columns:minmax(0,1fr) auto auto;gap:14px}
   .tabs{position:static;border:1px solid var(--line);border-radius:6px;background:none;padding:0;-webkit-backdrop-filter:none;backdrop-filter:none}
   .tab{flex:none;min-height:34px;padding:0 12px;font-size:10px}
-  .tab[aria-selected="true"]{background:rgba(95,208,230,.12);box-shadow:none}
+  .tab[aria-selected="true"]{background:color-mix(in srgb,var(--cyan) 12%,transparent);box-shadow:none}
   #age{display:inline}
   .page{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
   /* HOME: now + rain side by side, tiles in three columns, week across */
@@ -335,7 +335,68 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
   --tabbg:rgba(255,255,255,.96); --cloudrgb:55,75,95;
   color-scheme:light;
 }
-:root[data-theme="light"] body{background-image:radial-gradient(ellipse at 50% -20%,rgba(10,125,149,.08),transparent 60%)}
+:root[data-theme="warm"]{
+  --bg:#f2ece3; --panel:#fbf8f2; --line:#e1d6c6; --grid:#ebe3d6; --night:rgba(90,65,40,.06);
+  --ink:#2f2924; --dim:#786b5e; --faint:#b2a593;
+  --cyan:#3d7a70; --amber:#c0682b; --violet:#7a5ca6; --red:#b5412f; --green:#5a8a39;
+  --tabbg:rgba(251,248,242,.96); --cloudrgb:95,78,60; color-scheme:light;
+}
+:root[data-theme="ocean"]{
+  --bg:#05141f; --panel:#0a2131; --line:#16394f; --grid:#0f2b3d; --night:rgba(120,190,230,.07);
+  --ink:#d8f0f1; --dim:#7ea7b6; --faint:#3c6276;
+  --cyan:#7fe0cf; --amber:#ffc36b; --violet:#8fb4ff; --red:#ff7d7d; --green:#7fe0a2;
+  --tabbg:rgba(5,20,31,.96); --cloudrgb:200,230,240;
+}
+:root[data-theme="sunset"]{
+  --bg:#1c1120; --panel:#29192d; --line:#46283f; --grid:#341f33; --night:rgba(210,150,210,.06);
+  --ink:#f6e7e3; --dim:#b993a6; --faint:#6f4d63;
+  --cyan:#ffab8a; --amber:#ffd27f; --violet:#d29bff; --red:#ff6f7d; --green:#9be3b0;
+  --tabbg:rgba(28,17,32,.96); --cloudrgb:240,220,226;
+}
+:root[data-theme="light"] body,:root[data-theme="warm"] body{background-image:radial-gradient(ellipse at 50% -20%,color-mix(in srgb,var(--cyan) 8%,transparent),transparent 60%)}
+:root[data-theme="warm"] .panel{box-shadow:0 1px 3px rgba(60,40,20,.07)}
+:root[data-theme="warm"] .led{box-shadow:none}
+/* soft style: rounded, friendly, no console brackets */
+:root[data-style="soft"]{--display:"Nunito","Segoe UI",system-ui,sans-serif;--mono:"Nunito","Segoe UI",system-ui,sans-serif}
+:root[data-style="soft"] body{font-weight:600}
+:root[data-style="soft"] .panel{border-radius:16px}
+:root[data-style="soft"] .panel::before,:root[data-style="soft"] .panel::after{display:none}
+:root[data-style="soft"] .lab{text-transform:none;letter-spacing:.02em;font-size:12px;font-weight:700}
+:root[data-style="soft"] .tabs,:root[data-style="soft"] #metar,:root[data-style="soft"] #warn,:root[data-style="soft"] .seg,:root[data-style="soft"] .lay-pv button{border-radius:12px}
+:root[data-style="soft"] .chip,:root[data-style="soft"] .mapbox{border-radius:10px}
+:root[data-style="soft"] .tab{letter-spacing:.06em}
+:root[data-style="soft"] #hClock,:root[data-style="soft"] #hTemp,:root[data-style="soft"] #gClock,:root[data-style="soft"] #gTemp,:root[data-style="soft"] #temp,:root[data-style="soft"] #lt{font-weight:800;letter-spacing:-.01em}
+:root[data-style="soft"] .tile b,:root[data-style="soft"] .hbig,:root[data-style="soft"] .gl-s b{font-weight:800}
+:root[data-style="soft"] .stn b{letter-spacing:.02em}
+:root[data-style="soft"] .wk,:root[data-style="soft"] .tl,:root[data-style="soft"] .hd{font-weight:600}
+/* text size */
+:root[data-ts="l"] body{font-size:14px}
+:root[data-ts="l"] .lab{font-size:12px}
+:root[data-ts="l"] .hsub,:root[data-ts="l"] .tl,:root[data-ts="l"] .kv{font-size:14px}
+:root[data-ts="l"] .tile b{font-size:clamp(16px,2vw,21px)}
+:root[data-ts="l"] .tile span,:root[data-ts="l"] .hd .d,:root[data-ts="l"] .hd .c,:root[data-ts="l"] .hd .p,:root[data-ts="l"] .legend{font-size:13px}
+:root[data-ts="l"] #warn{font-size:15px}
+:root[data-ts="l"] .hbig{font-size:clamp(21px,2.8vw,29px)}
+:root[data-ts="xl"] body{font-size:16px}
+:root[data-ts="xl"] .lab{font-size:13px}
+:root[data-ts="xl"] .hsub,:root[data-ts="xl"] .tl,:root[data-ts="xl"] .kv{font-size:16px}
+:root[data-ts="xl"] .tile b{font-size:clamp(17px,2.2vw,24px)}
+:root[data-ts="xl"] .tile span,:root[data-ts="xl"] .hd .d,:root[data-ts="xl"] .hd .c,:root[data-ts="xl"] .hd .p,:root[data-ts="xl"] .legend{font-size:15px}
+:root[data-ts="xl"] #warn{font-size:17px}
+:root[data-ts="xl"] .hbig{font-size:clamp(23px,3.1vw,32px)}
+:root[data-ts="xl"] .hd .t{font-size:24px}
+/* settings swatches */
+.seg.wrap{grid-auto-flow:row;grid-template-columns:repeat(3,1fr)}
+.seg.wrap button{border-top:1px solid var(--line)}
+.seg.wrap button:nth-child(-n+3){border-top:0}
+.seg.wrap button:nth-child(3n+1){border-left:0}
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:6px;border:1px solid rgba(128,128,128,.4)}
+.sw2{background:linear-gradient(135deg,var(--a) 50%,var(--b) 50%)}
+.accents{display:flex;gap:10px;flex-wrap:wrap}
+.accents button{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--c);cursor:pointer;padding:0;position:relative}
+.accents button[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 3px var(--panel) inset}
+.accents button.def{background:conic-gradient(var(--cyan) 0 50%,var(--amber) 0)}
+:root[data-theme="light"] body{background-image:radial-gradient(ellipse at 50% -20%,color-mix(in srgb,var(--cyan) 8%,transparent),transparent 60%)}
 :root[data-theme="light"] .panel{box-shadow:0 1px 2px rgba(15,30,43,.06)}
 :root[data-theme="light"] .led{box-shadow:none}
 :root[data-theme="light"] #warn{background:rgba(201,47,47,.07)}
@@ -352,8 +413,8 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border:1px solid var(--line);border-radius:5px;overflow:hidden}
 .seg button{font:inherit;font-size:12px;background:none;color:var(--dim);border:0;border-left:1px solid var(--line);min-height:44px;cursor:pointer;padding:0 6px}
 .seg button:first-child{border-left:0}
-.seg button[aria-pressed="true"]{background:rgba(95,208,230,.14);color:var(--cyan);font-weight:700}
-:root[data-theme="light"] .seg button[aria-pressed="true"]{background:rgba(10,125,149,.1)}
+.seg button[aria-pressed="true"]{background:color-mix(in srgb,var(--cyan) 14%,transparent);color:var(--cyan);font-weight:700}
+.seg button[aria-pressed="true"]{background:color-mix(in srgb,var(--cyan) 14%,transparent)}
 .lay-pv{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
 .lay-pv button{font:inherit;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:8px 6px 6px;color:var(--dim);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;min-height:44px}
 .lay-pv button[aria-pressed="true"]{border-color:var(--cyan);color:var(--cyan)}
@@ -432,8 +493,28 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 <div id="sheet" hidden><div class="sheet-card" role="dialog" aria-modal="true" aria-label="Display settings">
   <div class="lab">Display <button class="chip" id="sheetClose" type="button">DONE</button></div>
   <div class="opt-h">Theme</div>
-  <div class="seg" id="optTheme"><button type="button" data-v="dark">Dark</button><button type="button" data-v="light">Daylight</button><button type="button" data-v="auto">Auto</button></div>
+  <div class="seg wrap" id="optTheme">
+    <button type="button" data-v="dark"><span class="sw sw2" style="--a:#070c13;--b:#5fd0e6"></span>Dark</button>
+    <button type="button" data-v="light"><span class="sw sw2" style="--a:#e8edf1;--b:#0a7d95"></span>Daylight</button>
+    <button type="button" data-v="warm"><span class="sw sw2" style="--a:#f2ece3;--b:#c0682b"></span>Warm</button>
+    <button type="button" data-v="ocean"><span class="sw sw2" style="--a:#05141f;--b:#7fe0cf"></span>Ocean</button>
+    <button type="button" data-v="sunset"><span class="sw sw2" style="--a:#1c1120;--b:#ffab8a"></span>Sunset</button>
+    <button type="button" data-v="auto"><span class="sw sw2" style="--a:#e8edf1;--b:#070c13"></span>Auto</button>
+  </div>
   <div class="hsub">Auto uses Daylight from sunrise to sunset and Dark overnight.</div>
+  <div class="opt-h">Accent colour</div>
+  <div class="accents" id="optAccent">
+    <button type="button" class="def" data-v="default" aria-label="Theme default"></button>
+    <button type="button" data-v="teal" style="--c:#2fb8a2" aria-label="Teal"></button>
+    <button type="button" data-v="rose" style="--c:#e0789c" aria-label="Rose"></button>
+    <button type="button" data-v="sage" style="--c:#86b083" aria-label="Sage"></button>
+    <button type="button" data-v="lavender" style="--c:#a08cf0" aria-label="Lavender"></button>
+    <button type="button" data-v="blue" style="--c:#4a90e8" aria-label="Ocean blue"></button>
+  </div>
+  <div class="opt-h">Style</div>
+  <div class="seg" id="optStyle"><button type="button" data-v="console">Console</button><button type="button" data-v="soft">Soft</button></div>
+  <div class="opt-h">Text size</div>
+  <div class="seg" id="optTs"><button type="button" data-v="n">Normal</button><button type="button" data-v="l">Large</button><button type="button" data-v="xl">Extra large</button></div>
   <div class="opt-h">Home layout</div>
   <div class="lay-pv" id="optLayout">
     <button type="button" data-v="std"><svg viewBox="0 0 60 40"><rect x="1" y="1" width="58" height="38" rx="2" fill="none" stroke="currentColor" opacity=".4"/><rect x="4" y="4" width="16" height="17" fill="currentColor" opacity=".5"/><rect x="22" y="4" width="16" height="17" fill="currentColor" opacity=".5"/><rect x="40" y="4" width="16" height="17" fill="currentColor" opacity=".5"/><g fill="currentColor" opacity=".35"><rect x="4" y="23" width="8" height="7"/><rect x="13" y="23" width="8" height="7"/><rect x="22" y="23" width="8" height="7"/><rect x="31" y="23" width="8" height="7"/><rect x="40" y="23" width="8" height="7"/><rect x="49" y="23" width="7" height="7"/><rect x="4" y="32" width="52" height="5"/></g></svg>Standard</button>
@@ -669,7 +750,7 @@ const qs=(()=>{const u=new URLSearchParams(location.search);let saved=null;try{s
   if(saved&&saved.lat){const m=new URLSearchParams();Object.keys(saved).forEach(k=>m.set(k,saved[k]));return m}
   return u})();
 const CONFIGURED=!!(qs.get('lat')&&qs.get('lon'));
-const BUILD='26 Oct';
+const BUILD='26 Oct b';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -752,8 +833,13 @@ async function loadExtras(){
 
 /* ---------- canvas helper ---------- */
 function fit(c){const r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;c.width=Math.max(1,r.width*dpr);c.height=Math.max(1,r.height*dpr);const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return{w:r.width,h:r.height,ctx}}
-const MONO=s=>`${s}px "JetBrains Mono", ui-monospace, monospace`;
-const DISP=(s,w=600)=>`${w} ${s}px Oxanium, "Segoe UI", sans-serif`;
+let TSF=1,SOFTF=false;
+const MONO=s=>`${SOFTF?600:400} ${(s*TSF).toFixed(1)}px ${SOFTF?'Nunito, ':''}"JetBrains Mono", ui-monospace, monospace`;
+const DISP=(s,w=600)=>`${SOFTF?800:w} ${s}px ${SOFTF?'Nunito, ':''}Oxanium, "Segoe UI", sans-serif`;
+function ta(tok,a){const c=css(tok);let r=0,g=0,b=0;
+  if(c[0]==='#'){const h=c.length===4?'#'+c[1]+c[1]+c[2]+c[2]+c[3]+c[3]:c;r=parseInt(h.substr(1,2),16);g=parseInt(h.substr(3,2),16);b=parseInt(h.substr(5,2),16)}
+  else{const m=c.match(/[\d.]+/g);if(m){r=m[0];g=m[1];b=m[2]}}
+  return`rgba(${r},${g},${b},${(+a).toFixed(3)})`}
 
 /* ---------- SVG arc gauge ---------- */
 function pt(cx,cy,r,deg){const a=(deg-90)*Math.PI/180;return[cx+r*Math.cos(a),cy+r*Math.sin(a)]}
@@ -808,7 +894,7 @@ function drawCompass(){
   ctx.font=MONO(9);ctx.fillStyle=css('--dim');
   [['NE',45],['SE',135],['SW',225],['NW',315]].forEach(([t,d])=>{const a=d*Math.PI/180;ctx.fillText(t,cx+Math.sin(a)*(R-19),cy-Math.cos(a)*(R-19))});
   for(let k=6;k>=1;k--){const d=H.wind_direction_10m[ni-k];if(d==null)continue;const a=d*Math.PI/180;
-    ctx.fillStyle=`rgba(95,208,230,${(.9-k*.12).toFixed(2)})`;ctx.beginPath();ctx.arc(cx+Math.sin(a)*R*.7,cy-Math.cos(a)*R*.7,2.6,0,Math.PI*2);ctx.fill()}
+    ctx.fillStyle=ta('--cyan',(.9-k*.12).toFixed(2));ctx.beginPath();ctx.arc(cx+Math.sin(a)*R*.7,cy-Math.cos(a)*R*.7,2.6,0,Math.PI*2);ctx.fill()}
   const a=C.wind_direction_10m*Math.PI/180,sx=Math.sin(a),sy=-Math.cos(a),px=-sy,py=sx;
   const tip=[cx+sx*R*.9,cy+sy*R*.9],base=[cx+sx*R*.64,cy+sy*R*.64];
   ctx.fillStyle=css('--cyan');
@@ -826,7 +912,7 @@ function drawBaro(){
   const min=990,max=1035,a0=-135,a1=135,ang=p=>(a0+(clamp(p,min,max)-min)/(max-min)*(a1-a0))*Math.PI/180;
   const P=(d)=>[cx+Math.sin(d)*0,0];
   const zone=(p0,p1,col)=>{ctx.strokeStyle=col;ctx.lineWidth=5;ctx.beginPath();ctx.arc(cx,cy,R*.86,ang(p0)-Math.PI/2,ang(p1)-Math.PI/2);ctx.stroke()};
-  zone(990,1005,'rgba(157,140,255,.35)');zone(1005,1020,'rgba(108,130,150,.25)');zone(1020,1035,'rgba(240,174,72,.35)');
+  zone(990,1005,ta('--violet',.35));zone(1005,1020,ta('--dim',.25));zone(1020,1035,ta('--amber',.35));
   ctx.lineWidth=1;ctx.textAlign='center';ctx.textBaseline='middle';
   for(let p=min;p<=max;p++){const a=ang(p),big=p%5===0,len=big?9:4;ctx.strokeStyle=big?css('--ink'):css('--faint');
     ctx.beginPath();ctx.moveTo(cx+Math.sin(a)*R,cy-Math.cos(a)*R);ctx.lineTo(cx+Math.sin(a)*(R-len),cy-Math.cos(a)*(R-len));ctx.stroke();
@@ -942,7 +1028,7 @@ function drawMeteo(){
   // strips: H M L cloud + P precip probability
   const strips=[[H.cloud_cover_high,css('--cloudrgb')],[H.cloud_cover_mid,css('--cloudrgb')],[H.cloud_cover_low,css('--cloudrgb')],[H.precipitation_probability,'157,140,255']];
   strips.forEach(([arr,rgb],r)=>{const y=stripTop+r*(rowH+gap);for(let i=i0;i<i0+N;i++){const v=(arr[i]||0)/100;ctx.fillStyle=`rgba(${rgb},${(.06+v*.8).toFixed(2)})`;ctx.fillRect(x(i)-step/2,y,step+.6,rowH)}});
-  {const y=stripTop+4*(rowH+gap);for(let i=i0;i<i0+N;i++){const lv=heatLvl(H.temperature_2m[i],H.relative_humidity_2m[i]);ctx.fillStyle=lv===0?'rgba(111,217,154,.12)':lv===1?'rgba(240,174,72,.55)':lv===2?'rgba(255,111,111,.7)':'rgba(255,60,90,.95)';ctx.fillRect(x(i)-step/2,y,step+.6,rowH)}}
+  {const y=stripTop+4*(rowH+gap);for(let i=i0;i<i0+N;i++){const lv=heatLvl(H.temperature_2m[i],H.relative_humidity_2m[i]);ctx.fillStyle=lv===0?'rgba(111,217,154,.12)':lv===1?ta('--amber',.55):lv===2?'rgba(255,111,111,.7)':'rgba(255,60,90,.95)';ctx.fillRect(x(i)-step/2,y,step+.6,rowH)}}
   ctx.restore();
   ctx.font=MONO(8);ctx.fillStyle=dim;ctx.textAlign='right';ctx.textBaseline='top';
   ['H','M','L','POP','HEAT'].forEach((t,r)=>ctx.fillText(t,padL-6,stripTop+r*(rowH+gap)-1));
@@ -956,14 +1042,14 @@ function drawMeteo(){
   const pv=H.precipitation.slice(i0,i0+N).map(v=>v||0);const pmax=Math.max(4,Math.ceil(Math.max(...pv)));
   const pyH=v=>v/pmax*mainH*.55;
   for(let i=i0;i<i0+N;i++){const a=H.precipitation[i]||0;if(a<=0)continue;const pr=(H.precipitation_probability[i]||0)/100;
-    ctx.fillStyle=`rgba(157,140,255,${(.35+.6*pr).toFixed(2)})`;ctx.fillRect(x(i)-step*.36,mainBot-pyH(a),step*.72,pyH(a))}
+    ctx.fillStyle=ta('--violet',(.35+.6*pr).toFixed(2));ctx.fillRect(x(i)-step*.36,mainBot-pyH(a),step*.72,pyH(a))}
   ctx.textAlign='left';ctx.fillStyle=violet;
   [0,pmax/2,pmax].forEach(v=>ctx.fillText((v%1?v.toFixed(1):v)+(v===pmax?' mm':''),w-padR+5,mainBot-pyH(v)));
   // spread fill
   ctx.beginPath();for(let i=i0;i<i0+N;i++){const y=ty(H.temperature_2m[i]);i===i0?ctx.moveTo(x(i),y):ctx.lineTo(x(i),y)}
-  for(let i=i0+N-1;i>=i0;i--)ctx.lineTo(x(i),ty(H.dew_point_2m[i]));ctx.closePath();ctx.fillStyle='rgba(240,174,72,.07)';ctx.fill();
+  for(let i=i0+N-1;i>=i0;i--)ctx.lineTo(x(i),ty(H.dew_point_2m[i]));ctx.closePath();ctx.fillStyle=ta('--amber',.07);ctx.fill();
   const line=(arr,col,wd)=>{ctx.beginPath();for(let i=i0;i<i0+N;i++){const y=ty(arr[i]);i===i0?ctx.moveTo(x(i),y):ctx.lineTo(x(i),y)}ctx.strokeStyle=col;ctx.lineWidth=wd;ctx.lineJoin='round';ctx.stroke()};
-  line(H.dew_point_2m,cyan,1.5);line(H.temperature_2m,'rgba(240,174,72,.25)',6);line(H.temperature_2m,amber,2.2);
+  line(H.dew_point_2m,cyan,1.5);line(H.temperature_2m,ta('--amber',.25),6);line(H.temperature_2m,amber,2.2);
   // day separators + hour axis
   ctx.font=MONO(9);
   for(let i=i0;i<i0+N;i++){const d=LT(T[i]),hh=d.getUTCHours();
@@ -1020,7 +1106,7 @@ const UA=(navigator.userAgent.match(/Chrome\/(\d+)/)||[])[1];
 /* base map that follows the theme: CARTO (with key) or Esri, dark or light; falls back if tiles fail */
 const BASEMAPS=[];
 function setBase(m,isRadar){
-  const light=document.documentElement.dataset.theme==='light',v=light?'Light':'Dark';
+  const light=!!LIGHTS[document.documentElement.dataset.theme],v=light?'Light':'Dark';
   if(m._wxB)m._wxB.forEach(l=>m.removeLayer(l));
   const esri=s=>`https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_${v}_Gray_${s}/MapServer/tile/{z}/{y}/{x}`;
   const eAttr='© Esri, HERE, Garmin, © OpenStreetMap contributors';
@@ -1177,7 +1263,7 @@ function drawNcOn(c){
   ctx.font=MONO(8);ctx.fillStyle=css('--dim');ctx.textBaseline='bottom';
   for(let k=0;k<=4;k++){const xx=Math.min(w-14,Math.max(0,x(t0+k*3600)));ctx.textAlign=k===0?'left':k===4?'right':'center';ctx.fillText(k===0?'now':'+'+k+'h',k===4?w:xx,h)}
   ctx.beginPath();ctx.moveTo(0,h-12);f.forEach(v=>ctx.lineTo(x(v.timestampBegin),y(v.precipRate)));ctx.lineTo(x(f[f.length-1].timestampEnd),h-12);ctx.closePath();
-  ctx.fillStyle='rgba(157,140,255,.45)';ctx.fill();ctx.strokeStyle=css('--violet');ctx.lineWidth=1.2;ctx.stroke();
+  ctx.fillStyle=ta('--violet',.45);ctx.fill();ctx.strokeStyle=css('--violet');ctx.lineWidth=1.2;ctx.stroke();
   ctx.textAlign='right';ctx.textBaseline='top';ctx.fillStyle=css('--violet');ctx.fillText(mx.toFixed(mx<10?1:0)+' mm/h',w,0);
 }
 async function loadNowcast(){
@@ -1264,7 +1350,7 @@ function drawTideOn(c,spanEl){
   // curve
   const pts=[];for(let t=t0;t<=t1;t+=600){const v=tideAt(t);if(v!=null)pts.push([x(t),y(v)])}
   if(pts.length<2)return;
-  const g=ctx.createLinearGradient(0,top,0,bot);g.addColorStop(0,'rgba(95,208,230,.35)');g.addColorStop(1,'rgba(95,208,230,.03)');
+  const g=ctx.createLinearGradient(0,top,0,bot);g.addColorStop(0,ta('--cyan',.35));g.addColorStop(1,ta('--cyan',.03));
   ctx.beginPath();ctx.moveTo(pts[0][0],bot);pts.forEach(p=>ctx.lineTo(p[0],p[1]));ctx.lineTo(pts[pts.length-1][0],bot);ctx.closePath();ctx.fillStyle=g;ctx.fill();
   ctx.beginPath();pts.forEach((p,k)=>k?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.strokeStyle=css('--cyan');ctx.lineWidth=2;ctx.stroke();
   // high / low labels
@@ -1273,7 +1359,7 @@ function drawTideOn(c,spanEl){
     ctx.textAlign='center';ctx.textBaseline=e.hi?'bottom':'top';ctx.fillStyle=css('--ink');ctx.fillText(hm(e.t).replace(':00',''),px,e.hi?py-14:py+6);ctx.fillStyle=css('--dim');ctx.fillText(sgn(e.h),px,e.hi?py-4:py+16)});
   // solunar fishing periods: major = moon overhead/underfoot ±1 h, minor = moonrise/set ±30 min
   solunar(t0-3600,t1+3600).forEach(ev=>{const half=ev.type==='major'?3600:1800,a=x(Math.max(t0,ev.t-half)),b=x(Math.min(t1,ev.t+half));if(b<=a)return;
-    ctx.fillStyle=ev.type==='major'?'rgba(240,174,72,.13)':'rgba(240,174,72,.07)';ctx.fillRect(a,top,b-a,bot-top);
+    ctx.fillStyle=ev.type==='major'?ta('--amber',.13):ta('--amber',.07);ctx.fillRect(a,top,b-a,bot-top);
     if(fwd!==66)return;ctx.fillStyle=css('--amber');ctx.globalAlpha=ev.type==='major'?.9:.6;ctx.font=MONO(8);ctx.textAlign='center';ctx.textBaseline='top';ctx.fillText(ev.type==='major'?'MAJOR':'minor',(a+b)/2,top+12);ctx.globalAlpha=1});
   // now
   const hn=tideAt(now);ctx.strokeStyle=css('--amber');ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(x(now),top);ctx.lineTo(x(now),bot);ctx.stroke();ctx.setLineDash([]);
@@ -1394,7 +1480,7 @@ function renderHome(){
   if(!wx||!wx.hourly)return;
   try{
   const C=wx.current,H=wx.hourly,D=wx.daily,now=Date.now()/1000,[lab,ab]=wcode(C.weather_code);
-  $('hPlace').textContent=LOC.name.charAt(0)+LOC.name.slice(1).toLowerCase();
+  $('hPlace').textContent=LOC.name.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
   $('hTemp').textContent=Math.round(C.temperature_2m)+'°';$('hCond').textContent=lab;$('hCode').textContent=ab;
   $('hFeels').textContent=`Feels like ${Math.round(C.apparent_temperature)}° · High ${Math.round(D.temperature_2m_max[di])}° · Low ${Math.round(D.temperature_2m_min[di])}°`;
   const rise=D.sunrise[di],set=D.sunset[di],up=now>rise&&now<set;
@@ -1407,7 +1493,7 @@ function renderHome(){
   $('hRainSub').textContent=`Today ${f(pop)}% chance · ${f(sum,1)} mm forecast`;
   const c=$('hRainChart');
   if(sm)drawNcOn(c);else if(c.getBoundingClientRect().width){const{w,h,ctx}=fit(c),n=12,bw=w/n;ctx.font=MONO(8);ctx.textBaseline='bottom';
-    for(let k=0;k<n;k++){const i=ni+k;if(i>=H.time.length)break;const pr=(H.precipitation_probability[i]||0)/100,bh=pr*(h-14);ctx.fillStyle=`rgba(157,140,255,${(.2+.7*pr).toFixed(2)})`;ctx.fillRect(k*bw+2,h-12-bh,bw-4,Math.max(1,bh));
+    for(let k=0;k<n;k++){const i=ni+k;if(i>=H.time.length)break;const pr=(H.precipitation_probability[i]||0)/100,bh=pr*(h-14);ctx.fillStyle=ta('--violet',(.2+.7*pr).toFixed(2));ctx.fillRect(k*bw+2,h-12-bh,bw-4,Math.max(1,bh));
       if(k%3===0){ctx.fillStyle=css('--dim');ctx.textAlign='left';ctx.fillText(k?hr(H.time[i]):'now',k*bw+2,h)}}}
   // wind
   const b=beaufort(C.wind_speed_10m);
@@ -1461,11 +1547,11 @@ function homeGfx(now,hs,fe,mxC){
   const H=wx.hourly,D=wx.daily,C=wx.current;
   // --- sun elevation through today
   let c=$('hDay');if(c.getBoundingClientRect().width){const{w,h,ctx}=fit(c),t0=D.time[di],t1=t0+86400,x=t=>(t-t0)/86400*w,base=h-16,amp=base-10,y=a=>base-Math.max(-8,a)/90*amp;
-    ctx.fillStyle='rgba(120,150,190,.07)';ctx.fillRect(0,0,x(D.sunrise[di]),base);ctx.fillRect(x(D.sunset[di]),0,w-x(D.sunset[di]),base);
+    ctx.fillStyle=css('--night');ctx.fillRect(0,0,x(D.sunrise[di]),base);ctx.fillRect(x(D.sunset[di]),0,w-x(D.sunset[di]),base);
     ctx.strokeStyle=css('--line');ctx.beginPath();ctx.moveTo(0,base);ctx.lineTo(w,base);ctx.stroke();
     ctx.font=MONO(8);ctx.fillStyle=css('--faint');ctx.textBaseline='bottom';
     for(let k=0;k<=8;k++){const xx=k*w/8;ctx.fillStyle=css('--faint');ctx.fillRect(xx,base,1,3);if(k%2===0&&k<8){ctx.textAlign=k?'center':'left';ctx.fillText(hr(t0+k*10800),k?xx:0,h)}}
-    ctx.beginPath();for(let t=t0;t<=t1;t+=900){const a=solarAlt(t),xx=x(t),yy=y(a);t===t0?ctx.moveTo(xx,yy):ctx.lineTo(xx,yy)}ctx.strokeStyle='rgba(240,174,72,.55)';ctx.lineWidth=1.3;ctx.stroke();
+    ctx.beginPath();for(let t=t0;t<=t1;t+=900){const a=solarAlt(t),xx=x(t),yy=y(a);t===t0?ctx.moveTo(xx,yy):ctx.lineTo(xx,yy)}ctx.strokeStyle=ta('--amber',.55);ctx.lineWidth=1.3;ctx.stroke();
     const an=solarAlt(now),xn=x(now),yn=y(an);ctx.strokeStyle=css('--faint');ctx.setLineDash([2,3]);ctx.beginPath();ctx.moveTo(xn,0);ctx.lineTo(xn,base);ctx.stroke();ctx.setLineDash([]);
     ctx.fillStyle=an>0?css('--amber'):css('--dim');ctx.beginPath();ctx.arc(xn,yn,an>0?4:3,0,Math.PI*2);ctx.fill();
     ctx.textBaseline='top';ctx.textAlign='right';ctx.fillStyle=css('--dim');ctx.fillText(`SUN ${an>=0?'+':''}${an.toFixed(0)}°`,w,0)}
@@ -1474,7 +1560,7 @@ function homeGfx(now,hs,fe,mxC){
     const mn=Math.min.apply(null,T)-1,mx=Math.max.apply(null,T)+1,top=12,bot=h-12,x=k=>k/(n-1)*w,y=v=>bot-(v-mn)/(mx-mn)*(bot-top);
     ctx.strokeStyle=css('--grid');for(let k=0;k<=2;k++){const yy=top+k*(bot-top)/2;ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(w,yy);ctx.stroke()}
     for(let k=0;k<n;k++)if(H.is_day[ni+k]===0){ctx.fillStyle=css('--night');ctx.fillRect(x(k)-w/(n-1)/2,top,w/(n-1)+.5,bot-top)}
-    const g=ctx.createLinearGradient(0,top,0,bot);g.addColorStop(0,'rgba(240,174,72,.28)');g.addColorStop(1,'rgba(240,174,72,0)');
+    const g=ctx.createLinearGradient(0,top,0,bot);g.addColorStop(0,ta('--amber',.28));g.addColorStop(1,ta('--amber',0));
     ctx.beginPath();ctx.moveTo(0,bot);T.forEach((v,k)=>ctx.lineTo(x(k),y(v)));ctx.lineTo(w,bot);ctx.closePath();ctx.fillStyle=g;ctx.fill();
     ctx.beginPath();T.forEach((v,k)=>k?ctx.lineTo(x(k),y(v)):ctx.moveTo(x(k),y(v)));ctx.strokeStyle=css('--amber');ctx.lineWidth=1.6;ctx.stroke();
     let im=0,iM=0;T.forEach((v,k)=>{if(v<T[im])im=k;if(v>T[iM])iM=k});
@@ -1485,7 +1571,7 @@ function homeGfx(now,hs,fe,mxC){
   // --- rain chance next 24 h (only when the minute-by-minute chart owns the lower half)
   c=$('hPop');const sm=RK?ncSummary():null;c.hidden=!sm;
   if(sm&&c.getBoundingClientRect().width){const{w,h,ctx}=fit(c),n=Math.min(24,H.time.length-ni),bw=w/n;ctx.font=MONO(7);
-    for(let k=0;k<n;k++){const pr=(H.precipitation_probability[ni+k]||0)/100,bh=Math.max(1,pr*(h-10));ctx.fillStyle=`rgba(157,140,255,${(.15+.7*pr).toFixed(2)})`;ctx.fillRect(k*bw+1,h-9-bh,bw-2,bh)}
+    for(let k=0;k<n;k++){const pr=(H.precipitation_probability[ni+k]||0)/100,bh=Math.max(1,pr*(h-10));ctx.fillStyle=ta('--violet',(.15+.7*pr).toFixed(2));ctx.fillRect(k*bw+1,h-9-bh,bw-2,bh)}
     ctx.fillStyle=css('--faint');ctx.textBaseline='bottom';ctx.textAlign='left';ctx.fillText('CHANCE · NEXT 24 H',0,h);ctx.textAlign='right';ctx.fillText(hr(H.time[ni+n-1]),w,h)}
   // --- tile glyphs
   const dir=C.wind_direction_10m;
@@ -1502,18 +1588,26 @@ function homeGfx(now,hs,fe,mxC){
 }
 
 /* ---------- display settings: theme + home layout ---------- */
-const UI=Object.assign({theme:qs.get('theme')||'dark',layout:qs.get('layout')||'std'},store.get('ui')||{});
+const UI=Object.assign({theme:qs.get('theme')||'dark',layout:qs.get('layout')||'std',accent:'default',style:'console',ts:'n'},store.get('ui')||{});
+const LIGHTS={light:1,warm:1};
+const THEME_BG={dark:'#070c13',light:'#e8edf1',warm:'#f2ece3',ocean:'#05141f',sunset:'#1c1120'};
+const ACCENTS={teal:['#4fd6c0','#0f8a76'],rose:['#f293b4','#c13e6c'],sage:['#a6d1a2','#4f7d4c'],lavender:['#b8a6ff','#6a52d6'],blue:['#6fb0ff','#1f64c6']};
 const effTheme=()=>{if(UI.theme!=='auto')return UI.theme;const now=Date.now()/1000;
   if(wx&&wx.daily){const D=wx.daily,i=D.time.findIndex((t,k)=>now>=t&&now<t+86400);if(i>=0)return now>=D.sunrise[i]&&now<D.sunset[i]?'light':'dark'}
   const h=LT(now).getUTCHours();return h>=6&&h<18?'light':'dark'};
 let THEME_NOW=null;
 function applyTheme(force){
   const t=effTheme();if(t===THEME_NOW&&!force)return;THEME_NOW=t;
-  if(t==='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;
+  const de=document.documentElement;
+  if(t==='dark')delete de.dataset.theme;else de.dataset.theme=t;
+  de.dataset.style=UI.style==='soft'?'soft':'console';SOFTF=UI.style==='soft';
+  if(UI.ts==='n')delete de.dataset.ts;else de.dataset.ts=UI.ts;TSF=UI.ts==='xl'?1.3:UI.ts==='l'?1.15:1;
+  const ac=ACCENTS[UI.accent];if(ac)de.style.setProperty('--cyan',ac[LIGHTS[t]?1:0]);else de.style.removeProperty('--cyan');
   Object.keys(CSSC).forEach(k=>delete CSSC[k]);
-  const mt=document.querySelector('meta[name="theme-color"]');if(mt)mt.content=t==='light'?'#e8edf1':'#070c13';
+  const mt=document.querySelector('meta[name="theme-color"]');if(mt)mt.content=THEME_BG[t]||'#070c13';
   BASEMAPS.forEach(m=>setBase(m,m===map));
   if(wx){render();renderTides();drawNc()}
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(wx){render();renderTides();drawNc()}});
 }
 function applyLayout(){
   const map2={std:'layStd',glance:'layGlance',coast:'layCoast',storm:'layStorm'};if(!map2[UI.layout])UI.layout='std';
@@ -1523,11 +1617,12 @@ function applyLayout(){
 function syncSheet(){
   $('optTheme').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===UI.theme)));
   $('optLayout').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===UI.layout)));
+  [['optAccent','accent'],['optStyle','style'],['optTs','ts']].forEach(([id,k])=>$(id).querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===UI[k]))));
 }
 $('gear').addEventListener('click',()=>{syncSheet();$('sheet').hidden=false});
 $('sheetClose').addEventListener('click',()=>{$('sheet').hidden=true});
 $('sheet').addEventListener('click',e=>{if(e.target===$('sheet'))$('sheet').hidden=true});
-$('optTheme').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;UI.theme=b.dataset.v;store.set('ui',UI);syncSheet();applyTheme(true)});
+[['optTheme','theme'],['optAccent','accent'],['optStyle','style'],['optTs','ts']].forEach(([id,k])=>$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;UI[k]=b.dataset.v;store.set('ui',UI);syncSheet();applyTheme(true)}));
 $('optLayout').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;UI.layout=b.dataset.v;store.set('ui',UI);syncSheet();applyLayout();if(page!==0)go(0)});
 applyTheme(true);applyLayout();
 setInterval(()=>applyTheme(false),60000);
