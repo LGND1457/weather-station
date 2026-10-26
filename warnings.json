@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1792995816,
+ "fetched": 1793021128,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -9,19 +9,19 @@
    "date": "Sun, 25 Oct 2026 22:32:50 GMT"
   },
   {
-   "title": "26/11:37 EST Moderate Flood Warning for the Mary River",
+   "title": "26/17:35 EST Moderate Flood Warning for the Mary River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
-   "date": "Mon, 26 Oct 2026 01:37:38 GMT"
+   "date": "Mon, 26 Oct 2026 07:35:55 GMT"
   },
   {
-   "title": "26/15:27 EST Moderate Flood Warning for Laidley Creek and Minor Flood Warning for Lockyer Creek",
+   "title": "26/19:48 EST Minor Flood Warning for Laidley Creek and Lockyer Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lockyer-and-laidley-creeks.shtml",
-   "date": "Mon, 26 Oct 2026 05:27:46 GMT"
+   "date": "Mon, 26 Oct 2026 09:48:42 GMT"
   },
   {
-   "title": "26/12:43 EST Major Flood Warning for Warrill Creek  and Moderate Flood Warning for the Bremer River",
+   "title": "26/23:17 EST Major Flood Warning for the Bremer River and Warrill Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Mon, 26 Oct 2026 02:43:31 GMT"
+   "date": "Mon, 26 Oct 2026 13:17:43 GMT"
   },
   {
    "title": "26/15:11 EST Minor Flood Warning for the Logan River and Flood Warning for Teviot Brook",
@@ -29,14 +29,14 @@
    "date": "Mon, 26 Oct 2026 05:11:02 GMT"
   },
   {
-   "title": "26/09:15 EST Major Flood Warning for the Upper Condamine River",
+   "title": "26/23:21 EST Major Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Sun, 25 Oct 2026 23:15:39 GMT"
+   "date": "Mon, 26 Oct 2026 13:21:47 GMT"
   },
   {
-   "title": "26/11:14 EST Initial Moderate Flood Warning for the Macintyre Brook and Initial Minor Flood Warning Macintyre River, Moderate Flood Warning for the Weir River",
+   "title": "26/21:43 EST Moderate Flood Warning for the Weir River and Macintyre Brook, Minor Flood Warning for the Macintyre River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/border-rivers.shtml",
-   "date": "Mon, 26 Oct 2026 01:14:38 GMT"
+   "date": "Mon, 26 Oct 2026 11:43:46 GMT"
   },
   {
    "title": "26/11:38 EST Minor Flood Warning for the Moonie River",
@@ -69,9 +69,14 @@
    "date": "Mon, 26 Oct 2026 04:05:58 GMT"
   },
   {
-   "title": "26/16:05 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Brisbane City Council Area.",
+   "title": "26/23:12 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Highlands and Coalfields, Capricornia, Wide Bay and Burnett, Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Mon, 26 Oct 2026 13:12:29 GMT"
+  },
+  {
+   "title": "26/23:17 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of South Burnett, Toowoomba and Western Downs Council Areas.",
    "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Mon, 26 Oct 2026 06:05:17 GMT"
+   "date": "Mon, 26 Oct 2026 13:17:12 GMT"
   }
  ]
 }
