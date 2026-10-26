@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793042948,
+ "fetched": 1793056597,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -9,9 +9,9 @@
    "date": "Sun, 25 Oct 2026 22:32:50 GMT"
   },
   {
-   "title": "26/17:35 EST Moderate Flood Warning for the Mary River",
+   "title": "27/09:06 EST Moderate Flood Warning for the Mary River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
-   "date": "Mon, 26 Oct 2026 07:35:55 GMT"
+   "date": "Mon, 26 Oct 2026 23:06:47 GMT"
   },
   {
    "title": "27/03:50 EST Final Flood Warning for the Lockyer and Laidley Creeks",
@@ -24,9 +24,9 @@
    "date": "Mon, 26 Oct 2026 19:24:51 GMT"
   },
   {
-   "title": "26/15:11 EST Minor Flood Warning for the Logan River and Flood Warning for Teviot Brook",
+   "title": "27/08:14 EST Minor Flood Warning for the Logan and Albert Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
-   "date": "Mon, 26 Oct 2026 05:11:02 GMT"
+   "date": "Mon, 26 Oct 2026 22:14:43 GMT"
   },
   {
    "title": "26/23:21 EST Major Flood Warning for the Upper Condamine River",
@@ -67,11 +67,6 @@
    "title": "26/14:05 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Mon, 26 Oct 2026 04:05:58 GMT"
-  },
-  {
-   "title": "27/03:07 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Wide Bay and Burnett, Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Mon, 26 Oct 2026 17:07:19 GMT"
   }
  ]
 }
