@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1792977387,
+ "fetched": 1792995816,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -9,24 +9,24 @@
    "date": "Sun, 25 Oct 2026 22:32:50 GMT"
   },
   {
-   "title": "26/04:56 EST Moderate Flood Warning for the Mary River",
+   "title": "26/11:37 EST Moderate Flood Warning for the Mary River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
-   "date": "Sun, 25 Oct 2026 18:56:50 GMT"
+   "date": "Mon, 26 Oct 2026 01:37:38 GMT"
   },
   {
-   "title": "26/10:01 EST Initial Major Flood Warning for the Laidley Creek and Minor Flood Warning for the Lockyer Creek",
+   "title": "26/15:27 EST Moderate Flood Warning for Laidley Creek and Minor Flood Warning for Lockyer Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lockyer-and-laidley-creeks.shtml",
-   "date": "Mon, 26 Oct 2026 00:01:44 GMT"
+   "date": "Mon, 26 Oct 2026 05:27:46 GMT"
   },
   {
-   "title": "26/09:19 EST Major Flood Warning for Warrill Creek  and Minor flooding warning for the Bremer River",
+   "title": "26/12:43 EST Major Flood Warning for Warrill Creek  and Moderate Flood Warning for the Bremer River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Sun, 25 Oct 2026 23:19:39 GMT"
+   "date": "Mon, 26 Oct 2026 02:43:31 GMT"
   },
   {
-   "title": "26/07:01 EST Initial Flood Warning for the Teviot Brook",
+   "title": "26/15:11 EST Minor Flood Warning for the Logan River and Flood Warning for Teviot Brook",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
-   "date": "Sun, 25 Oct 2026 21:01:52 GMT"
+   "date": "Mon, 26 Oct 2026 05:11:02 GMT"
   },
   {
    "title": "26/09:15 EST Major Flood Warning for the Upper Condamine River",
@@ -39,9 +39,9 @@
    "date": "Mon, 26 Oct 2026 01:14:38 GMT"
   },
   {
-   "title": "25/09:53 EST Minor Flood Warning for the Moonie River",
+   "title": "26/11:38 EST Minor Flood Warning for the Moonie River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/moonie-river.shtml",
-   "date": "Sat, 24 Oct 2026 23:53:42 GMT"
+   "date": "Mon, 26 Oct 2026 01:38:00 GMT"
   },
   {
    "title": "26/09:52 EST Final Flood Warning for the Wallam and Mungallala Creeks",
@@ -54,14 +54,24 @@
    "date": "Mon, 26 Oct 2026 00:42:47 GMT"
   },
   {
-   "title": "25/12:38 EST Minor Flood Warning for the Bulloo River",
+   "title": "26/11:37 EST Minor Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Sun, 25 Oct 2026 02:38:50 GMT"
+   "date": "Mon, 26 Oct 2026 01:37:07 GMT"
   },
   {
-   "title": "25/11:23 EST Minor Flood Warning for the Barcoo River",
+   "title": "26/12:52 EST Minor Flood Warning for the Barcoo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Sun, 25 Oct 2026 01:23:00 GMT"
+   "date": "Mon, 26 Oct 2026 02:52:47 GMT"
+  },
+  {
+   "title": "26/14:05 EST Heatwave Warning (QLD)",
+   "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
+   "date": "Mon, 26 Oct 2026 04:05:58 GMT"
+  },
+  {
+   "title": "26/16:05 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Brisbane City Council Area.",
+   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
+   "date": "Mon, 26 Oct 2026 06:05:17 GMT"
   }
  ]
 }
