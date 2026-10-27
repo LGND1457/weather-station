@@ -1,17 +1,12 @@
 {
  "ok": true,
- "fetched": 1793127517,
+ "fetched": 1793141645,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
    "title": "27/15:22 EST Moderate Flood Warning for the Mary River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
    "date": "Tue, 27 Oct 2026 05:22:40 GMT"
-  },
-  {
-   "title": "27/03:50 EST Final Flood Warning for the Lockyer and Laidley Creeks",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/lockyer-and-laidley-creeks.shtml",
-   "date": "Mon, 26 Oct 2026 17:50:55 GMT"
   },
   {
    "title": "27/17:48 EST Minor Flood Warning for the Warrill Creek and Final Flood Warning for the Bremer River",
