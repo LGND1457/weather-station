@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793087332,
+ "fetched": 1793108360,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -14,9 +14,9 @@
    "date": "Mon, 26 Oct 2026 17:50:55 GMT"
   },
   {
-   "title": "27/09:37 EST Moderate Flood Warning for the Warrill Creek and Minor Flood Warning for the Bremer River",
+   "title": "27/17:48 EST Minor Flood Warning for the Warrill Creek and Final Flood Warning for the Bremer River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Mon, 26 Oct 2026 23:37:36 GMT"
+   "date": "Tue, 27 Oct 2026 07:48:44 GMT"
   },
   {
    "title": "27/08:14 EST Minor Flood Warning for the Logan and Albert Rivers",
@@ -32,6 +32,11 @@
    "title": "27/14:31 EST Initial Minor Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
    "date": "Tue, 27 Oct 2026 04:31:47 GMT"
+  },
+  {
+   "title": "27/21:56 EST Initial Minor Flood Warning for Bungil Creek",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
+   "date": "Tue, 27 Oct 2026 11:56:57 GMT"
   },
   {
    "title": "27/11:02 EST Moderate Flood Warning for the Weir River and Minor Flood Warning for the Macintyre River",
@@ -69,14 +74,9 @@
    "date": "Tue, 27 Oct 2026 04:53:20 GMT"
   },
   {
-   "title": "27/17:35 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Wide Bay and Burnett and Southeast Coast Forecast Districts.",
+   "title": "27/20:08 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Wide Bay and Burnett Forecast District.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Tue, 27 Oct 2026 07:35:44 GMT"
-  },
-  {
-   "title": "27/17:21 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Gympie, Somerset, Sunshine Coast and Moreton Bay Council Areas.",
-   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Tue, 27 Oct 2026 07:21:55 GMT"
+   "date": "Tue, 27 Oct 2026 10:08:26 GMT"
   }
  ]
 }
