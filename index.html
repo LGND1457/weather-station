@@ -538,6 +538,9 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 <div id="night" aria-hidden="true"></div>
 <div id="sheet" hidden><div class="sheet-card" role="dialog" aria-modal="true" aria-label="Display settings">
   <div class="lab">Display <button class="chip" id="sheetClose" type="button">DONE</button></div>
+  <div class="opt-h">Profile</div>
+  <div class="seg" id="optProfile"><button type="button" data-v="jarryd">Jarryd</button><button type="button" data-v="keira">Keira</button></div>
+  <div class="hsub">Each profile keeps its own theme, style, text size, motion and layout. Changes below save to the profile shown.</div>
   <div class="opt-h">Theme</div>
   <div class="seg wrap" id="optTheme">
     <button type="button" data-v="dark"><span class="sw sw2" style="--a:#070c13;--b:#5fd0e6"></span>Dark</button>
@@ -793,13 +796,13 @@ header{grid-template-columns:auto minmax(0,1fr) auto auto}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 /* ---------- config ---------- */
-const KEYS=['lat','lon','name','rk','ck','dim','dimlvl','idle'];
+const KEYS=['lat','lon','name','rk','ck','dim','dimlvl','idle','profile'];
 const qs=(()=>{const u=new URLSearchParams(location.search);let saved=null;try{saved=JSON.parse(localStorage.getItem('wxs_link')||'null')}catch(e){}
   if(u.get('lat')&&u.get('lon')){const o={};KEYS.forEach(k=>{if(u.get(k)!=null)o[k]=u.get(k)});try{localStorage.setItem('wxs_link',JSON.stringify(o))}catch(e){}return u}
   if(saved&&saved.lat){const m=new URLSearchParams();Object.keys(saved).forEach(k=>m.set(k,saved[k]));return m}
   return u})();
 const CONFIGURED=!!(qs.get('lat')&&qs.get('lon'));
-const BUILD='27 Oct c';
+const BUILD='27 Oct d';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -1637,7 +1640,15 @@ function homeGfx(now,hs,fe,mxC){
 }
 
 /* ---------- display settings: theme + home layout ---------- */
-const UI=Object.assign({theme:qs.get('theme')||'dark',layout:qs.get('layout')||'std',accent:'default',style:'console',ts:'n',motion:'full'},store.get('ui')||{});
+/* profiles: each person keeps their own look and layout; the link's &profile= picks one for a device */
+const PROFILES={
+  jarryd:{name:'Jarryd',def:{theme:'dark',style:'console',ts:'n',motion:'full',layout:'std',accent:'default'}},
+  keira:{name:'Keira',def:{theme:'warm',style:'soft',ts:'l',motion:'subtle',layout:'std',accent:'default'}}};
+const PROF=(()=>{const q=(qs.get('profile')||'').toLowerCase();if(PROFILES[q]){store.set('profile',q);return q}const st=store.get('profile');return PROFILES[st]?st:'jarryd'})();
+const UI=Object.assign({theme:'dark',layout:'std',accent:'default',style:'console',ts:'n',motion:'full'},PROFILES[PROF].def,
+  qs.get('theme')?{theme:qs.get('theme')}:{},qs.get('layout')?{layout:qs.get('layout')}:{},
+  store.get('ui_'+PROF)||(PROF==='jarryd'?store.get('ui'):null)||{});
+const saveUI=()=>store.set('ui_'+PROF,UI);
 const LIGHTS={light:1,warm:1};
 const THEME_BG={dark:'#070c13',light:'#e8edf1',warm:'#f2ece3',ocean:'#05141f',sunset:'#1c1120'};
 const ACCENTS={teal:['#4fd6c0','#0f8a76'],rose:['#f293b4','#c13e6c'],sage:['#a6d1a2','#4f7d4c'],lavender:['#b8a6ff','#6a52d6'],blue:['#6fb0ff','#1f64c6']};
@@ -1709,6 +1720,7 @@ function applyLayout(){
   setTimeout(()=>{renderHome();if(typeof animatePage==='function'&&!firstShow)animatePage(0)},60);
 }
 function syncSheet(){
+  $('optProfile').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===PROF)));
   $('optTheme').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===UI.theme)));
   $('optLayout').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===UI.layout)));
   [['optAccent','accent'],['optStyle','style'],['optTs','ts'],['optMotion','motion']].forEach(([id,k])=>$(id).querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===UI[k]))));
@@ -1716,8 +1728,11 @@ function syncSheet(){
 $('gear').addEventListener('click',()=>{syncSheet();$('sheet').hidden=false});
 $('sheetClose').addEventListener('click',()=>{$('sheet').hidden=true});
 $('sheet').addEventListener('click',e=>{if(e.target===$('sheet'))$('sheet').hidden=true});
-[['optTheme','theme'],['optAccent','accent'],['optStyle','style'],['optTs','ts'],['optMotion','motion']].forEach(([id,k])=>$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;UI[k]=b.dataset.v;store.set('ui',UI);syncSheet();applyTheme(true)}));
-$('optLayout').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;UI.layout=b.dataset.v;store.set('ui',UI);syncSheet();applyLayout();if(page!==0)go(0)});
+[['optTheme','theme'],['optAccent','accent'],['optStyle','style'],['optTs','ts'],['optMotion','motion']].forEach(([id,k])=>$(id).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;UI[k]=b.dataset.v;saveUI();syncSheet();applyTheme(true)}));
+$('optProfile').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.dataset.v===PROF)return;store.set('profile',b.dataset.v);
+  try{const l=JSON.parse(localStorage.getItem('wxs_link')||'null');if(l){l.profile=b.dataset.v;localStorage.setItem('wxs_link',JSON.stringify(l))}}catch(_){}
+  const u=new URL(location.href);if(u.searchParams.get('profile')){u.searchParams.set('profile',b.dataset.v);location.replace(u.toString())}else location.reload()});
+$('optLayout').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;UI.layout=b.dataset.v;saveUI();syncSheet();applyLayout();if(page!==0)go(0)});
 applyTheme(true);applyLayout();
 setInterval(()=>applyTheme(false),60000);
 
