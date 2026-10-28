@@ -1,27 +1,27 @@
 {
  "ok": true,
- "fetched": 1793141645,
+ "fetched": 1793152801,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "27/15:22 EST Moderate Flood Warning for the Mary River",
+   "title": "28/09:45 EST Final Flood Warning for the Mary River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
-   "date": "Tue, 27 Oct 2026 05:22:40 GMT"
+   "date": "Tue, 27 Oct 2026 23:45:47 GMT"
   },
   {
-   "title": "27/17:48 EST Minor Flood Warning for the Warrill Creek and Final Flood Warning for the Bremer River",
+   "title": "28/09:48 EST Final Flood Warning for the Warrill Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Tue, 27 Oct 2026 07:48:44 GMT"
+   "date": "Tue, 27 Oct 2026 23:48:47 GMT"
   },
   {
-   "title": "27/08:14 EST Minor Flood Warning for the Logan and Albert Rivers",
+   "title": "28/09:29 EST Final Flood Warning for the Logan River and Teviot Brook",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
-   "date": "Mon, 26 Oct 2026 22:14:43 GMT"
+   "date": "Tue, 27 Oct 2026 23:29:46 GMT"
   },
   {
-   "title": "27/16:42 EST Major Flood Warning for the Upper Condamine River",
+   "title": "28/10:59 EST Moderate Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Tue, 27 Oct 2026 06:42:35 GMT"
+   "date": "Wed, 28 Oct 2026 00:59:41 GMT"
   },
   {
    "title": "27/14:31 EST Initial Minor Flood Warning for the Lower Condamine River",
@@ -29,14 +29,14 @@
    "date": "Tue, 27 Oct 2026 04:31:47 GMT"
   },
   {
-   "title": "27/21:56 EST Initial Minor Flood Warning for Bungil Creek",
+   "title": "28/09:32 EST Minor Flood Warning for Bungil Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Tue, 27 Oct 2026 11:56:57 GMT"
+   "date": "Tue, 27 Oct 2026 23:32:48 GMT"
   },
   {
-   "title": "27/11:02 EST Moderate Flood Warning for the Weir River and Minor Flood Warning for the Macintyre River",
+   "title": "28/10:17 EST Minor Flood Warning for the Macintyre River and Moderate Flood Warning for the Weir River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/border-rivers.shtml",
-   "date": "Tue, 27 Oct 2026 01:02:48 GMT"
+   "date": "Wed, 28 Oct 2026 00:17:37 GMT"
   },
   {
    "title": "27/10:12 EST Minor Flood Warning for the Moonie River",
@@ -49,9 +49,9 @@
    "date": "Sun, 25 Oct 2026 23:52:44 GMT"
   },
   {
-   "title": "27/11:01 EST Moderate Flood Warning for the Warrego River (QLD)",
+   "title": "28/11:01 EST Moderate Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Tue, 27 Oct 2026 01:01:49 GMT"
+   "date": "Wed, 28 Oct 2026 01:01:44 GMT"
   },
   {
    "title": "27/10:55 EST Minor Flood Warning for the Bulloo River",
