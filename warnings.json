@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1793152801,
+ "fetched": 1793175415,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "28/09:45 EST Final Flood Warning for the Mary River",
+   "title": "28/15:14 EST Initial Minor Flood Warning for the Mary River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
-   "date": "Tue, 27 Oct 2026 23:45:47 GMT"
+   "date": "Wed, 28 Oct 2026 05:14:44 GMT"
   },
   {
    "title": "28/09:48 EST Final Flood Warning for the Warrill Creek",
@@ -19,14 +19,14 @@
    "date": "Tue, 27 Oct 2026 23:29:46 GMT"
   },
   {
-   "title": "28/10:59 EST Moderate Flood Warning for the Upper Condamine River",
+   "title": "28/16:56 EST Major Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Wed, 28 Oct 2026 00:59:41 GMT"
+   "date": "Wed, 28 Oct 2026 06:56:41 GMT"
   },
   {
-   "title": "27/14:31 EST Initial Minor Flood Warning for the Lower Condamine River",
+   "title": "28/15:00 EST Moderate Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
-   "date": "Tue, 27 Oct 2026 04:31:47 GMT"
+   "date": "Wed, 28 Oct 2026 05:00:42 GMT"
   },
   {
    "title": "28/09:32 EST Minor Flood Warning for Bungil Creek",
@@ -39,9 +39,9 @@
    "date": "Wed, 28 Oct 2026 00:17:37 GMT"
   },
   {
-   "title": "27/10:12 EST Minor Flood Warning for the Moonie River",
+   "title": "28/12:58 EST Minor Flood Warning for the Moonie River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/moonie-river.shtml",
-   "date": "Tue, 27 Oct 2026 00:12:14 GMT"
+   "date": "Wed, 28 Oct 2026 02:58:40 GMT"
   },
   {
    "title": "26/09:52 EST Final Flood Warning for the Wallam and Mungallala Creeks",
@@ -54,19 +54,24 @@
    "date": "Wed, 28 Oct 2026 01:01:44 GMT"
   },
   {
-   "title": "27/10:55 EST Minor Flood Warning for the Bulloo River",
+   "title": "28/12:35 EST Minor Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Tue, 27 Oct 2026 00:55:51 GMT"
+   "date": "Wed, 28 Oct 2026 02:35:38 GMT"
   },
   {
-   "title": "27/13:19 EST Minor Flood Warning for the Barcoo River",
+   "title": "28/14:38 EST Minor Flood Warning for the Barcoo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Tue, 27 Oct 2026 03:19:50 GMT"
+   "date": "Wed, 28 Oct 2026 04:38:54 GMT"
   },
   {
-   "title": "27/14:53 EST Heatwave Warning (QLD)",
+   "title": "28/12:29 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Tue, 27 Oct 2026 04:53:20 GMT"
+   "date": "Wed, 28 Oct 2026 02:29:13 GMT"
+  },
+  {
+   "title": "28/18:03 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Coast and Whitsundays, Central Highlands and Coalfields, Capricornia and Wide Bay and Burnett Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Wed, 28 Oct 2026 08:03:43 GMT"
   }
  ]
 }
