@@ -802,7 +802,7 @@ const qs=(()=>{const u=new URLSearchParams(location.search);let saved=null;try{s
   if(saved&&saved.lat){const m=new URLSearchParams();Object.keys(saved).forEach(k=>m.set(k,saved[k]));return m}
   return u})();
 const CONFIGURED=!!(qs.get('lat')&&qs.get('lon'));
-const BUILD='28 Oct';
+const BUILD='28 Oct b';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -1843,7 +1843,12 @@ function renderLayout(){
 
 /* ---------- idle blackout (night dimming removed: Fully Kiosk handles brightness) ---------- */
 let wakeUntil=0,lastTouch=Date.now();
-const IDLE=qs.get('idle')==='off'?0:(parseFloat(qs.get('idle'))||5);   // minutes without a touch before the screen goes black
+const IN_FULLY=!!window.fully||/fully/i.test(navigator.userAgent);
+// minutes without a touch before the board goes black; off by default inside Fully Kiosk, which switches the real screen off and on by motion
+const IDLE=qs.get('idle')==='off'?0:(parseFloat(qs.get('idle'))||(IN_FULLY?0:5));
+const wakeUp=()=>{lastTouch=Date.now();if(typeof nightCheck==='function')nightCheck()};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)wakeUp()});
+addEventListener('focus',wakeUp);addEventListener('pageshow',wakeUp);
 const asleep=()=>$('night').classList.contains('sleep');
 function nightCheck(){
   const n=$('night');
