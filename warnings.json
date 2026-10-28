@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793175415,
+ "fetched": 1793200360,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -69,9 +69,9 @@
    "date": "Wed, 28 Oct 2026 02:29:13 GMT"
   },
   {
-   "title": "28/18:03 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Coast and Whitsundays, Central Highlands and Coalfields, Capricornia and Wide Bay and Burnett Forecast Districts.",
+   "title": "28/22:14 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Central Coast and Whitsundays, Central Highlands and Coalfields and Capricornia Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Wed, 28 Oct 2026 08:03:43 GMT"
+   "date": "Wed, 28 Oct 2026 12:14:57 GMT"
   }
  ]
 }
