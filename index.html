@@ -802,7 +802,7 @@ const qs=(()=>{const u=new URLSearchParams(location.search);let saved=null;try{s
   if(saved&&saved.lat){const m=new URLSearchParams();Object.keys(saved).forEach(k=>m.set(k,saved[k]));return m}
   return u})();
 const CONFIGURED=!!(qs.get('lat')&&qs.get('lon'));
-const BUILD='27 Oct d';
+const BUILD='28 Oct';
 const RK=(qs.get('rk')||'').replace(/[^a-zA-Z0-9]/g,'');
 const CK=(qs.get('ck')||'').replace(/[^a-zA-Z0-9_]/g,'');
 const LOC={lat:parseFloat(qs.get('lat'))||-21.1412, lon:parseFloat(qs.get('lon'))||149.1860, name:(qs.get('name')||'Mackay').toUpperCase()};
@@ -1841,20 +1841,14 @@ function renderLayout(){
   try{if(UI.layout==='glance')renderGlance();else if(UI.layout==='coast')renderCoast();else if(UI.layout==='storm')renderStorm()}catch(e){diag.err='layout: '+(e&&e.message)}
 }
 
-/* ---------- night dimming: &dim=21-6 (default), &dim=off, &dimlvl=0.85 ---------- */
-const DIM=(qs.get('dim')||'21-6').toLowerCase(),DIMLVL=Math.min(.97,Math.max(.3,parseFloat(qs.get('dimlvl'))||.85));
-document.documentElement.style.setProperty('--dimlvl',DIMLVL);
+/* ---------- idle blackout (night dimming removed: Fully Kiosk handles brightness) ---------- */
 let wakeUntil=0,lastTouch=Date.now();
 const IDLE=qs.get('idle')==='off'?0:(parseFloat(qs.get('idle'))||5);   // minutes without a touch before the screen goes black
 const asleep=()=>$('night').classList.contains('sleep');
 function nightCheck(){
   const n=$('night');
   n.classList.toggle('sleep',!!IDLE&&Date.now()-lastTouch>IDLE*60000);
-  if(DIM==='off'){n.classList.remove('on');return}
-  const m=DIM.match(/^(\d{1,2})-(\d{1,2})$/);if(!m)return;
-  const a=+m[1],b=+m[2],h=LT(Date.now()/1000).getUTCHours();
-  let dark=a>b?(h>=a||h<b):(h>=a&&h<b);if(Date.now()<wakeUntil)dark=false;
-  n.classList.toggle('on',dark);
+  n.classList.remove('on');
 }
 $('night').addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();lastTouch=Date.now();wakeUntil=Date.now()+120000;nightCheck();if(wx)render()});
 document.addEventListener('pointerdown',()=>{lastTouch=Date.now()},true);
