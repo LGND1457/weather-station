@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793253327,
+ "fetched": 1793314640,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -29,9 +29,9 @@
    "date": "Thu, 29 Oct 2026 05:13:56 GMT"
   },
   {
-   "title": "29/12:13 EST Minor Flood Warning for the Moonie River",
+   "title": "30/08:50 EST Minor Flood Warning for the Moonie River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/moonie-river.shtml",
-   "date": "Thu, 29 Oct 2026 02:13:08 GMT"
+   "date": "Thu, 29 Oct 2026 22:50:43 GMT"
   },
   {
    "title": "29/10:43 EST Moderate Flood Warning for the Warrego River (QLD)",
