@@ -1,22 +1,17 @@
 {
  "ok": true,
- "fetched": 1793314640,
+ "fetched": 1793327256,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "29/08:47 EST Final Flood Warning for the Mary River",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/mary-river.shtml",
-   "date": "Wed, 28 Oct 2026 22:47:46 GMT"
-  },
-  {
-   "title": "29/11:25 EST Moderate Flood Warning for the Upper Condamine River",
+   "title": "30/11:03 EST Moderate Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Thu, 29 Oct 2026 01:25:02 GMT"
+   "date": "Fri, 30 Oct 2026 01:03:47 GMT"
   },
   {
-   "title": "29/11:43 EST Major Flood Warning for the Lower Condamine River",
+   "title": "30/11:47 EST Major Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
-   "date": "Thu, 29 Oct 2026 01:43:29 GMT"
+   "date": "Fri, 30 Oct 2026 01:47:36 GMT"
   },
   {
    "title": "29/08:57 EST Final Flood Warning for Bungil Creek",
@@ -24,9 +19,9 @@
    "date": "Wed, 28 Oct 2026 22:57:47 GMT"
   },
   {
-   "title": "29/15:13 EST Moderate Flood Warning for the Macintyre and Weir Rivers",
+   "title": "30/11:31 EST Minor Flood Warning for the Weir River and Final Flood Warning for the Macintyre River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/border-rivers.shtml",
-   "date": "Thu, 29 Oct 2026 05:13:56 GMT"
+   "date": "Fri, 30 Oct 2026 01:31:51 GMT"
   },
   {
    "title": "30/08:50 EST Minor Flood Warning for the Moonie River",
@@ -34,9 +29,14 @@
    "date": "Thu, 29 Oct 2026 22:50:43 GMT"
   },
   {
-   "title": "29/10:43 EST Moderate Flood Warning for the Warrego River (QLD)",
+   "title": "30/10:45 EST Moderate Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Thu, 29 Oct 2026 00:43:47 GMT"
+   "date": "Fri, 30 Oct 2026 00:45:42 GMT"
+  },
+  {
+   "title": "30/10:29 EST Initial Minor Flood Warning for the Paroo River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/paroo-river.shtml",
+   "date": "Fri, 30 Oct 2026 00:29:40 GMT"
   },
   {
    "title": "29/12:48 EST Minor Flood Warning for the Bulloo River",
