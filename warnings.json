@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793374233,
+ "fetched": 1793390808,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -39,9 +39,9 @@
    "date": "Fri, 30 Oct 2026 00:29:40 GMT"
   },
   {
-   "title": "30/12:44 EST Moderate Flood Warning for the Bulloo River",
+   "title": "31/05:37 EST Moderate Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Fri, 30 Oct 2026 02:44:42 GMT"
+   "date": "Fri, 30 Oct 2026 19:37:44 GMT"
   },
   {
    "title": "30/14:47 EST Minor Flood Warning for the Barcoo River",
@@ -52,11 +52,6 @@
    "title": "30/14:27 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Fri, 30 Oct 2026 04:27:03 GMT"
-  },
-  {
-   "title": "31/00:16 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Northern Goldfields and Upper Flinders, Herbert and Lower Burdekin, Central Coast and Whitsundays, Central Highlands and Coalfields and Central West Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Fri, 30 Oct 2026 14:16:41 GMT"
   }
  ]
 }
