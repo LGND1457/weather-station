@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793459319,
+ "fetched": 1793474138,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -52,11 +52,6 @@
    "title": "31/13:46 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Sat, 31 Oct 2026 03:46:27 GMT"
-  },
-  {
-   "title": "31/22:16 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Maranoa and Warrego Forecast District.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sat, 31 Oct 2026 12:16:54 GMT"
   }
  ]
 }
