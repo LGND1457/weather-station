@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793414763,
+ "fetched": 1793437013,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -44,14 +44,19 @@
    "date": "Sat, 31 Oct 2026 01:04:42 GMT"
   },
   {
-   "title": "30/14:47 EST Minor Flood Warning for the Barcoo River",
+   "title": "31/12:48 EST Moderate Flood Warning for the Barcoo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Fri, 30 Oct 2026 04:47:43 GMT"
+   "date": "Sat, 31 Oct 2026 02:48:57 GMT"
   },
   {
-   "title": "30/14:27 EST Heatwave Warning (QLD)",
+   "title": "31/13:46 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Fri, 30 Oct 2026 04:27:03 GMT"
+   "date": "Sat, 31 Oct 2026 03:46:27 GMT"
+  },
+  {
+   "title": "31/18:40 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Maranoa and Warrego and Darling Downs and Granite Belt Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Sat, 31 Oct 2026 08:40:48 GMT"
   }
  ]
 }
