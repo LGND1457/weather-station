@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793474138,
+ "fetched": 1793496368,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -24,14 +24,14 @@
    "date": "Sat, 31 Oct 2026 00:26:52 GMT"
   },
   {
-   "title": "31/11:31 EST Minor Flood Warning for the Moonie River",
+   "title": "01/09:47 EST Minor Flood Warning for the Moonie River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/moonie-river.shtml",
-   "date": "Sat, 31 Oct 2026 01:31:49 GMT"
+   "date": "Sat, 31 Oct 2026 23:47:34 GMT"
   },
   {
-   "title": "31/10:54 EST Moderate Flood Warning for the Warrego River (QLD)",
+   "title": "01/10:36 EST Moderate Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Sat, 31 Oct 2026 00:54:57 GMT"
+   "date": "Sun, 01 Nov 2026 00:36:40 GMT"
   },
   {
    "title": "31/11:35 EST Minor Flood Warning for the Paroo River (QLD)",
@@ -39,9 +39,9 @@
    "date": "Sat, 31 Oct 2026 01:35:49 GMT"
   },
   {
-   "title": "31/11:04 EST Moderate Flood Warning for the Bulloo River",
+   "title": "01/10:44 EST Moderate Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Sat, 31 Oct 2026 01:04:42 GMT"
+   "date": "Sun, 01 Nov 2026 00:44:41 GMT"
   },
   {
    "title": "31/12:48 EST Moderate Flood Warning for the Barcoo River",
