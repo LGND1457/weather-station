@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793519547,
+ "fetched": 1793544155,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -49,14 +49,9 @@
    "date": "Sun, 01 Nov 2026 04:14:57 GMT"
   },
   {
-   "title": "01/17:36 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Highlands and Coalfields, Wide Bay and Burnett, Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
+   "title": "01/21:47 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Wide Bay and Burnett Forecast District.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sun, 01 Nov 2026 07:36:58 GMT"
-  },
-  {
-   "title": "01/17:38 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Gympie, Somerset, Southern Downs, Western Downs, South Burnett and Toowoomba Council Areas.",
-   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Sun, 01 Nov 2026 07:38:49 GMT"
+   "date": "Sun, 01 Nov 2026 11:47:19 GMT"
   }
  ]
 }
