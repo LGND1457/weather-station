@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1793611356,
+ "fetched": 1793648394,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "02/19:14 EST Marine Wind Warning Summary for Queensland",
+   "title": "03/03:00 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Mon, 02 Nov 2026 09:14:15 GMT"
+   "date": "Mon, 02 Nov 2026 17:00:12 GMT"
   },
   {
    "title": "31/11:27 EST Final Flood Warning for the Upper Condamine River",
@@ -59,14 +59,9 @@
    "date": "Mon, 02 Nov 2026 03:17:27 GMT"
   },
   {
-   "title": "02/18:59 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Wide Bay and Burnett, Darling Downs and Granite Belt, Southeast Coast and Central Highlands and Coalfields Forecast Districts.",
+   "title": "03/05:16 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Highlands and Coalfields, Wide Bay and Burnett, Maranoa and Warrego and Darling Downs and Granite Belt Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Mon, 02 Nov 2026 08:59:33 GMT"
-  },
-  {
-   "title": "02/19:00 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Scenic Rim and Gold Coast Council Areas.",
-   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Mon, 02 Nov 2026 09:00:33 GMT"
+   "date": "Mon, 02 Nov 2026 19:16:18 GMT"
   }
  ]
 }
