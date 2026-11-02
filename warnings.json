@@ -1,17 +1,27 @@
 {
  "ok": true,
- "fetched": 1793585061,
+ "fetched": 1793611356,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
+  {
+   "title": "02/19:14 EST Marine Wind Warning Summary for Queensland",
+   "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
+   "date": "Mon, 02 Nov 2026 09:14:15 GMT"
+  },
   {
    "title": "31/11:27 EST Final Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
    "date": "Sat, 31 Oct 2026 01:27:47 GMT"
   },
   {
-   "title": "01/11:41 EST Moderate Flood Warning for the Lower Condamine River",
+   "title": "02/12:06 EST Moderate Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
-   "date": "Sun, 01 Nov 2026 01:41:53 GMT"
+   "date": "Mon, 02 Nov 2026 02:06:43 GMT"
+  },
+  {
+   "title": "02/13:14 EST Initial Moderate Flood Warning for the Upper Balonne River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
+   "date": "Mon, 02 Nov 2026 03:14:37 GMT"
   },
   {
    "title": "31/10:26 EST Final Flood Warning for the Weir River",
@@ -29,9 +39,9 @@
    "date": "Mon, 02 Nov 2026 00:41:47 GMT"
   },
   {
-   "title": "01/13:02 EST Minor Flood Warning for the Paroo River (QLD)",
+   "title": "02/13:58 EST Minor Flood Warning for the lower Paroo River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/paroo-river.shtml",
-   "date": "Sun, 01 Nov 2026 03:02:45 GMT"
+   "date": "Mon, 02 Nov 2026 03:58:41 GMT"
   },
   {
    "title": "02/11:07 EST Moderate Flood Warning for the Bulloo River",
@@ -39,14 +49,24 @@
    "date": "Mon, 02 Nov 2026 01:07:47 GMT"
   },
   {
-   "title": "01/12:04 EST Moderate Flood Warning for the Barcoo River",
+   "title": "02/12:28 EST Moderate Flood Warning for the Barcoo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Sun, 01 Nov 2026 02:04:38 GMT"
+   "date": "Mon, 02 Nov 2026 02:28:44 GMT"
   },
   {
-   "title": "01/14:14 EST Heatwave Warning (QLD)",
+   "title": "02/13:17 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Sun, 01 Nov 2026 04:14:57 GMT"
+   "date": "Mon, 02 Nov 2026 03:17:27 GMT"
+  },
+  {
+   "title": "02/18:59 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Wide Bay and Burnett, Darling Downs and Granite Belt, Southeast Coast and Central Highlands and Coalfields Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Mon, 02 Nov 2026 08:59:33 GMT"
+  },
+  {
+   "title": "02/19:00 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Scenic Rim and Gold Coast Council Areas.",
+   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
+   "date": "Mon, 02 Nov 2026 09:00:33 GMT"
   }
  ]
 }
