@@ -1,13 +1,8 @@
 {
  "ok": true,
- "fetched": 1793723657,
+ "fetched": 1793743071,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
-  {
-   "title": "03/21:00 EST Marine Wind Warning Summary for Queensland",
-   "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Tue, 03 Nov 2026 11:00:15 GMT"
-  },
   {
    "title": "03/14:47 EST Initial Minor Flood Warning for the Boyne and Burnett Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/burnett-river.shtml",
@@ -49,9 +44,9 @@
    "date": "Tue, 03 Nov 2026 03:34:34 GMT"
   },
   {
-   "title": "03/16:43 EST Initial Minor Flood Warning for the Macintyre Brook",
+   "title": "04/07:39 EST Final Flood Warning for the Macintyre Brook",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/border-rivers.shtml",
-   "date": "Tue, 03 Nov 2026 06:43:47 GMT"
+   "date": "Tue, 03 Nov 2026 21:39:47 GMT"
   },
   {
    "title": "03/10:20 EST Final Flood Warning for the Lower Moonie River",
@@ -82,11 +77,6 @@
    "title": "03/14:29 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Tue, 03 Nov 2026 04:29:55 GMT"
-  },
-  {
-   "title": "03/23:07 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Central Coast and Whitsundays, Central Highlands and Coalfields and Capricornia Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Tue, 03 Nov 2026 13:07:28 GMT"
   }
  ]
 }
