@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1793648394,
+ "fetched": 1793670451,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "03/03:00 EST Marine Wind Warning Summary for Queensland",
+   "title": "03/10:25 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Mon, 02 Nov 2026 17:00:12 GMT"
+   "date": "Tue, 03 Nov 2026 00:25:26 GMT"
   },
   {
    "title": "31/11:27 EST Final Flood Warning for the Upper Condamine River",
@@ -29,14 +29,14 @@
    "date": "Sat, 31 Oct 2026 00:26:52 GMT"
   },
   {
-   "title": "02/09:19 EST Minor Flood Warning for the Lower Moonie River",
+   "title": "03/10:20 EST Final Flood Warning for the Lower Moonie River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/moonie-river.shtml",
-   "date": "Sun, 01 Nov 2026 23:19:35 GMT"
+   "date": "Tue, 03 Nov 2026 00:20:53 GMT"
   },
   {
-   "title": "02/10:41 EST Moderate Flood Warning for the Lower Warrego River (QLD)",
+   "title": "03/10:56 EST Moderate Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Mon, 02 Nov 2026 00:41:47 GMT"
+   "date": "Tue, 03 Nov 2026 00:56:42 GMT"
   },
   {
    "title": "02/13:58 EST Minor Flood Warning for the lower Paroo River (QLD)",
@@ -44,9 +44,9 @@
    "date": "Mon, 02 Nov 2026 03:58:41 GMT"
   },
   {
-   "title": "02/11:07 EST Moderate Flood Warning for the Bulloo River",
+   "title": "03/11:09 EST Moderate Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Mon, 02 Nov 2026 01:07:47 GMT"
+   "date": "Tue, 03 Nov 2026 01:09:08 GMT"
   },
   {
    "title": "02/12:28 EST Moderate Flood Warning for the Barcoo River",
@@ -57,11 +57,6 @@
    "title": "02/13:17 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Mon, 02 Nov 2026 03:17:27 GMT"
-  },
-  {
-   "title": "03/05:16 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Highlands and Coalfields, Wide Bay and Burnett, Maranoa and Warrego and Darling Downs and Granite Belt Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Mon, 02 Nov 2026 19:16:18 GMT"
   }
  ]
 }
