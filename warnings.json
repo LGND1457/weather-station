@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1793782960,
+ "fetched": 1793812154,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "04/17:51 EST Marine Wind Warning Summary for Queensland",
+   "title": "05/03:00 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Wed, 04 Nov 2026 07:51:30 GMT"
+   "date": "Wed, 04 Nov 2026 17:00:13 GMT"
   },
   {
    "title": "04/08:27 EST Final Flood Warning for the Boyne and Burnett Rivers",
@@ -82,11 +82,6 @@
    "title": "04/14:07 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Wed, 04 Nov 2026 04:07:47 GMT"
-  },
-  {
-   "title": "04/18:45 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of North Tropical Coast and Tablelands, Herbert and Lower Burdekin and Northern Goldfields and Upper Flinders Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Wed, 04 Nov 2026 08:45:09 GMT"
   }
  ]
 }
