@@ -1,8 +1,13 @@
 {
  "ok": true,
- "fetched": 1793757710,
+ "fetched": 1793782960,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
+  {
+   "title": "04/17:51 EST Marine Wind Warning Summary for Queensland",
+   "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
+   "date": "Wed, 04 Nov 2026 07:51:30 GMT"
+  },
   {
    "title": "04/08:27 EST Final Flood Warning for the Boyne and Burnett Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/burnett-river.shtml",
@@ -39,9 +44,9 @@
    "date": "Wed, 04 Nov 2026 01:58:49 GMT"
   },
   {
-   "title": "03/13:34 EST Moderate Flood Warning for the Upper Balonne River",
+   "title": "04/14:28 EST Moderate Flood Warning for the Upper Balonne and Maranoa Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Tue, 03 Nov 2026 03:34:34 GMT"
+   "date": "Wed, 04 Nov 2026 04:28:52 GMT"
   },
   {
    "title": "04/07:39 EST Final Flood Warning for the Macintyre Brook",
@@ -69,14 +74,19 @@
    "date": "Wed, 04 Nov 2026 01:11:04 GMT"
   },
   {
-   "title": "03/12:45 EST Moderate Flood Warning for the Lower Barcoo River",
+   "title": "04/12:10 EST Moderate Flood Warning for the lower Barcoo River and Minor Flood Warning for the upper Thomson River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Tue, 03 Nov 2026 02:45:42 GMT"
+   "date": "Wed, 04 Nov 2026 02:10:54 GMT"
   },
   {
-   "title": "03/14:29 EST Heatwave Warning (QLD)",
+   "title": "04/14:07 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Tue, 03 Nov 2026 04:29:55 GMT"
+   "date": "Wed, 04 Nov 2026 04:07:47 GMT"
+  },
+  {
+   "title": "04/18:45 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of North Tropical Coast and Tablelands, Herbert and Lower Burdekin and Northern Goldfields and Upper Flinders Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Wed, 04 Nov 2026 08:45:09 GMT"
   }
  ]
 }
