@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1793812154,
+ "fetched": 1793831843,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "05/03:00 EST Marine Wind Warning Summary for Queensland",
+   "title": "05/06:59 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Wed, 04 Nov 2026 17:00:13 GMT"
+   "date": "Wed, 04 Nov 2026 20:59:23 GMT"
   },
   {
    "title": "04/08:27 EST Final Flood Warning for the Boyne and Burnett Rivers",
