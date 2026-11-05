@@ -1,17 +1,12 @@
 {
  "ok": true,
- "fetched": 1793846762,
+ "fetched": 1793872454,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "05/10:07 EST Marine Wind Warning Summary for Queensland",
+   "title": "05/15:00 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Thu, 05 Nov 2026 00:07:55 GMT"
-  },
-  {
-   "title": "04/09:58 EST Final Flood Warning for the Bremer River and Warrill Creek",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Tue, 03 Nov 2026 23:58:47 GMT"
+   "date": "Thu, 05 Nov 2026 05:00:12 GMT"
   },
   {
    "title": "04/09:01 EST Final Flood Warning for the Upper Condamine River",
@@ -24,9 +19,9 @@
    "date": "Thu, 05 Nov 2026 01:01:48 GMT"
   },
   {
-   "title": "04/14:28 EST Moderate Flood Warning for the Upper Balonne and Maranoa Rivers",
+   "title": "05/14:16 EST Moderate Flood Warning for the Upper Balonne",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Wed, 04 Nov 2026 04:28:52 GMT"
+   "date": "Thu, 05 Nov 2026 04:16:43 GMT"
   },
   {
    "title": "04/07:39 EST Final Flood Warning for the Macintyre Brook",
@@ -59,9 +54,9 @@
    "date": "Thu, 05 Nov 2026 01:43:41 GMT"
   },
   {
-   "title": "04/14:07 EST Heatwave Warning (QLD)",
+   "title": "05/13:47 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Wed, 04 Nov 2026 04:07:47 GMT"
+   "date": "Thu, 05 Nov 2026 03:47:41 GMT"
   }
  ]
 }
