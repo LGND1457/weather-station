@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793934662,
+ "fetched": 1793962920,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -14,19 +14,14 @@
    "date": "Thu, 05 Nov 2026 01:01:48 GMT"
   },
   {
-   "title": "05/14:16 EST Moderate Flood Warning for the Upper Balonne",
+   "title": "06/13:40 EST Moderate Flood Warning for the Upper Balonne River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Thu, 05 Nov 2026 04:16:43 GMT"
+   "date": "Fri, 06 Nov 2026 03:40:48 GMT"
   },
   {
    "title": "04/07:39 EST Final Flood Warning for the Macintyre Brook",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/border-rivers.shtml",
    "date": "Tue, 03 Nov 2026 21:39:47 GMT"
-  },
-  {
-   "title": "03/10:20 EST Final Flood Warning for the Lower Moonie River",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/moonie-river.shtml",
-   "date": "Tue, 03 Nov 2026 00:20:53 GMT"
   },
   {
    "title": "06/10:56 EST Minor Flood Warning for the Warrego River (QLD)",
@@ -49,9 +44,14 @@
    "date": "Fri, 06 Nov 2026 02:06:32 GMT"
   },
   {
-   "title": "05/13:47 EST Heatwave Warning (QLD)",
+   "title": "06/13:48 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Thu, 05 Nov 2026 03:47:41 GMT"
+   "date": "Fri, 06 Nov 2026 03:48:55 GMT"
+  },
+  {
+   "title": "06/18:39 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Northern Goldfields and Upper Flinders, North West and Central West Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Fri, 06 Nov 2026 08:39:28 GMT"
   }
  ]
 }
