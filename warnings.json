@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1793919345,
+ "fetched": 1793934662,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -29,9 +29,9 @@
    "date": "Tue, 03 Nov 2026 00:20:53 GMT"
   },
   {
-   "title": "05/10:47 EST Minor Flood Warning for the Warrego River (QLD)",
+   "title": "06/10:56 EST Minor Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Thu, 05 Nov 2026 00:47:45 GMT"
+   "date": "Fri, 06 Nov 2026 00:56:36 GMT"
   },
   {
    "title": "04/09:44 EST Final Flood Warning for the Lower Paroo River (QLD)",
@@ -39,14 +39,14 @@
    "date": "Tue, 03 Nov 2026 23:44:45 GMT"
   },
   {
-   "title": "05/10:41 EST Moderate Flood Warning for the Bulloo River",
+   "title": "06/11:18 EST Moderate Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Thu, 05 Nov 2026 00:41:51 GMT"
+   "date": "Fri, 06 Nov 2026 01:18:39 GMT"
   },
   {
-   "title": "05/11:43 EST Moderate Flood Warning for the Barcoo River and Minor Flood Warning for the Upper Thomson River",
+   "title": "06/12:06 EST Moderate Flood Warning for the Barcoo River and Minor Flood Warning for the Upper Thomson River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Thu, 05 Nov 2026 01:43:41 GMT"
+   "date": "Fri, 06 Nov 2026 02:06:32 GMT"
   },
   {
    "title": "05/13:47 EST Heatwave Warning (QLD)",
