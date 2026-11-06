@@ -1,8 +1,13 @@
 {
  "ok": true,
- "fetched": 1793962920,
+ "fetched": 1793987705,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
+  {
+   "title": "07/03:00 EST Marine Wind Warning Summary for Queensland",
+   "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
+   "date": "Fri, 06 Nov 2026 17:00:12 GMT"
+  },
   {
    "title": "04/09:01 EST Final Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
@@ -47,11 +52,6 @@
    "title": "06/13:48 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Fri, 06 Nov 2026 03:48:55 GMT"
-  },
-  {
-   "title": "06/18:39 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Northern Goldfields and Upper Flinders, North West and Central West Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Fri, 06 Nov 2026 08:39:28 GMT"
   }
  ]
 }
