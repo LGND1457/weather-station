@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794018256,
+ "fetched": 1794042116,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "07/10:18 EST Marine Wind Warning Summary for Queensland",
+   "title": "07/17:51 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Sat, 07 Nov 2026 00:18:56 GMT"
+   "date": "Sat, 07 Nov 2026 07:51:01 GMT"
   },
   {
    "title": "05/11:01 EST Final Flood Warning for the Lower Condamine River",
@@ -14,19 +14,14 @@
    "date": "Thu, 05 Nov 2026 01:01:48 GMT"
   },
   {
-   "title": "06/13:40 EST Moderate Flood Warning for the Upper Balonne River",
+   "title": "07/12:49 EST Moderate Flood Warning for the Upper Balonne River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Fri, 06 Nov 2026 03:40:48 GMT"
+   "date": "Sat, 07 Nov 2026 02:49:48 GMT"
   },
   {
    "title": "06/10:56 EST Minor Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
    "date": "Fri, 06 Nov 2026 00:56:36 GMT"
-  },
-  {
-   "title": "04/09:44 EST Final Flood Warning for the Lower Paroo River (QLD)",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/paroo-river.shtml",
-   "date": "Tue, 03 Nov 2026 23:44:45 GMT"
   },
   {
    "title": "07/10:37 EST Moderate Flood Warning for the Bulloo River",
@@ -39,9 +34,19 @@
    "date": "Fri, 06 Nov 2026 02:06:32 GMT"
   },
   {
-   "title": "06/13:48 EST Heatwave Warning (QLD)",
+   "title": "07/13:44 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Fri, 06 Nov 2026 03:48:55 GMT"
+   "date": "Sat, 07 Nov 2026 03:44:39 GMT"
+  },
+  {
+   "title": "07/17:13 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Capricornia, Wide Bay and Burnett and Southeast Coast Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Sat, 07 Nov 2026 07:13:33 GMT"
+  },
+  {
+   "title": "07/17:50 EST \n                Cancellation of Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                Gympie, Sunshine Coast and Noosa Council Areas.",
+   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
+   "date": "Sat, 07 Nov 2026 07:50:43 GMT"
   }
  ]
 }
