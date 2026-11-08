@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794080197,
+ "fetched": 1794104072,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "08/03:00 EST Marine Wind Warning Summary for Queensland",
+   "title": "08/09:22 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Sat, 07 Nov 2026 17:00:15 GMT"
+   "date": "Sat, 07 Nov 2026 23:22:49 GMT"
   },
   {
    "title": "05/11:01 EST Final Flood Warning for the Lower Condamine River",
@@ -14,9 +14,9 @@
    "date": "Thu, 05 Nov 2026 01:01:48 GMT"
   },
   {
-   "title": "07/12:49 EST Moderate Flood Warning for the Upper Balonne River",
+   "title": "08/10:21 EST Moderate Flood Warning for the Upper Balonne River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Sat, 07 Nov 2026 02:49:48 GMT"
+   "date": "Sun, 08 Nov 2026 00:21:52 GMT"
   },
   {
    "title": "06/10:56 EST Minor Flood Warning for the Warrego River (QLD)",
@@ -24,14 +24,14 @@
    "date": "Fri, 06 Nov 2026 00:56:36 GMT"
   },
   {
-   "title": "07/10:37 EST Moderate Flood Warning for the Bulloo River",
+   "title": "08/11:13 EST Moderate Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Sat, 07 Nov 2026 00:37:45 GMT"
+   "date": "Sun, 08 Nov 2026 01:13:40 GMT"
   },
   {
-   "title": "06/12:06 EST Moderate Flood Warning for the Barcoo River and Minor Flood Warning for the Upper Thomson River",
+   "title": "08/11:41 EST Moderate Flood Warning for the Lower Barcoo River and Minor Flood Warning for the Upper Thomson River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Fri, 06 Nov 2026 02:06:32 GMT"
+   "date": "Sun, 08 Nov 2026 01:41:46 GMT"
   },
   {
    "title": "07/13:44 EST Heatwave Warning (QLD)",
