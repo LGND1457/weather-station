@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794128747,
+ "fetched": 1794153347,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "08/15:00 EST Marine Wind Warning Summary for Queensland",
+   "title": "08/21:00 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Sun, 08 Nov 2026 05:00:13 GMT"
+   "date": "Sun, 08 Nov 2026 11:00:12 GMT"
   },
   {
    "title": "08/10:21 EST Moderate Flood Warning for the Upper Balonne River",
@@ -34,9 +34,9 @@
    "date": "Sun, 08 Nov 2026 03:48:42 GMT"
   },
   {
-   "title": "08/18:36 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Coast and Whitsundays, Central Highlands and Coalfields and Capricornia Forecast Districts.",
+   "title": "08/22:18 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Central Coast and Whitsundays Forecast District.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sun, 08 Nov 2026 08:36:23 GMT"
+   "date": "Sun, 08 Nov 2026 12:18:56 GMT"
   }
  ]
 }
