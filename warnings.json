@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794193324,
+ "fetched": 1794223347,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -24,9 +24,14 @@
    "date": "Mon, 09 Nov 2026 01:18:36 GMT"
   },
   {
-   "title": "08/13:48 EST Heatwave Warning (QLD)",
+   "title": "09/14:52 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Sun, 08 Nov 2026 03:48:42 GMT"
+   "date": "Mon, 09 Nov 2026 04:52:10 GMT"
+  },
+  {
+   "title": "09/17:42 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Central Coast and Whitsundays Forecast District.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Mon, 09 Nov 2026 07:42:53 GMT"
   }
  ]
 }
