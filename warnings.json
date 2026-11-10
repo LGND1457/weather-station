@@ -1,27 +1,27 @@
 {
  "ok": true,
- "fetched": 1794260001,
+ "fetched": 1794282411,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "09/12:55 EST Minor Flood Warning for the Upper Balonne River",
+   "title": "10/11:40 EST Final Flood Warning for the Upper Balonne River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Mon, 09 Nov 2026 02:55:11 GMT"
+   "date": "Tue, 10 Nov 2026 01:40:06 GMT"
   },
   {
-   "title": "09/10:57 EST Minor Flood Warning for the Lower Warrego River (QLD)",
+   "title": "10/10:53 EST Minor Flood Warning for the Lower Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Mon, 09 Nov 2026 00:57:34 GMT"
+   "date": "Tue, 10 Nov 2026 00:53:50 GMT"
   },
   {
-   "title": "09/10:11 EST Minor Flood Warning for the Lower Bulloo River",
+   "title": "10/08:44 EST Final Flood Warning for the Lower Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Mon, 09 Nov 2026 00:11:52 GMT"
+   "date": "Mon, 09 Nov 2026 22:44:49 GMT"
   },
   {
-   "title": "09/11:18 EST Moderate Flood Warning for the Lower Barcoo River and Minor Flood Warning for the Upper Thomson River",
+   "title": "10/11:45 EST Moderate Flood Warning for the Lower Barcoo River and Minor Flood Warning for the Thomson River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Mon, 09 Nov 2026 01:18:36 GMT"
+   "date": "Tue, 10 Nov 2026 01:45:43 GMT"
   },
   {
    "title": "09/14:52 EST Heatwave Warning (QLD)",
