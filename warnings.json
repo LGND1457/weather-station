@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794355534,
+ "fetched": 1794376924,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -9,9 +9,9 @@
    "date": "Tue, 10 Nov 2026 01:40:06 GMT"
   },
   {
-   "title": "10/10:53 EST Minor Flood Warning for the Lower Warrego River (QLD)",
+   "title": "11/13:44 EST Minor Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Tue, 10 Nov 2026 00:53:50 GMT"
+   "date": "Wed, 11 Nov 2026 03:44:47 GMT"
   },
   {
    "title": "10/08:44 EST Final Flood Warning for the Lower Bulloo River",
@@ -19,14 +19,24 @@
    "date": "Mon, 09 Nov 2026 22:44:49 GMT"
   },
   {
-   "title": "10/11:45 EST Moderate Flood Warning for the Lower Barcoo River and Minor Flood Warning for the Thomson River",
+   "title": "11/12:25 EST Minor Flood Warning for the Thomson and Lower Barcoo Rivers and Cooper Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Tue, 10 Nov 2026 01:45:43 GMT"
+   "date": "Wed, 11 Nov 2026 02:25:54 GMT"
   },
   {
-   "title": "10/14:31 EST Heatwave Warning (QLD)",
+   "title": "11/13:00 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Tue, 10 Nov 2026 04:31:33 GMT"
+   "date": "Wed, 11 Nov 2026 03:00:09 GMT"
+  },
+  {
+   "title": "11/15:56 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Wide Bay and Burnett and Southeast Coast Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Wed, 11 Nov 2026 05:56:22 GMT"
+  },
+  {
+   "title": "11/15:47 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Gympie, Logan, Gold Coast, Redland City, Sunshine Coast, Brisbane City, Moreton Bay, Somerset and Noosa Council Areas.",
+   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
+   "date": "Wed, 11 Nov 2026 05:47:03 GMT"
   }
  ]
 }
