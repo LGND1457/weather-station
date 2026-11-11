@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794406088,
+ "fetched": 1794432169,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -27,11 +27,6 @@
    "title": "11/13:00 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Wed, 11 Nov 2026 03:00:09 GMT"
-  },
-  {
-   "title": "11/20:53 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Wide Bay and Burnett Forecast District.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Wed, 11 Nov 2026 10:53:53 GMT"
   }
  ]
 }
