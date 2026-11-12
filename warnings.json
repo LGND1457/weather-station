@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794507150,
+ "fetched": 1794526890,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -27,11 +27,6 @@
    "title": "12/13:03 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Thu, 12 Nov 2026 03:03:05 GMT"
-  },
-  {
-   "title": "13/01:32 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Central Highlands and Coalfields, Capricornia, Wide Bay and Burnett and Darling Downs and Granite Belt Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Thu, 12 Nov 2026 15:32:43 GMT"
   }
  ]
 }
