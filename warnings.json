@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794526890,
+ "fetched": 1794541118,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -9,24 +9,24 @@
    "date": "Tue, 10 Nov 2026 01:40:06 GMT"
   },
   {
-   "title": "12/08:52 EST Minor Flood Warning for the Warrego River (QLD)",
+   "title": "13/11:38 EST Final Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Wed, 11 Nov 2026 22:52:50 GMT"
+   "date": "Fri, 13 Nov 2026 01:38:37 GMT"
   },
   {
-   "title": "10/08:44 EST Final Flood Warning for the Lower Bulloo River",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Mon, 09 Nov 2026 22:44:49 GMT"
-  },
-  {
-   "title": "12/08:50 EST Minor Flood Warning for the Thomson and Lower Barcoo Rivers and Cooper Creek",
+   "title": "13/12:14 EST Minor Flood Warning for the Lower Barcoo River and Cooper Creek and Flood Warning for the Thomson River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Wed, 11 Nov 2026 22:50:48 GMT"
+   "date": "Fri, 13 Nov 2026 02:14:44 GMT"
   },
   {
-   "title": "12/13:03 EST Heatwave Warning (QLD)",
+   "title": "13/13:11 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Thu, 12 Nov 2026 03:03:05 GMT"
+   "date": "Fri, 13 Nov 2026 03:11:12 GMT"
+  },
+  {
+   "title": "13/12:31 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Darling Downs and Granite Belt Forecast District.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Fri, 13 Nov 2026 02:31:47 GMT"
   }
  ]
 }
