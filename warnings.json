@@ -1,8 +1,13 @@
 {
  "ok": true,
- "fetched": 1794595409,
+ "fetched": 1794614145,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
+  {
+   "title": "14/05:45 EST Initial Minor Flood Warning for the Upper Condamine River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
+   "date": "Fri, 13 Nov 2026 19:45:44 GMT"
+  },
   {
    "title": "13/11:38 EST Final Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
