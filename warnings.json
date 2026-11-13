@@ -1,13 +1,8 @@
 {
  "ok": true,
- "fetched": 1794541118,
+ "fetched": 1794569659,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
-  {
-   "title": "10/11:40 EST Final Flood Warning for the Upper Balonne River",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Tue, 10 Nov 2026 01:40:06 GMT"
-  },
   {
    "title": "13/11:38 EST Final Flood Warning for the Warrego River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
@@ -24,9 +19,14 @@
    "date": "Fri, 13 Nov 2026 03:11:12 GMT"
   },
   {
-   "title": "13/12:31 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Darling Downs and Granite Belt Forecast District.",
+   "title": "13/20:33 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Darling Downs and Granite Belt, Southeast Coast and Wide Bay and Burnett Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Fri, 13 Nov 2026 02:31:47 GMT"
+   "date": "Fri, 13 Nov 2026 10:33:06 GMT"
+  },
+  {
+   "title": "13/21:07 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Somerset, Lockyer Valley and Toowoomba Council Areas.",
+   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
+   "date": "Fri, 13 Nov 2026 11:07:41 GMT"
   }
  ]
 }
