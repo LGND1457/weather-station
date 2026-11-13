@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794569659,
+ "fetched": 1794595409,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -17,16 +17,6 @@
    "title": "13/13:11 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Fri, 13 Nov 2026 03:11:12 GMT"
-  },
-  {
-   "title": "13/20:33 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Darling Downs and Granite Belt, Southeast Coast and Wide Bay and Burnett Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Fri, 13 Nov 2026 10:33:06 GMT"
-  },
-  {
-   "title": "13/21:07 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Somerset, Lockyer Valley and Toowoomba Council Areas.",
-   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Fri, 13 Nov 2026 11:07:41 GMT"
   }
  ]
 }
