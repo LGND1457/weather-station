@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794678987,
+ "fetched": 1794693688,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -22,11 +22,6 @@
    "title": "14/12:18 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Sat, 14 Nov 2026 02:18:43 GMT"
-  },
-  {
-   "title": "15/01:56 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Central Highlands and Coalfields, Central West and Capricornia Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sat, 14 Nov 2026 15:56:58 GMT"
   }
  ]
 }
