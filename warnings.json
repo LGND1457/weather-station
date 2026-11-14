@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794614145,
+ "fetched": 1794632348,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "14/05:45 EST Initial Minor Flood Warning for the Upper Condamine River",
+   "title": "14/11:45 EST Minor Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Fri, 13 Nov 2026 19:45:44 GMT"
+   "date": "Sat, 14 Nov 2026 01:45:47 GMT"
   },
   {
    "title": "13/11:38 EST Final Flood Warning for the Warrego River (QLD)",
@@ -19,9 +19,14 @@
    "date": "Fri, 13 Nov 2026 02:14:44 GMT"
   },
   {
-   "title": "13/13:11 EST Heatwave Warning (QLD)",
+   "title": "14/12:18 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Fri, 13 Nov 2026 03:11:12 GMT"
+   "date": "Sat, 14 Nov 2026 02:18:43 GMT"
+  },
+  {
+   "title": "14/14:29 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Maranoa and Warrego and Darling Downs and Granite Belt Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Sat, 14 Nov 2026 04:29:04 GMT"
   }
  ]
 }
