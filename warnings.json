@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794632348,
+ "fetched": 1794657680,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -24,9 +24,9 @@
    "date": "Sat, 14 Nov 2026 02:18:43 GMT"
   },
   {
-   "title": "14/14:29 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Maranoa and Warrego and Darling Downs and Granite Belt Forecast Districts.",
+   "title": "14/17:42 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Maranoa and Warrego and Darling Downs and Granite Belt Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sat, 14 Nov 2026 04:29:04 GMT"
+   "date": "Sat, 14 Nov 2026 07:42:07 GMT"
   }
  ]
 }
