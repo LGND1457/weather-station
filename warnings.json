@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1794732454,
+ "fetched": 1794758081,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -29,14 +29,9 @@
    "date": "Sun, 15 Nov 2026 04:25:35 GMT"
   },
   {
-   "title": "15/17:57 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of North West, Central Highlands and Coalfields, Central West, Maranoa and Warrego, Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
+   "title": "15/22:31 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Central Highlands and Coalfields, Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sun, 15 Nov 2026 07:57:47 GMT"
-  },
-  {
-   "title": "15/18:06 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Southern Downs Council Area.",
-   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Sun, 15 Nov 2026 08:06:06 GMT"
+   "date": "Sun, 15 Nov 2026 12:31:54 GMT"
   }
  ]
 }
