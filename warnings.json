@@ -1,8 +1,18 @@
 {
  "ok": true,
- "fetched": 1794758081,
+ "fetched": 1794775588,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
+  {
+   "title": "16/03:35 EST Initial Moderate Flood Warning for the Warrill Creek",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
+   "date": "Sun, 15 Nov 2026 17:35:50 GMT"
+  },
+  {
+   "title": "16/04:10 EST Initial Flood Warning for the Logan River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
+   "date": "Sun, 15 Nov 2026 18:10:40 GMT"
+  },
   {
    "title": "15/12:21 EST Minor Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
@@ -27,11 +37,6 @@
    "title": "15/14:25 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Sun, 15 Nov 2026 04:25:35 GMT"
-  },
-  {
-   "title": "15/22:31 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Central Highlands and Coalfields, Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sun, 15 Nov 2026 12:31:54 GMT"
   }
  ]
 }
