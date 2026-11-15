@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794707409,
+ "fetched": 1794732454,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "14/11:45 EST Minor Flood Warning for the Upper Condamine River",
+   "title": "15/12:21 EST Minor Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Sat, 14 Nov 2026 01:45:47 GMT"
+   "date": "Sun, 15 Nov 2026 02:21:38 GMT"
   },
   {
    "title": "15/10:02 EST Initial Minor Flood Warning for the Lower Condamine River",
@@ -24,9 +24,19 @@
    "date": "Fri, 13 Nov 2026 02:14:44 GMT"
   },
   {
-   "title": "14/12:18 EST Heatwave Warning (QLD)",
+   "title": "15/14:25 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Sat, 14 Nov 2026 02:18:43 GMT"
+   "date": "Sun, 15 Nov 2026 04:25:35 GMT"
+  },
+  {
+   "title": "15/17:57 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of North West, Central Highlands and Coalfields, Central West, Maranoa and Warrego, Darling Downs and Granite Belt and Southeast Coast Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Sun, 15 Nov 2026 07:57:47 GMT"
+  },
+  {
+   "title": "15/18:06 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Southern Downs Council Area.",
+   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
+   "date": "Sun, 15 Nov 2026 08:06:06 GMT"
   }
  ]
 }
