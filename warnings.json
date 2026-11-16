@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794775588,
+ "fetched": 1794788731,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "16/03:35 EST Initial Moderate Flood Warning for the Warrill Creek",
+   "title": "16/10:13 EST Moderate Flood Warning for the Warrill Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Sun, 15 Nov 2026 17:35:50 GMT"
+   "date": "Mon, 16 Nov 2026 00:13:40 GMT"
   },
   {
    "title": "16/04:10 EST Initial Flood Warning for the Logan River",
