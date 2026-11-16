@@ -1,42 +1,52 @@
 {
  "ok": true,
- "fetched": 1794788731,
+ "fetched": 1794812511,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "16/10:13 EST Moderate Flood Warning for the Warrill Creek",
+   "title": "16/15:00 EST Marine Wind Warning Summary for Queensland",
+   "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
+   "date": "Mon, 16 Nov 2026 05:00:15 GMT"
+  },
+  {
+   "title": "16/13:54 EST Moderate Flood Warning for the Warrill Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Mon, 16 Nov 2026 00:13:40 GMT"
+   "date": "Mon, 16 Nov 2026 03:54:39 GMT"
   },
   {
-   "title": "16/04:10 EST Initial Flood Warning for the Logan River",
+   "title": "16/12:51 EST Flood Warning for the Teviot Brook",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
-   "date": "Sun, 15 Nov 2026 18:10:40 GMT"
+   "date": "Mon, 16 Nov 2026 02:51:49 GMT"
   },
   {
-   "title": "15/12:21 EST Minor Flood Warning for the Upper Condamine River",
+   "title": "16/14:53 EST Minor Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Sun, 15 Nov 2026 02:21:38 GMT"
+   "date": "Mon, 16 Nov 2026 04:53:45 GMT"
   },
   {
-   "title": "15/10:02 EST Initial Minor Flood Warning for the Lower Condamine River",
+   "title": "16/13:43 EST Minor Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
-   "date": "Sun, 15 Nov 2026 00:02:53 GMT"
+   "date": "Mon, 16 Nov 2026 03:43:44 GMT"
   },
   {
-   "title": "13/11:38 EST Final Flood Warning for the Warrego River (QLD)",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/warrego-river-basin.shtml",
-   "date": "Fri, 13 Nov 2026 01:38:37 GMT"
-  },
-  {
-   "title": "13/12:14 EST Minor Flood Warning for the Lower Barcoo River and Cooper Creek and Flood Warning for the Thomson River",
+   "title": "16/12:55 EST Minor Flood Warning for the Lower Barcoo River and Final Flood Warning for the Cooper Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Fri, 13 Nov 2026 02:14:44 GMT"
+   "date": "Mon, 16 Nov 2026 02:55:56 GMT"
   },
   {
-   "title": "15/14:25 EST Heatwave Warning (QLD)",
+   "title": "16/13:52 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Sun, 15 Nov 2026 04:25:35 GMT"
+   "date": "Mon, 16 Nov 2026 03:52:45 GMT"
+  },
+  {
+   "title": "16/16:49 EST \n                Severe Thunderstorm Warning\n            \nfor \n                Capricornia, Southeast Coast and parts of Central Highlands and Coalfields and Wide Bay and Burnett Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Mon, 16 Nov 2026 06:49:52 GMT"
+  },
+  {
+   "title": "16/16:52 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Somerset, Lockyer Valley, Brisbane City, Moreton Bay and Ipswich Council Areas.",
+   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
+   "date": "Mon, 16 Nov 2026 06:52:43 GMT"
   }
  ]
 }
