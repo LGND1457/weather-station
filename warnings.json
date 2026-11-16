@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794812511,
+ "fetched": 1794848233,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "16/15:00 EST Marine Wind Warning Summary for Queensland",
+   "title": "16/21:00 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Mon, 16 Nov 2026 05:00:15 GMT"
+   "date": "Mon, 16 Nov 2026 11:00:13 GMT"
   },
   {
    "title": "16/13:54 EST Moderate Flood Warning for the Warrill Creek",
@@ -29,24 +29,14 @@
    "date": "Mon, 16 Nov 2026 03:43:44 GMT"
   },
   {
-   "title": "16/12:55 EST Minor Flood Warning for the Lower Barcoo River and Final Flood Warning for the Cooper Creek",
+   "title": "16/20:19 EST Minor Flood Warning for the Barcoo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Mon, 16 Nov 2026 02:55:56 GMT"
+   "date": "Mon, 16 Nov 2026 10:19:52 GMT"
   },
   {
    "title": "16/13:52 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Mon, 16 Nov 2026 03:52:45 GMT"
-  },
-  {
-   "title": "16/16:49 EST \n                Severe Thunderstorm Warning\n            \nfor \n                Capricornia, Southeast Coast and parts of Central Highlands and Coalfields and Wide Bay and Burnett Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Mon, 16 Nov 2026 06:49:52 GMT"
-  },
-  {
-   "title": "16/16:52 EST \n                Severe Thunderstorm Warning - Southeast Queensland\n            \nfor \n                parts of Somerset, Lockyer Valley, Brisbane City, Moreton Bay and Ipswich Council Areas.",
-   "link": "http://reg.bom.gov.au/products/IDQ21035.shtml",
-   "date": "Mon, 16 Nov 2026 06:52:43 GMT"
   }
  ]
 }
