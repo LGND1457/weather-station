@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794904340,
+ "fetched": 1794937881,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "17/15:00 EST Marine Wind Warning Summary for Queensland",
+   "title": "18/03:07 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Tue, 17 Nov 2026 05:00:12 GMT"
+   "date": "Tue, 17 Nov 2026 17:07:57 GMT"
   },
   {
    "title": "17/11:14 EST Minor Flood Warning for the Warrill Creek",
