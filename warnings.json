@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1794961723,
+ "fetched": 1794988327,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "18/10:16 EST Marine Wind Warning Summary for Queensland",
+   "title": "18/15:00 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Wed, 18 Nov 2026 00:16:12 GMT"
+   "date": "Wed, 18 Nov 2026 05:00:13 GMT"
   },
   {
    "title": "18/08:34 EST Final Flood Warning for Warrill Creek",
@@ -19,24 +19,29 @@
    "date": "Tue, 17 Nov 2026 22:32:46 GMT"
   },
   {
-   "title": "17/13:50 EST Minor Flood Warning for the Upper Condamine River",
+   "title": "18/12:58 EST Minor Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Tue, 17 Nov 2026 03:50:56 GMT"
+   "date": "Wed, 18 Nov 2026 02:58:44 GMT"
   },
   {
-   "title": "17/12:56 EST Moderate Flood Warning for the Lower Condamine River",
+   "title": "18/12:59 EST Moderate Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
-   "date": "Tue, 17 Nov 2026 02:56:54 GMT"
+   "date": "Wed, 18 Nov 2026 02:59:44 GMT"
   },
   {
-   "title": "17/12:51 EST Minor Flood Warning for the Barcoo River",
+   "title": "18/15:52 EST Initial Minor Flood Warning for the Maranoa River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
+   "date": "Wed, 18 Nov 2026 05:52:39 GMT"
+  },
+  {
+   "title": "18/11:57 EST Minor Flood Warning for the Barcoo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Tue, 17 Nov 2026 02:51:49 GMT"
+   "date": "Wed, 18 Nov 2026 01:57:36 GMT"
   },
   {
-   "title": "17/13:25 EST Heatwave Warning (QLD)",
+   "title": "18/13:30 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Tue, 17 Nov 2026 03:25:17 GMT"
+   "date": "Wed, 18 Nov 2026 03:30:10 GMT"
   }
  ]
 }
