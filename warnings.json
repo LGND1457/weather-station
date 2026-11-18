@@ -1,22 +1,22 @@
 {
  "ok": true,
- "fetched": 1794937881,
+ "fetched": 1794961723,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "18/03:07 EST Marine Wind Warning Summary for Queensland",
+   "title": "18/10:16 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Tue, 17 Nov 2026 17:07:57 GMT"
+   "date": "Wed, 18 Nov 2026 00:16:12 GMT"
   },
   {
-   "title": "17/11:14 EST Minor Flood Warning for the Warrill Creek",
+   "title": "18/08:34 EST Final Flood Warning for Warrill Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Tue, 17 Nov 2026 01:14:46 GMT"
+   "date": "Tue, 17 Nov 2026 22:34:39 GMT"
   },
   {
-   "title": "17/13:53 EST Flood Warning for the Teviot Brook",
+   "title": "18/08:32 EST Final Flood Warning for the Teviot Brook",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
-   "date": "Tue, 17 Nov 2026 03:53:58 GMT"
+   "date": "Tue, 17 Nov 2026 22:32:46 GMT"
   },
   {
    "title": "17/13:50 EST Minor Flood Warning for the Upper Condamine River",
