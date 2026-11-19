@@ -1,13 +1,8 @@
 {
  "ok": true,
- "fetched": 1795094575,
+ "fetched": 1795124550,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
-  {
-   "title": "19/21:00 EST Marine Wind Warning Summary for Queensland",
-   "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Thu, 19 Nov 2026 11:00:13 GMT"
-  },
   {
    "title": "19/10:32 EST Final Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
@@ -32,6 +27,11 @@
    "title": "19/13:33 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Thu, 19 Nov 2026 03:33:15 GMT"
+  },
+  {
+   "title": "20/07:35 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Channel Country and Maranoa and Warrego Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Thu, 19 Nov 2026 21:35:22 GMT"
   }
  ]
 }
