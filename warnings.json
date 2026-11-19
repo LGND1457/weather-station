@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1795061677,
+ "fetched": 1795094575,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "19/11:06 EST Marine Wind Warning Summary for Queensland",
+   "title": "19/21:00 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Thu, 19 Nov 2026 01:06:44 GMT"
+   "date": "Thu, 19 Nov 2026 11:00:13 GMT"
   },
   {
    "title": "19/10:32 EST Final Flood Warning for the Upper Condamine River",
