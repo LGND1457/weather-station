@@ -1,37 +1,27 @@
 {
  "ok": true,
- "fetched": 1795043733,
+ "fetched": 1795061677,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "19/09:00 EST Marine Wind Warning Summary for Queensland",
+   "title": "19/11:06 EST Marine Wind Warning Summary for Queensland",
    "link": "http://reg.bom.gov.au/qld/warnings/marinewind.shtml",
-   "date": "Wed, 18 Nov 2026 23:00:13 GMT"
+   "date": "Thu, 19 Nov 2026 01:06:44 GMT"
   },
   {
-   "title": "18/08:34 EST Final Flood Warning for Warrill Creek",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Tue, 17 Nov 2026 22:34:39 GMT"
-  },
-  {
-   "title": "18/08:32 EST Final Flood Warning for the Teviot Brook",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
-   "date": "Tue, 17 Nov 2026 22:32:46 GMT"
-  },
-  {
-   "title": "18/12:58 EST Minor Flood Warning for the Upper Condamine River",
+   "title": "19/10:32 EST Final Flood Warning for the Upper Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Wed, 18 Nov 2026 02:58:44 GMT"
+   "date": "Thu, 19 Nov 2026 00:32:34 GMT"
   },
   {
-   "title": "18/12:59 EST Moderate Flood Warning for the Lower Condamine River",
+   "title": "19/11:39 EST Moderate Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
-   "date": "Wed, 18 Nov 2026 02:59:44 GMT"
+   "date": "Thu, 19 Nov 2026 01:39:42 GMT"
   },
   {
-   "title": "18/15:52 EST Initial Minor Flood Warning for the Maranoa River",
+   "title": "19/10:30 EST Final Flood Warning for the Maranoa River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Wed, 18 Nov 2026 05:52:39 GMT"
+   "date": "Thu, 19 Nov 2026 00:30:32 GMT"
   },
   {
    "title": "18/11:57 EST Minor Flood Warning for the Barcoo River",
@@ -39,9 +29,9 @@
    "date": "Wed, 18 Nov 2026 01:57:36 GMT"
   },
   {
-   "title": "18/13:30 EST Heatwave Warning (QLD)",
+   "title": "19/13:33 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Wed, 18 Nov 2026 03:30:10 GMT"
+   "date": "Thu, 19 Nov 2026 03:33:15 GMT"
   }
  ]
 }
