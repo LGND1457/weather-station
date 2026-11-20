@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795124550,
+ "fetched": 1795142374,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -29,9 +29,9 @@
    "date": "Thu, 19 Nov 2026 03:33:15 GMT"
   },
   {
-   "title": "20/07:35 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Channel Country and Maranoa and Warrego Forecast Districts.",
+   "title": "20/12:17 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Channel Country, Maranoa and Warrego and Central West Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Thu, 19 Nov 2026 21:35:22 GMT"
+   "date": "Fri, 20 Nov 2026 02:17:15 GMT"
   }
  ]
 }
