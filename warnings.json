@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795170588,
+ "fetched": 1795200310,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -27,11 +27,6 @@
    "title": "20/13:23 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Fri, 20 Nov 2026 03:23:00 GMT"
-  },
-  {
-   "title": "20/18:13 EST \n                Severe Thunderstorm Warning\n            \nfor \n                Central West and parts of Northern Goldfields and Upper Flinders, North West, Channel Country and Maranoa and Warrego Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Fri, 20 Nov 2026 08:13:44 GMT"
   }
  ]
 }
