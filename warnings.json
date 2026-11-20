@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795142374,
+ "fetched": 1795170588,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -9,9 +9,9 @@
    "date": "Thu, 19 Nov 2026 00:32:34 GMT"
   },
   {
-   "title": "19/11:39 EST Moderate Flood Warning for the Lower Condamine River",
+   "title": "20/13:15 EST Minor Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
-   "date": "Thu, 19 Nov 2026 01:39:42 GMT"
+   "date": "Fri, 20 Nov 2026 03:15:43 GMT"
   },
   {
    "title": "19/10:30 EST Final Flood Warning for the Maranoa River",
@@ -19,19 +19,19 @@
    "date": "Thu, 19 Nov 2026 00:30:32 GMT"
   },
   {
-   "title": "18/11:57 EST Minor Flood Warning for the Barcoo River",
+   "title": "20/13:47 EST Minor Flood Warning for the Barcoo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Wed, 18 Nov 2026 01:57:36 GMT"
+   "date": "Fri, 20 Nov 2026 03:47:46 GMT"
   },
   {
-   "title": "19/13:33 EST Heatwave Warning (QLD)",
+   "title": "20/13:23 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Thu, 19 Nov 2026 03:33:15 GMT"
+   "date": "Fri, 20 Nov 2026 03:23:00 GMT"
   },
   {
-   "title": "20/12:17 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Channel Country, Maranoa and Warrego and Central West Forecast Districts.",
+   "title": "20/18:13 EST \n                Severe Thunderstorm Warning\n            \nfor \n                Central West and parts of Northern Goldfields and Upper Flinders, North West, Channel Country and Maranoa and Warrego Forecast Districts.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Fri, 20 Nov 2026 02:17:15 GMT"
+   "date": "Fri, 20 Nov 2026 08:13:44 GMT"
   }
  ]
 }
