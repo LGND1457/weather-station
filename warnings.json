@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795220353,
+ "fetched": 1795245957,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -24,9 +24,9 @@
    "date": "Fri, 20 Nov 2026 03:47:46 GMT"
   },
   {
-   "title": "20/13:23 EST Heatwave Warning (QLD)",
+   "title": "21/13:23 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Fri, 20 Nov 2026 03:23:00 GMT"
+   "date": "Sat, 21 Nov 2026 03:23:57 GMT"
   }
  ]
 }
