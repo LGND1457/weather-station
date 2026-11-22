@@ -1,22 +1,12 @@
 {
  "ok": true,
- "fetched": 1795295135,
+ "fetched": 1795334630,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
-  {
-   "title": "19/10:32 EST Final Flood Warning for the Upper Condamine River",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-condamine.shtml",
-   "date": "Thu, 19 Nov 2026 00:32:34 GMT"
-  },
   {
    "title": "21/09:51 EST Final Flood Warning for the Lower Condamine River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
    "date": "Fri, 20 Nov 2026 23:51:56 GMT"
-  },
-  {
-   "title": "19/10:30 EST Final Flood Warning for the Maranoa River",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/upper-balonne-and-maranoa-rivers.shtml",
-   "date": "Thu, 19 Nov 2026 00:30:32 GMT"
   },
   {
    "title": "20/13:47 EST Minor Flood Warning for the Barcoo River",
@@ -24,9 +14,9 @@
    "date": "Fri, 20 Nov 2026 03:47:46 GMT"
   },
   {
-   "title": "21/13:23 EST Heatwave Warning (QLD)",
+   "title": "22/13:44 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Sat, 21 Nov 2026 03:23:57 GMT"
+   "date": "Sun, 22 Nov 2026 03:44:06 GMT"
   }
  ]
 }
