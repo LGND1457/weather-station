@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795399937,
+ "fetched": 1795431137,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -9,14 +9,19 @@
    "date": "Fri, 20 Nov 2026 23:51:56 GMT"
   },
   {
-   "title": "23/09:18 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
+   "title": "23/17:08 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Sun, 22 Nov 2026 23:18:43 GMT"
+   "date": "Mon, 23 Nov 2026 07:08:44 GMT"
   },
   {
-   "title": "22/13:44 EST Heatwave Warning (QLD)",
+   "title": "23/14:18 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Sun, 22 Nov 2026 03:44:06 GMT"
+   "date": "Mon, 23 Nov 2026 04:18:05 GMT"
+  },
+  {
+   "title": "23/18:58 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                North West and Channel Country Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Mon, 23 Nov 2026 08:58:02 GMT"
   }
  ]
 }
