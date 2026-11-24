@@ -1,22 +1,17 @@
 {
  "ok": true,
- "fetched": 1795472758,
+ "fetched": 1795500969,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "21/09:51 EST Final Flood Warning for the Lower Condamine River",
-   "link": "http://reg.bom.gov.au/qld/warnings/flood/lower-condamine.shtml",
-   "date": "Fri, 20 Nov 2026 23:51:56 GMT"
-  },
-  {
-   "title": "23/17:08 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
+   "title": "24/12:30 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Mon, 23 Nov 2026 07:08:44 GMT"
+   "date": "Tue, 24 Nov 2026 02:30:41 GMT"
   },
   {
-   "title": "23/14:18 EST Heatwave Warning (QLD)",
+   "title": "24/14:37 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Mon, 23 Nov 2026 04:18:05 GMT"
+   "date": "Tue, 24 Nov 2026 04:37:53 GMT"
   }
  ]
 }
