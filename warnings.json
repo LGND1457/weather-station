@@ -1,12 +1,17 @@
 {
  "ok": true,
- "fetched": 1795500969,
+ "fetched": 1795571620,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
    "title": "24/12:30 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
    "date": "Tue, 24 Nov 2026 02:30:41 GMT"
+  },
+  {
+   "title": "25/10:50 EST Initial Flood Warning for the Diamantina River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/diamantina-river.shtml",
+   "date": "Wed, 25 Nov 2026 00:50:51 GMT"
   },
   {
    "title": "24/14:37 EST Heatwave Warning (QLD)",
