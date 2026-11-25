@@ -1,12 +1,12 @@
 {
  "ok": true,
- "fetched": 1795571620,
+ "fetched": 1795603833,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "24/12:30 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
+   "title": "25/11:53 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Tue, 24 Nov 2026 02:30:41 GMT"
+   "date": "Wed, 25 Nov 2026 01:53:45 GMT"
   },
   {
    "title": "25/10:50 EST Initial Flood Warning for the Diamantina River",
@@ -14,9 +14,14 @@
    "date": "Wed, 25 Nov 2026 00:50:51 GMT"
   },
   {
-   "title": "24/14:37 EST Heatwave Warning (QLD)",
+   "title": "25/15:01 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Tue, 24 Nov 2026 04:37:53 GMT"
+   "date": "Wed, 25 Nov 2026 05:01:18 GMT"
+  },
+  {
+   "title": "25/19:41 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Highlands and Coalfields, Central West and Maranoa and Warrego Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Wed, 25 Nov 2026 09:41:55 GMT"
   }
  ]
 }
