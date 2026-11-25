@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795603833,
+ "fetched": 1795638084,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -17,11 +17,6 @@
    "title": "25/15:01 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Wed, 25 Nov 2026 05:01:18 GMT"
-  },
-  {
-   "title": "25/19:41 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central Highlands and Coalfields, Central West and Maranoa and Warrego Forecast Districts.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Wed, 25 Nov 2026 09:41:55 GMT"
   }
  ]
 }
