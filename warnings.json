@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795661890,
+ "fetched": 1795694745,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -14,9 +14,9 @@
    "date": "Thu, 26 Nov 2026 01:11:07 GMT"
   },
   {
-   "title": "25/11:53 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
+   "title": "26/13:19 EST Minor Flood Warning for the Barcoo River, Initial Minor Flood Warning for Cooper Creek, and Final Flood Warning for the Thomson River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Wed, 25 Nov 2026 01:53:45 GMT"
+   "date": "Thu, 26 Nov 2026 03:19:43 GMT"
   },
   {
    "title": "25/10:50 EST Initial Flood Warning for the Diamantina River",
@@ -24,9 +24,14 @@
    "date": "Wed, 25 Nov 2026 00:50:51 GMT"
   },
   {
-   "title": "25/15:01 EST Heatwave Warning (QLD)",
+   "title": "26/13:32 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Wed, 25 Nov 2026 05:01:18 GMT"
+   "date": "Thu, 26 Nov 2026 03:32:06 GMT"
+  },
+  {
+   "title": "26/20:01 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Channel Country Forecast District.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Thu, 26 Nov 2026 10:01:47 GMT"
   }
  ]
 }
