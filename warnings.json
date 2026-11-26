@@ -1,8 +1,18 @@
 {
  "ok": true,
- "fetched": 1795638084,
+ "fetched": 1795661890,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
+  {
+   "title": "26/11:30 EST Initial Minor Flood Warning for the Paroo River (QLD)",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/paroo-river.shtml",
+   "date": "Thu, 26 Nov 2026 01:30:46 GMT"
+  },
+  {
+   "title": "26/11:11 EST Initial Minor Flood Warning for the Bulloo River",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
+   "date": "Thu, 26 Nov 2026 01:11:07 GMT"
+  },
   {
    "title": "25/11:53 EST Minor Flood Warning for the Thomson and Barcoo Rivers",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
