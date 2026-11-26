@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795694745,
+ "fetched": 1795728332,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -27,11 +27,6 @@
    "title": "26/13:32 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Thu, 26 Nov 2026 03:32:06 GMT"
-  },
-  {
-   "title": "26/20:01 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Channel Country Forecast District.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Thu, 26 Nov 2026 10:01:47 GMT"
   }
  ]
 }
