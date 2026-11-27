@@ -1,32 +1,42 @@
 {
  "ok": true,
- "fetched": 1795728332,
+ "fetched": 1795750952,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "26/11:30 EST Initial Minor Flood Warning for the Paroo River (QLD)",
+   "title": "27/11:36 EST Minor Flood Warning for the Paroo River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/paroo-river.shtml",
-   "date": "Thu, 26 Nov 2026 01:30:46 GMT"
+   "date": "Fri, 27 Nov 2026 01:36:37 GMT"
   },
   {
-   "title": "26/11:11 EST Initial Minor Flood Warning for the Bulloo River",
+   "title": "27/11:42 EST Moderate Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Thu, 26 Nov 2026 01:11:07 GMT"
+   "date": "Fri, 27 Nov 2026 01:42:38 GMT"
   },
   {
-   "title": "26/13:19 EST Minor Flood Warning for the Barcoo River, Initial Minor Flood Warning for Cooper Creek, and Final Flood Warning for the Thomson River",
+   "title": "27/12:55 EST Minor Flood Warning for the Barcoo River and Cooper Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/thomson-barcoo-cooper.shtml",
-   "date": "Thu, 26 Nov 2026 03:19:43 GMT"
+   "date": "Fri, 27 Nov 2026 02:55:31 GMT"
   },
   {
-   "title": "25/10:50 EST Initial Flood Warning for the Diamantina River",
+   "title": "27/13:17 EST Flood Warning for the Diamantina River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/diamantina-river.shtml",
-   "date": "Wed, 25 Nov 2026 00:50:51 GMT"
+   "date": "Fri, 27 Nov 2026 03:17:35 GMT"
   },
   {
-   "title": "26/13:32 EST Heatwave Warning (QLD)",
+   "title": "27/10:23 EST Initial Flood Watch for parts of Southern and South East Queensland",
+   "link": "https://reg.bom.gov.au/cgi-bin/wrap_fwo.pl?IDQ20900.html",
+   "date": "Fri, 27 Nov 2026 00:23:42 GMT"
+  },
+  {
+   "title": "27/13:31 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Thu, 26 Nov 2026 03:32:06 GMT"
+   "date": "Fri, 27 Nov 2026 03:31:51 GMT"
+  },
+  {
+   "title": "27/13:29 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Channel Country and Maranoa and Warrego Forecast Districts.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Fri, 27 Nov 2026 03:29:14 GMT"
   }
  ]
 }
