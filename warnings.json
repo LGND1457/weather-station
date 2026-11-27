@@ -1,8 +1,13 @@
 {
  "ok": true,
- "fetched": 1795785096,
+ "fetched": 1795817013,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
+  {
+   "title": "28/03:55 EST Moderate Flood Warning for Warrill Creek",
+   "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
+   "date": "Fri, 27 Nov 2026 17:55:52 GMT"
+  },
   {
    "title": "27/22:20 EST Initial Flood Warning for Teviot Brook",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
@@ -37,11 +42,6 @@
    "title": "27/13:31 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Fri, 27 Nov 2026 03:31:51 GMT"
-  },
-  {
-   "title": "27/22:52 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Central West Forecast District.",
-   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Fri, 27 Nov 2026 12:52:58 GMT"
   }
  ]
 }
