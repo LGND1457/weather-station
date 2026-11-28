@@ -1,27 +1,27 @@
 {
  "ok": true,
- "fetched": 1795817013,
+ "fetched": 1795837889,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
-   "title": "28/03:55 EST Moderate Flood Warning for Warrill Creek",
+   "title": "28/11:54 EST Minor Flood Warning for Warrill Creek",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bremer-river-and-warrill-creek.shtml",
-   "date": "Fri, 27 Nov 2026 17:55:52 GMT"
+   "date": "Sat, 28 Nov 2026 01:54:36 GMT"
   },
   {
-   "title": "27/22:20 EST Initial Flood Warning for Teviot Brook",
+   "title": "28/09:31 EST Flood Warning for Teviot Brook",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/logan-albert-river-basin.shtml",
-   "date": "Fri, 27 Nov 2026 12:20:34 GMT"
+   "date": "Fri, 27 Nov 2026 23:31:48 GMT"
   },
   {
-   "title": "27/11:36 EST Minor Flood Warning for the Paroo River (QLD)",
+   "title": "28/09:04 EST Minor Flood Warning for the Paroo River (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/paroo-river.shtml",
-   "date": "Fri, 27 Nov 2026 01:36:37 GMT"
+   "date": "Fri, 27 Nov 2026 23:04:43 GMT"
   },
   {
-   "title": "27/11:42 EST Moderate Flood Warning for the Bulloo River",
+   "title": "28/12:28 EST Moderate Flood Warning for the Bulloo River",
    "link": "http://reg.bom.gov.au/qld/warnings/flood/bulloo-river.shtml",
-   "date": "Fri, 27 Nov 2026 01:42:38 GMT"
+   "date": "Sat, 28 Nov 2026 02:28:40 GMT"
   },
   {
    "title": "27/12:55 EST Minor Flood Warning for the Barcoo River and Cooper Creek",
@@ -34,14 +34,19 @@
    "date": "Fri, 27 Nov 2026 03:17:35 GMT"
   },
   {
-   "title": "27/10:23 EST Initial Flood Watch for parts of Southern and South East Queensland",
+   "title": "28/11:25 EST Flood Watch for parts of Southern and South East Queensland",
    "link": "https://reg.bom.gov.au/cgi-bin/wrap_fwo.pl?IDQ20900.html",
-   "date": "Fri, 27 Nov 2026 00:23:42 GMT"
+   "date": "Sat, 28 Nov 2026 01:25:58 GMT"
   },
   {
    "title": "27/13:31 EST Heatwave Warning (QLD)",
    "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
    "date": "Fri, 27 Nov 2026 03:31:51 GMT"
+  },
+  {
+   "title": "28/12:31 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Southeast Coast Forecast District.",
+   "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
+   "date": "Sat, 28 Nov 2026 02:31:40 GMT"
   }
  ]
 }
