@@ -1,6 +1,6 @@
 {
  "ok": true,
- "fetched": 1795837889,
+ "fetched": 1795869627,
  "source": "http://www.bom.gov.au/fwo/IDZ00056.warnings_qld.xml",
  "items": [
   {
@@ -39,14 +39,9 @@
    "date": "Sat, 28 Nov 2026 01:25:58 GMT"
   },
   {
-   "title": "27/13:31 EST Heatwave Warning (QLD)",
-   "link": "http://reg.bom.gov.au/qld/warnings/heatwave.shtml",
-   "date": "Fri, 27 Nov 2026 03:31:51 GMT"
-  },
-  {
-   "title": "28/12:31 EST \n                Cancellation of Severe Thunderstorm Warning\n            \nfor \n                Southeast Coast Forecast District.",
+   "title": "28/21:41 EST \n                Severe Thunderstorm Warning\n            \nfor \n                parts of Darling Downs and Granite Belt Forecast District.",
    "link": "http://reg.bom.gov.au/products/IDQ21033.shtml",
-   "date": "Sat, 28 Nov 2026 02:31:40 GMT"
+   "date": "Sat, 28 Nov 2026 11:41:34 GMT"
   }
  ]
 }
